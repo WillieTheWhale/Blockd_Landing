@@ -1,0 +1,1289 @@
+{
+  "$schema": "https://blockd.com/schemas/design-system/v1.0",
+  "meta": {
+    "name": "Blockd Design System",
+    "version": "1.1.0",
+    "description": "Comprehensive aesthetic and design language specification for the Blockd interview integrity platform",
+    "last_updated": "2025-11-24",
+    "authors": ["Blockd Design Team"],
+    "color_scheme": "Slate Blue"
+  },
+
+  "brand_identity": {
+    "brand_name": "Blockd",
+    "tagline": {
+      "primary": "Interview Integrity, Verified.",
+      "alternatives": [
+        "Trust Your Interviews Again.",
+        "Where Talent Wins.",
+        "AI-Proof Your Hiring.",
+        "Real Skills. Real Candidates. Real Confidence.",
+        "Hire Who They Actually Are."
+      ]
+    },
+    "brand_essence": "Restoring trust in remote evaluation through intelligent, non-invasive technology",
+    "brand_personality": {
+      "primary_traits": [
+        "Authoritative",
+        "Trustworthy",
+        "Intelligent",
+        "Precise",
+        "Fair"
+      ],
+      "secondary_traits": [
+        "Modern",
+        "Technical",
+        "Confident",
+        "Respectful",
+        "Transparent"
+      ],
+      "anti_traits": [
+        "Surveillance-like",
+        "Invasive",
+        "Cold",
+        "Accusatory",
+        "Overly corporate"
+      ]
+    },
+    "brand_values": {
+      "integrity": "We believe people should be evaluated on their actual abilities",
+      "fairness": "Creating a level playing field for all candidates",
+      "trust": "Building confidence in remote hiring through evidence, not accusations",
+      "respect": "Treating candidates as professionals, not suspects",
+      "transparency": "Providing data and evidence, letting humans make decisions"
+    },
+    "positioning": {
+      "category": "Interview Security & Integrity Platform",
+      "differentiation": "Understanding-based detection, not surveillance",
+      "target_audience": {
+        "primary": "Technical hiring teams at mid-to-enterprise companies",
+        "secondary": "HR leaders responsible for hiring integrity",
+        "tertiary": "Certification bodies and educational institutions"
+      }
+    }
+  },
+
+  "design_philosophy": {
+    "approach": "Modern Professional",
+    "description": "A refined, enterprise-grade aesthetic that balances technical precision with approachability. The slate and blue palette conveys trust, stability, and intelligence—essential qualities for a security platform. Clean lines and generous whitespace create a sense of calm professionalism.",
+    "core_principles": [
+      {
+        "name": "Quiet Confidence",
+        "description": "The design speaks through clarity and precision, not through loudness. Trust is built through consistent, polished execution."
+      },
+      {
+        "name": "Functional Elegance",
+        "description": "Every element serves a purpose. Beauty emerges from thoughtful composition and refined details."
+      },
+      {
+        "name": "Structured Clarity",
+        "description": "Grid systems and consistent spacing create order from complexity. Information hierarchy is immediately apparent."
+      },
+      {
+        "name": "Professional Warmth",
+        "description": "Enterprise-grade doesn't mean cold. The design feels human and approachable while maintaining authority."
+      },
+      {
+        "name": "Human-Centered Security",
+        "description": "Security interfaces that feel protective, not threatening. Professional without being intimidating."
+      }
+    ],
+    "visual_metaphors": {
+      "primary": "The Shield",
+      "description": "Protection that's visible but not intrusive. A guardian, not a warden.",
+      "supporting_metaphors": [
+        "The Lens (clear observation, bringing truth into focus)",
+        "The Grid (systematic, organized, fair)",
+        "The Fingerprint (unique identity, authentication)",
+        "The Signal (data transmission, real-time awareness)"
+      ]
+    }
+  },
+
+  "color_system": {
+    "philosophy": "A sophisticated slate and blue palette that conveys professionalism, trust, and technical excellence. The cool tones create a sense of stability and reliability, while the blue accent provides energy and draws attention to interactive elements. This palette works exceptionally well for data-heavy interfaces and extended use.",
+    
+    "palette": {
+      "primary": {
+        "blockd_blue": {
+          "hex": "#3B82F6",
+          "rgb": "rgb(59, 130, 246)",
+          "hsl": "hsl(217, 91%, 60%)",
+          "usage": "Primary brand color. CTAs, active states, links, interactive elements, brand moments",
+          "psychology": "Trust, reliability, intelligence, professionalism",
+          "accessibility_note": "Use with white text for buttons. Meets WCAG AA on dark backgrounds."
+        },
+        "blockd_blue_light": {
+          "hex": "#60A5FA",
+          "rgb": "rgb(96, 165, 250)",
+          "usage": "Hover states, secondary accents, light mode highlights"
+        },
+        "blockd_blue_dark": {
+          "hex": "#2563EB",
+          "rgb": "rgb(37, 99, 235)",
+          "usage": "Active/pressed states, dark mode accents"
+        }
+      },
+      
+      "neutrals": {
+        "slate_950": {
+          "hex": "#0F172A",
+          "rgb": "rgb(15, 23, 42)",
+          "usage": "Deepest backgrounds, primary text on light surfaces, dark mode primary background"
+        },
+        "slate_900": {
+          "hex": "#1E293B",
+          "rgb": "rgb(30, 41, 59)",
+          "usage": "Dark mode secondary background, elevated dark surfaces"
+        },
+        "slate_800": {
+          "hex": "#334155",
+          "rgb": "rgb(51, 65, 85)",
+          "usage": "Dark mode tertiary surfaces, secondary text on light backgrounds, borders in dark mode"
+        },
+        "slate_700": {
+          "hex": "#475569",
+          "rgb": "rgb(71, 85, 105)",
+          "usage": "Muted text, disabled states in dark mode"
+        },
+        "slate_600": {
+          "hex": "#64748B",
+          "rgb": "rgb(100, 116, 139)",
+          "usage": "Placeholder text, tertiary text, icons"
+        },
+        "slate_500": {
+          "hex": "#94A3B8",
+          "rgb": "rgb(148, 163, 184)",
+          "usage": "Secondary text, captions, subtle elements"
+        },
+        "slate_400": {
+          "hex": "#CBD5E1",
+          "rgb": "rgb(203, 213, 225)",
+          "usage": "Borders, dividers, disabled text, light mode tertiary elements"
+        },
+        "slate_300": {
+          "hex": "#E2E8F0",
+          "rgb": "rgb(226, 232, 240)",
+          "usage": "Light borders, subtle backgrounds, hover states"
+        },
+        "slate_200": {
+          "hex": "#F1F5F9",
+          "rgb": "rgb(241, 245, 249)",
+          "usage": "Secondary light backgrounds, card backgrounds"
+        },
+        "slate_100": {
+          "hex": "#F8FAFC",
+          "rgb": "rgb(248, 250, 252)",
+          "usage": "Primary light background, page background"
+        },
+        "white": {
+          "hex": "#FFFFFF",
+          "rgb": "rgb(255, 255, 255)",
+          "usage": "Card surfaces, input backgrounds, elevated light elements"
+        }
+      },
+
+      "semantic": {
+        "success": {
+          "base": "#22C55E",
+          "light": "#DCFCE7",
+          "dark": "#166534",
+          "usage": "Verification passed, low risk, positive outcomes"
+        },
+        "warning": {
+          "base": "#F59E0B",
+          "light": "#FEF3C7",
+          "dark": "#92400E",
+          "usage": "Medium risk, attention needed, caution states"
+        },
+        "danger": {
+          "base": "#EF4444",
+          "light": "#FEE2E2",
+          "dark": "#991B1B",
+          "usage": "High risk, security alerts, critical actions"
+        },
+        "info": {
+          "base": "#3B82F6",
+          "light": "#DBEAFE",
+          "dark": "#1E40AF",
+          "usage": "Informational states, links, neutral highlights (same as primary)"
+        }
+      },
+
+      "risk_spectrum": {
+        "description": "Dedicated color scale for risk visualization throughout the platform",
+        "minimal": {
+          "hex": "#22C55E",
+          "label": "Minimal Risk (0.00-0.49)",
+          "description": "Likely human-generated"
+        },
+        "low": {
+          "hex": "#84CC16",
+          "label": "Low Risk (0.50-0.69)",
+          "description": "Probably human, minor similarities"
+        },
+        "medium": {
+          "hex": "#F59E0B",
+          "label": "Medium Risk (0.70-0.84)",
+          "description": "Investigate further"
+        },
+        "high": {
+          "hex": "#EF4444",
+          "label": "High Risk (0.85-1.00)",
+          "description": "Likely AI-generated"
+        }
+      },
+
+      "gradients": {
+        "brand_gradient": {
+          "css": "linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)",
+          "usage": "Hero sections, premium features, brand moments"
+        },
+        "brand_gradient_subtle": {
+          "css": "linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%)",
+          "usage": "Darker brand gradient for overlays"
+        },
+        "dark_gradient": {
+          "css": "linear-gradient(180deg, #1E293B 0%, #0F172A 100%)",
+          "usage": "Dark section backgrounds, depth"
+        },
+        "slate_gradient": {
+          "css": "linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%)",
+          "usage": "Subtle page section differentiation"
+        },
+        "risk_gradient": {
+          "css": "linear-gradient(90deg, #22C55E 0%, #84CC16 33%, #F59E0B 66%, #EF4444 100%)",
+          "usage": "Risk score visualizations, progress bars"
+        },
+        "glow_blue": {
+          "css": "radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)",
+          "usage": "Subtle glow effects behind accent elements"
+        },
+        "mesh_gradient": {
+          "css": "radial-gradient(at 40% 20%, rgba(59,130,246,0.1) 0%, transparent 50%), radial-gradient(at 80% 80%, rgba(59,130,246,0.08) 0%, transparent 50%)",
+          "usage": "Hero backgrounds, decorative sections"
+        }
+      }
+    },
+
+    "color_modes": {
+      "light_mode": {
+        "background_primary": "#F8FAFC",
+        "background_secondary": "#F1F5F9",
+        "background_tertiary": "#FFFFFF",
+        "surface_elevated": "#FFFFFF",
+        "text_primary": "#0F172A",
+        "text_secondary": "#334155",
+        "text_tertiary": "#64748B",
+        "text_muted": "#94A3B8",
+        "border_default": "#E2E8F0",
+        "border_strong": "#CBD5E1",
+        "accent": "#3B82F6",
+        "accent_hover": "#2563EB",
+        "accent_subtle": "#DBEAFE"
+      },
+      "dark_mode": {
+        "background_primary": "#0F172A",
+        "background_secondary": "#1E293B",
+        "background_tertiary": "#334155",
+        "surface_elevated": "#1E293B",
+        "text_primary": "#F8FAFC",
+        "text_secondary": "#CBD5E1",
+        "text_tertiary": "#94A3B8",
+        "text_muted": "#64748B",
+        "border_default": "#334155",
+        "border_strong": "#475569",
+        "accent": "#3B82F6",
+        "accent_hover": "#60A5FA",
+        "accent_subtle": "rgba(59, 130, 246, 0.15)"
+      }
+    }
+  },
+
+  "typography": {
+    "philosophy": "Dual-typeface system combining technical precision with humanist readability. The contrast between monospace display type and clean body text reinforces the brand's blend of technical sophistication and human-centered design.",
+
+    "font_families": {
+      "display": {
+        "name": "JetBrains Mono",
+        "fallback": "'SF Mono', 'Fira Code', 'Consolas', monospace",
+        "source": "Google Fonts",
+        "weights": [400, 500, 600, 700, 800],
+        "usage": "Headlines, navigation, labels, data displays, code snippets, technical information",
+        "rationale": "Monospace font conveys technical precision and security. The uniformity of character widths creates a systematic, grid-aligned aesthetic."
+      },
+      "body": {
+        "name": "Outfit",
+        "fallback": "'Inter', 'SF Pro Text', '-apple-system', 'Segoe UI', sans-serif",
+        "source": "Google Fonts",
+        "weights": [300, 400, 500, 600, 700],
+        "usage": "Body text, paragraphs, descriptions, UI text, buttons",
+        "rationale": "Geometric sans-serif with humanist touches. Highly legible at all sizes, works well for long-form content while maintaining a modern, professional appearance."
+      },
+      "mono": {
+        "name": "JetBrains Mono",
+        "fallback": "'SF Mono', 'Fira Code', monospace",
+        "usage": "Code blocks, technical data, timestamps, IDs, metrics"
+      }
+    },
+
+    "type_scale": {
+      "base_size": "16px",
+      "scale_ratio": 1.25,
+      "line_height_base": 1.5,
+      
+      "sizes": {
+        "display_2xl": {
+          "size": "72px",
+          "line_height": 1.1,
+          "letter_spacing": "-0.02em",
+          "font": "JetBrains Mono",
+          "weight": 700,
+          "usage": "Hero headlines, landing page statements"
+        },
+        "display_xl": {
+          "size": "60px",
+          "line_height": 1.1,
+          "letter_spacing": "-0.02em",
+          "font": "JetBrains Mono",
+          "weight": 700,
+          "usage": "Major section headlines"
+        },
+        "display_lg": {
+          "size": "48px",
+          "line_height": 1.15,
+          "letter_spacing": "-0.01em",
+          "font": "JetBrains Mono",
+          "weight": 600,
+          "usage": "Page titles, large callouts"
+        },
+        "heading_1": {
+          "size": "36px",
+          "line_height": 1.2,
+          "letter_spacing": "-0.01em",
+          "font": "JetBrains Mono",
+          "weight": 600,
+          "usage": "Primary headings"
+        },
+        "heading_2": {
+          "size": "30px",
+          "line_height": 1.25,
+          "letter_spacing": "0",
+          "font": "JetBrains Mono",
+          "weight": 600,
+          "usage": "Secondary headings"
+        },
+        "heading_3": {
+          "size": "24px",
+          "line_height": 1.3,
+          "letter_spacing": "0",
+          "font": "JetBrains Mono",
+          "weight": 500,
+          "usage": "Tertiary headings, card titles"
+        },
+        "heading_4": {
+          "size": "20px",
+          "line_height": 1.35,
+          "letter_spacing": "0",
+          "font": "JetBrains Mono",
+          "weight": 500,
+          "usage": "Small headings, labels"
+        },
+        "body_lg": {
+          "size": "18px",
+          "line_height": 1.6,
+          "letter_spacing": "0",
+          "font": "Outfit",
+          "weight": 400,
+          "usage": "Lead paragraphs, featured content"
+        },
+        "body_base": {
+          "size": "16px",
+          "line_height": 1.6,
+          "letter_spacing": "0",
+          "font": "Outfit",
+          "weight": 400,
+          "usage": "Primary body text"
+        },
+        "body_sm": {
+          "size": "14px",
+          "line_height": 1.5,
+          "letter_spacing": "0",
+          "font": "Outfit",
+          "weight": 400,
+          "usage": "Secondary text, captions, helper text"
+        },
+        "caption": {
+          "size": "12px",
+          "line_height": 1.4,
+          "letter_spacing": "0.01em",
+          "font": "Outfit",
+          "weight": 400,
+          "usage": "Labels, timestamps, metadata"
+        },
+        "overline": {
+          "size": "11px",
+          "line_height": 1.4,
+          "letter_spacing": "0.1em",
+          "font": "JetBrains Mono",
+          "weight": 600,
+          "text_transform": "uppercase",
+          "usage": "Section labels, category tags"
+        },
+        "code": {
+          "size": "14px",
+          "line_height": 1.6,
+          "letter_spacing": "0",
+          "font": "JetBrains Mono",
+          "weight": 400,
+          "usage": "Code snippets, technical data"
+        },
+        "data_display": {
+          "size": "32px",
+          "line_height": 1.2,
+          "letter_spacing": "-0.01em",
+          "font": "JetBrains Mono",
+          "weight": 700,
+          "usage": "Statistics, metrics, risk scores"
+        }
+      }
+    },
+
+    "text_treatments": {
+      "truncation": {
+        "single_line": "text-overflow: ellipsis; overflow: hidden; white-space: nowrap;",
+        "multi_line": "-webkit-line-clamp with overflow: hidden;"
+      },
+      "emphasis": {
+        "strong": "font-weight: 600;",
+        "subtle": "opacity: 0.7;",
+        "highlight": "background: rgba(59, 130, 246, 0.15); padding: 0 4px; border-radius: 2px;"
+      }
+    }
+  },
+
+  "spacing_system": {
+    "philosophy": "8px base unit grid. All spacing derives from this base to create consistent, harmonious layouts.",
+    
+    "base_unit": "8px",
+    
+    "scale": {
+      "0": "0px",
+      "px": "1px",
+      "0.5": "4px",
+      "1": "8px",
+      "1.5": "12px",
+      "2": "16px",
+      "2.5": "20px",
+      "3": "24px",
+      "4": "32px",
+      "5": "40px",
+      "6": "48px",
+      "7": "56px",
+      "8": "64px",
+      "10": "80px",
+      "12": "96px",
+      "16": "128px",
+      "20": "160px",
+      "24": "192px"
+    },
+
+    "semantic_spacing": {
+      "component_padding_sm": "12px",
+      "component_padding_md": "16px",
+      "component_padding_lg": "24px",
+      "section_gap": "64px",
+      "card_padding": "24px",
+      "form_field_gap": "16px",
+      "button_padding_x": "24px",
+      "button_padding_y": "12px"
+    }
+  },
+
+  "grid_system": {
+    "philosophy": "Clean, invisible grid structures that create order and alignment. The grid supports the content without drawing attention to itself.",
+
+    "layout_grid": {
+      "max_width": "1440px",
+      "columns": 12,
+      "gutter": "24px",
+      "margin": {
+        "desktop": "64px",
+        "tablet": "32px",
+        "mobile": "16px"
+      }
+    },
+
+    "breakpoints": {
+      "sm": "640px",
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1280px",
+      "2xl": "1536px"
+    },
+
+    "visual_grid_patterns": {
+      "dot_grid": {
+        "description": "Subtle dot pattern for backgrounds",
+        "dot_size": "1px",
+        "dot_color_light": "rgba(15, 23, 42, 0.06)",
+        "dot_color_dark": "rgba(248, 250, 252, 0.04)",
+        "gap": "24px",
+        "usage": "Hero backgrounds, section backgrounds"
+      },
+      "line_grid": {
+        "description": "Fine line grid for technical precision feel",
+        "line_weight": "1px",
+        "line_color_light": "rgba(15, 23, 42, 0.04)",
+        "line_color_dark": "rgba(248, 250, 252, 0.03)",
+        "gap": "48px",
+        "usage": "Data visualization backgrounds, dashboard areas"
+      }
+    }
+  },
+
+  "component_styling": {
+    "buttons": {
+      "philosophy": "Clean, confident, clearly actionable. Buttons use subtle rounding and clear contrast to indicate interactivity.",
+      
+      "variants": {
+        "primary": {
+          "background": "#3B82F6",
+          "text": "#FFFFFF",
+          "border": "none",
+          "hover_background": "#2563EB",
+          "active_background": "#1D4ED8",
+          "focus_ring": "0 0 0 3px rgba(59, 130, 246, 0.3)"
+        },
+        "secondary": {
+          "background": "transparent",
+          "text": "#0F172A",
+          "border": "2px solid #CBD5E1",
+          "hover_background": "#F1F5F9",
+          "hover_border": "#94A3B8",
+          "focus_ring": "0 0 0 3px rgba(59, 130, 246, 0.2)"
+        },
+        "ghost": {
+          "background": "transparent",
+          "text": "#334155",
+          "border": "none",
+          "hover_background": "#F1F5F9",
+          "focus_ring": "0 0 0 3px rgba(59, 130, 246, 0.15)"
+        },
+        "danger": {
+          "background": "#EF4444",
+          "text": "#FFFFFF",
+          "border": "none",
+          "hover_background": "#DC2626",
+          "focus_ring": "0 0 0 3px rgba(239, 68, 68, 0.3)"
+        }
+      },
+      
+      "sizes": {
+        "sm": {
+          "height": "32px",
+          "padding": "0 12px",
+          "font_size": "14px",
+          "border_radius": "6px"
+        },
+        "md": {
+          "height": "44px",
+          "padding": "0 24px",
+          "font_size": "16px",
+          "border_radius": "8px"
+        },
+        "lg": {
+          "height": "56px",
+          "padding": "0 32px",
+          "font_size": "18px",
+          "border_radius": "10px"
+        }
+      },
+
+      "properties": {
+        "font_family": "Outfit",
+        "font_weight": 600,
+        "transition": "all 150ms ease",
+        "cursor": "pointer"
+      }
+    },
+
+    "cards": {
+      "philosophy": "Clean containers with subtle depth. Cards create visual hierarchy through elevation and spacing.",
+      
+      "variants": {
+        "elevated": {
+          "background": "#FFFFFF",
+          "border": "1px solid #E2E8F0",
+          "shadow": "0 1px 3px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.04)",
+          "hover_shadow": "0 2px 8px rgba(15, 23, 42, 0.08), 0 8px 24px rgba(15, 23, 42, 0.06)"
+        },
+        "outlined": {
+          "background": "transparent",
+          "border": "1px solid #CBD5E1",
+          "shadow": "none",
+          "hover_border": "#94A3B8"
+        },
+        "filled": {
+          "background": "#F1F5F9",
+          "border": "none",
+          "shadow": "none"
+        },
+        "glass": {
+          "background": "rgba(255, 255, 255, 0.8)",
+          "border": "1px solid rgba(226, 232, 240, 0.5)",
+          "backdrop_filter": "blur(12px)",
+          "shadow": "0 4px 24px rgba(15, 23, 42, 0.05)"
+        }
+      },
+
+      "dark_mode_variants": {
+        "elevated": {
+          "background": "#1E293B",
+          "border": "1px solid #334155",
+          "shadow": "0 1px 3px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.15)"
+        },
+        "outlined": {
+          "background": "transparent",
+          "border": "1px solid #334155",
+          "hover_border": "#475569"
+        },
+        "filled": {
+          "background": "#334155",
+          "border": "none"
+        }
+      },
+
+      "properties": {
+        "border_radius": "12px",
+        "padding": "24px",
+        "transition": "all 200ms ease"
+      }
+    },
+
+    "inputs": {
+      "philosophy": "Clear, accessible form fields with strong focus states. Inputs should feel refined and easy to interact with.",
+
+      "default_state": {
+        "background": "#FFFFFF",
+        "border": "1px solid #CBD5E1",
+        "text": "#0F172A",
+        "placeholder": "#94A3B8",
+        "border_radius": "8px",
+        "height": "48px",
+        "padding": "0 16px"
+      },
+
+      "states": {
+        "hover": {
+          "border": "1px solid #94A3B8"
+        },
+        "focus": {
+          "border": "1px solid #3B82F6",
+          "outline": "none",
+          "ring": "0 0 0 3px rgba(59, 130, 246, 0.15)"
+        },
+        "error": {
+          "border": "1px solid #EF4444",
+          "ring": "0 0 0 3px rgba(239, 68, 68, 0.15)"
+        },
+        "disabled": {
+          "background": "#F1F5F9",
+          "border": "1px solid #E2E8F0",
+          "text": "#94A3B8",
+          "cursor": "not-allowed"
+        }
+      },
+
+      "dark_mode": {
+        "background": "#1E293B",
+        "border": "1px solid #334155",
+        "text": "#F8FAFC",
+        "placeholder": "#64748B",
+        "focus_border": "#3B82F6"
+      }
+    },
+
+    "tables": {
+      "philosophy": "Data-dense but readable. Tables use clear row separation and consistent alignment.",
+
+      "styling": {
+        "header_background": "#F1F5F9",
+        "header_background_dark": "#1E293B",
+        "header_text": "#0F172A",
+        "header_text_dark": "#F8FAFC",
+        "header_font": "JetBrains Mono",
+        "header_weight": 600,
+        "row_background": "#FFFFFF",
+        "row_background_dark": "#0F172A",
+        "row_hover_background": "#F8FAFC",
+        "row_hover_background_dark": "#1E293B",
+        "row_border": "1px solid #E2E8F0",
+        "row_border_dark": "1px solid #334155",
+        "cell_padding": "16px",
+        "data_font": "JetBrains Mono"
+      }
+    },
+
+    "alerts_notifications": {
+      "variants": {
+        "info": {
+          "background": "#DBEAFE",
+          "background_dark": "rgba(59, 130, 246, 0.15)",
+          "border_left": "4px solid #3B82F6",
+          "icon_color": "#3B82F6",
+          "text": "#1E40AF",
+          "text_dark": "#93C5FD"
+        },
+        "success": {
+          "background": "#DCFCE7",
+          "background_dark": "rgba(34, 197, 94, 0.15)",
+          "border_left": "4px solid #22C55E",
+          "icon_color": "#22C55E",
+          "text": "#166534",
+          "text_dark": "#86EFAC"
+        },
+        "warning": {
+          "background": "#FEF3C7",
+          "background_dark": "rgba(245, 158, 11, 0.15)",
+          "border_left": "4px solid #F59E0B",
+          "icon_color": "#F59E0B",
+          "text": "#92400E",
+          "text_dark": "#FCD34D"
+        },
+        "danger": {
+          "background": "#FEE2E2",
+          "background_dark": "rgba(239, 68, 68, 0.15)",
+          "border_left": "4px solid #EF4444",
+          "icon_color": "#EF4444",
+          "text": "#991B1B",
+          "text_dark": "#FCA5A5"
+        }
+      },
+
+      "properties": {
+        "border_radius": "8px",
+        "padding": "16px 20px",
+        "font_size": "14px"
+      }
+    },
+
+    "badges_tags": {
+      "philosophy": "Small, informative labels that communicate status at a glance.",
+
+      "variants": {
+        "default": {
+          "background": "#E2E8F0",
+          "background_dark": "#334155",
+          "text": "#334155",
+          "text_dark": "#CBD5E1"
+        },
+        "primary": {
+          "background": "#DBEAFE",
+          "background_dark": "rgba(59, 130, 246, 0.2)",
+          "text": "#1E40AF",
+          "text_dark": "#93C5FD"
+        },
+        "success": {
+          "background": "#DCFCE7",
+          "background_dark": "rgba(34, 197, 94, 0.2)",
+          "text": "#166534",
+          "text_dark": "#86EFAC"
+        },
+        "warning": {
+          "background": "#FEF3C7",
+          "background_dark": "rgba(245, 158, 11, 0.2)",
+          "text": "#92400E",
+          "text_dark": "#FCD34D"
+        },
+        "danger": {
+          "background": "#FEE2E2",
+          "background_dark": "rgba(239, 68, 68, 0.2)",
+          "text": "#991B1B",
+          "text_dark": "#FCA5A5"
+        }
+      },
+
+      "properties": {
+        "font_family": "JetBrains Mono",
+        "font_size": "11px",
+        "font_weight": 600,
+        "letter_spacing": "0.05em",
+        "text_transform": "uppercase",
+        "padding": "4px 8px",
+        "border_radius": "6px"
+      }
+    },
+
+    "risk_indicators": {
+      "philosophy": "The most critical UI element. Risk visualization must be immediately understandable and impossible to misinterpret.",
+
+      "score_display": {
+        "font_family": "JetBrains Mono",
+        "font_weight": 700,
+        "size_large": "48px",
+        "size_medium": "32px",
+        "size_small": "24px"
+      },
+
+      "risk_meter": {
+        "height": "8px",
+        "border_radius": "4px",
+        "background": "#E2E8F0",
+        "background_dark": "#334155",
+        "gradient": "linear-gradient(90deg, #22C55E 0%, #84CC16 33%, #F59E0B 66%, #EF4444 100%)"
+      },
+
+      "risk_badge_colors": {
+        "minimal": "#22C55E",
+        "low": "#84CC16",
+        "medium": "#F59E0B",
+        "high": "#EF4444"
+      }
+    },
+
+    "modals_dialogs": {
+      "overlay": {
+        "background": "rgba(15, 23, 42, 0.6)",
+        "backdrop_filter": "blur(4px)"
+      },
+      "container": {
+        "background": "#FFFFFF",
+        "background_dark": "#1E293B",
+        "border": "1px solid #E2E8F0",
+        "border_dark": "1px solid #334155",
+        "border_radius": "16px",
+        "shadow": "0 8px 32px rgba(15, 23, 42, 0.2)",
+        "max_width": "560px",
+        "padding": "32px"
+      }
+    }
+  },
+
+  "iconography": {
+    "philosophy": "Clean, geometric icons that align with the refined aesthetic. Icons should be instantly recognizable and work at small sizes.",
+
+    "style": {
+      "type": "Outline with selective fill for emphasis",
+      "stroke_width": "1.5px",
+      "corner_radius": "Subtle rounding (2px) for approachability",
+      "grid_size": "24px",
+      "optical_adjustments": "Icons should be optically balanced, not mathematically centered"
+    },
+
+    "icon_library": "Lucide Icons (recommended) or custom icons following these guidelines",
+
+    "sizes": {
+      "xs": "16px",
+      "sm": "20px",
+      "md": "24px",
+      "lg": "32px",
+      "xl": "48px"
+    },
+
+    "colors": {
+      "default": "#334155",
+      "default_dark": "#CBD5E1",
+      "muted": "#94A3B8",
+      "accent": "#3B82F6",
+      "success": "#22C55E",
+      "warning": "#F59E0B",
+      "danger": "#EF4444"
+    },
+
+    "key_icons": {
+      "navigation": ["Home", "Sessions", "Reports", "Settings", "User"],
+      "security": ["Shield", "Lock", "Eye", "AlertTriangle", "CheckCircle"],
+      "actions": ["Play", "Pause", "Stop", "Download", "Share", "Filter"],
+      "status": ["Clock", "Activity", "TrendingUp", "AlertCircle", "Info"],
+      "detection": ["Brain", "Scan", "Target", "Crosshair", "Monitor"]
+    }
+  },
+
+  "imagery_and_illustration": {
+    "photography": {
+      "style": "Minimal use - prefer abstract visuals",
+      "reasoning": "The platform deals with sensitive hiring contexts. Stock photography feels inauthentic. Prefer abstract visuals and data visualization."
+    },
+
+    "illustrations": {
+      "style": "Geometric, abstract, technical",
+      "characteristics": [
+        "Line-based illustrations with grid alignment",
+        "Isometric technical diagrams",
+        "Subtle gradient overlays using brand blue",
+        "Data visualization as decoration",
+        "Abstract security/protection imagery"
+      ],
+      "color_usage": "Primarily slate tones with selective blue accents",
+      "avoid": [
+        "Cartoon characters",
+        "Overly playful illustrations",
+        "Realistic human figures",
+        "Clipart aesthetic"
+      ]
+    },
+
+    "data_visualization": {
+      "philosophy": "Data viz is both functional and aesthetic. Visualizations should be clear, informative, and visually cohesive.",
+      
+      "chart_styling": {
+        "background": "transparent",
+        "grid_lines": "rgba(203, 213, 225, 0.5)",
+        "grid_lines_dark": "rgba(51, 65, 85, 0.5)",
+        "axis_lines": "#CBD5E1",
+        "axis_lines_dark": "#475569",
+        "primary_data_color": "#3B82F6",
+        "secondary_data_color": "#0F172A",
+        "secondary_data_color_dark": "#CBD5E1",
+        "font": "JetBrains Mono",
+        "font_size": "12px"
+      },
+
+      "gaze_heatmap": {
+        "cold_color": "#3B82F6",
+        "warm_color": "#F59E0B",
+        "hot_color": "#EF4444",
+        "opacity_range": "0.3 to 0.9",
+        "blur_radius": "15-20px"
+      },
+
+      "timeline_visualization": {
+        "track_height": "48px",
+        "track_background": "#F1F5F9",
+        "track_background_dark": "#1E293B",
+        "event_marker_size": "12px",
+        "connection_line_weight": "2px",
+        "connection_line_color": "#CBD5E1"
+      }
+    },
+
+    "patterns_textures": {
+      "noise_texture": {
+        "description": "Subtle grain overlay for depth",
+        "opacity": "0.02-0.04",
+        "usage": "Hero backgrounds, feature sections"
+      },
+      "gradient_mesh": {
+        "description": "Organic gradient shapes",
+        "colors": ["#3B82F6", "#0F172A"],
+        "usage": "Abstract background elements"
+      }
+    }
+  },
+
+  "motion_and_animation": {
+    "philosophy": "Smooth, purposeful motion that enhances usability. Animations should feel refined and professional.",
+
+    "timing_functions": {
+      "default": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "entrance": "cubic-bezier(0, 0, 0.2, 1)",
+      "exit": "cubic-bezier(0.4, 0, 1, 1)",
+      "emphasis": "cubic-bezier(0.4, 0, 0.6, 1)"
+    },
+
+    "durations": {
+      "instant": "0ms",
+      "fast": "100ms",
+      "normal": "200ms",
+      "slow": "300ms",
+      "slower": "500ms"
+    },
+
+    "animation_types": {
+      "micro_interactions": {
+        "button_hover": "background-color transition over 150ms",
+        "button_press": "scale(0.98) over 50ms",
+        "input_focus": "border-color and ring transition over 150ms",
+        "toggle_switch": "transform over 200ms"
+      },
+      "transitions": {
+        "page_enter": "fade + subtle slide up over 300ms",
+        "modal_enter": "fade + scale from 0.95 over 200ms",
+        "card_hover": "shadow and border transition over 200ms",
+        "list_item_enter": "staggered fade + slide, 50ms delay between items"
+      },
+      "loading_states": {
+        "skeleton": "shimmer gradient animation, 1.5s infinite",
+        "spinner": "rotation 1s linear infinite",
+        "progress": "width transition over 300ms",
+        "pulse": "opacity 2s ease-in-out infinite"
+      },
+      "data_updates": {
+        "score_change": "count up/down animation over 500ms",
+        "chart_update": "data point transition over 300ms",
+        "alert_entrance": "slide in from right over 300ms"
+      }
+    },
+
+    "real_time_indicators": {
+      "live_badge": {
+        "animation": "subtle pulse every 2s",
+        "color": "#22C55E"
+      },
+      "recording_indicator": {
+        "animation": "opacity pulse 1s infinite",
+        "color": "#EF4444"
+      },
+      "connection_status": {
+        "animation": "fade transition on state change"
+      }
+    },
+
+    "accessibility": {
+      "reduced_motion": {
+        "description": "Respect prefers-reduced-motion media query",
+        "behavior": "Replace animations with instant state changes"
+      }
+    }
+  },
+
+  "voice_and_tone": {
+    "philosophy": "Confident, clear, and human. We're building serious security technology, but we speak to people, not at them.",
+
+    "brand_voice": {
+      "characteristics": [
+        "Direct and concise",
+        "Technically accurate",
+        "Confident but not arrogant",
+        "Helpful and supportive",
+        "Transparent about capabilities and limitations"
+      ],
+      "avoid": [
+        "Jargon without explanation",
+        "Fear-mongering or accusatory language",
+        "Overly casual or jokey tone",
+        "Corporate buzzwords",
+        "Passive voice when active is clearer"
+      ]
+    },
+
+    "tone_by_context": {
+      "marketing": {
+        "tone": "Confident, compelling, visionary",
+        "example": "Remote hiring is broken. Blockd fixes it."
+      },
+      "onboarding": {
+        "tone": "Welcoming, clear, encouraging",
+        "example": "Let's get your secure interview environment set up. It takes about 5 minutes."
+      },
+      "in_app_guidance": {
+        "tone": "Helpful, concise, instructive",
+        "example": "Click the blue button when you're ready to start the interview."
+      },
+      "error_messages": {
+        "tone": "Calm, clear, solution-oriented",
+        "example": "We couldn't connect to the video server. Check your internet connection and try again."
+      },
+      "security_alerts": {
+        "tone": "Factual, neutral, informative",
+        "example": "Off-screen gaze detected at 14:32:15. Duration: 8 seconds. Direction: Left."
+      },
+      "reports": {
+        "tone": "Objective, evidence-based, professional",
+        "example": "AI similarity score: 0.78 (Medium Risk). The response showed notable pattern overlap with GPT-4 generated content."
+      }
+    },
+
+    "terminology": {
+      "preferred": {
+        "risk_score": "Use instead of 'cheating probability' or 'suspicion level'",
+        "security_event": "Use instead of 'violation' or 'flag'",
+        "anomaly_detected": "Use instead of 'cheating detected'",
+        "investigate_further": "Use instead of 'suspicious' or 'likely cheating'",
+        "interview_integrity": "Use instead of 'anti-cheating' or 'proctoring'"
+      },
+      "avoid": {
+        "cheater": "Never label candidates directly",
+        "caught": "Implies guilt before evidence review",
+        "suspicious_behavior": "Too subjective, use specific descriptions",
+        "watching_you": "Surveillance framing"
+      }
+    }
+  },
+
+  "accessibility": {
+    "standards": "WCAG 2.1 Level AA compliance minimum",
+    
+    "color_contrast": {
+      "normal_text": "4.5:1 minimum ratio",
+      "large_text": "3:1 minimum ratio",
+      "ui_components": "3:1 minimum ratio",
+      "notes": "Slate palette tested for AA compliance across all combinations"
+    },
+
+    "focus_management": {
+      "visible_focus": "All interactive elements must have visible focus states",
+      "focus_ring_style": "0 0 0 3px rgba(59, 130, 246, 0.3)",
+      "skip_links": "Provide skip navigation for keyboard users",
+      "focus_trap": "Modals must trap focus appropriately"
+    },
+
+    "screen_readers": {
+      "semantic_html": "Use appropriate heading hierarchy and landmarks",
+      "aria_labels": "Provide labels for icons and non-text elements",
+      "live_regions": "Use aria-live for real-time updates",
+      "alt_text": "Meaningful descriptions for informative images"
+    },
+
+    "keyboard_navigation": {
+      "tab_order": "Logical, predictable tab sequence",
+      "shortcuts": "Document and allow customization of keyboard shortcuts",
+      "escape_key": "Close modals and dismiss overlays"
+    },
+
+    "motion_sensitivity": {
+      "prefers_reduced_motion": "Respect and provide alternatives",
+      "autoplay": "No auto-playing animations without user control"
+    }
+  },
+
+  "responsive_design": {
+    "approach": "Mobile-first with progressive enhancement",
+    
+    "breakpoints": {
+      "mobile": "0 - 639px",
+      "tablet": "640px - 1023px",
+      "desktop": "1024px - 1279px",
+      "large_desktop": "1280px+"
+    },
+
+    "adaptive_strategies": {
+      "navigation": {
+        "mobile": "Bottom tab bar or hamburger menu",
+        "desktop": "Persistent sidebar navigation"
+      },
+      "data_tables": {
+        "mobile": "Card-based layout or horizontal scroll",
+        "desktop": "Full table with all columns visible"
+      },
+      "dashboard": {
+        "mobile": "Single column, key metrics prioritized",
+        "desktop": "Multi-column grid with all widgets visible"
+      },
+      "video_player": {
+        "mobile": "Full-width, simplified controls",
+        "desktop": "Resizable with full control panel"
+      }
+    },
+
+    "touch_considerations": {
+      "tap_targets": "Minimum 44x44px for touch targets",
+      "swipe_gestures": "Support for common swipe patterns",
+      "hover_states": "Don't rely on hover for essential information"
+    }
+  },
+
+  "dark_mode": {
+    "philosophy": "Dark mode uses the deep slate tones for a refined, professional appearance. The blue accent maintains vibrancy while backgrounds provide comfortable contrast for extended use.",
+
+    "implementation": {
+      "trigger": "System preference with manual override",
+      "transition": "200ms ease color transition on toggle"
+    },
+
+    "color_mapping": {
+      "backgrounds": {
+        "primary": "#0F172A",
+        "secondary": "#1E293B",
+        "tertiary": "#334155"
+      },
+      "text": {
+        "primary": "#F8FAFC",
+        "secondary": "#CBD5E1",
+        "tertiary": "#94A3B8",
+        "muted": "#64748B"
+      },
+      "borders": "#334155",
+      "accent": "#3B82F6",
+      "accent_subtle": "rgba(59, 130, 246, 0.15)"
+    },
+
+    "special_considerations": {
+      "elevation": "Lighter shades indicate elevation",
+      "charts": "Adjust grid lines and axis colors for visibility",
+      "images": "Consider darkening or adding subtle overlays where needed"
+    }
+  },
+
+  "implementation_notes": {
+    "css_methodology": {
+      "recommendation": "Tailwind CSS for utility-first approach",
+      "custom_properties": "Use CSS custom properties for theming",
+      "component_library": "shadcn/ui as base, customized to match system"
+    },
+
+    "design_tokens": {
+      "format": "Export tokens as CSS custom properties and JS objects",
+      "naming_convention": "--blockd-{category}-{property}-{variant}",
+      "examples": [
+        "--blockd-color-primary: #3B82F6;",
+        "--blockd-color-slate-950: #0F172A;",
+        "--blockd-color-slate-100: #F8FAFC;"
+      ]
+    },
+
+    "tailwind_config": {
+      "colors": {
+        "primary": "#3B82F6",
+        "slate": {
+          "950": "#0F172A",
+          "800": "#334155",
+          "400": "#CBD5E1",
+          "100": "#F8FAFC"
+        }
+      }
+    },
+
+    "asset_formats": {
+      "icons": "SVG with currentColor for flexibility",
+      "logos": "SVG primary, PNG fallbacks at 1x, 2x, 3x",
+      "illustrations": "SVG preferred, PNG for complex gradients"
+    },
+
+    "performance": {
+      "font_loading": "font-display: swap for web fonts",
+      "critical_css": "Inline above-the-fold styles",
+      "lazy_loading": "Defer non-critical images and components"
+    }
+  },
+
+  "usage_examples": {
+    "hero_section": {
+      "description": "Landing page hero with professional slate/blue aesthetic",
+      "background": "#F8FAFC with subtle dot grid pattern",
+      "headline": "JetBrains Mono, 72px, #0F172A, tracking tight",
+      "subhead": "Outfit, 18px, #334155",
+      "cta": "Primary button with #3B82F6 background",
+      "accent": "Blue gradient mesh in background"
+    },
+
+    "dashboard_header": {
+      "description": "Session monitoring dashboard",
+      "background": "#FFFFFF",
+      "border_bottom": "1px solid #E2E8F0",
+      "title": "JetBrains Mono, 24px, #0F172A",
+      "status_badge": "Green badge with 'LIVE' text",
+      "risk_score": "Large data display, color-coded by risk level"
+    },
+
+    "security_event_card": {
+      "description": "Individual security event in timeline",
+      "variant": "Elevated card with #FFFFFF background",
+      "border": "1px solid #E2E8F0",
+      "border_left": "4px solid semantic color based on severity",
+      "timestamp": "JetBrains Mono, 12px, #64748B",
+      "event_type": "JetBrains Mono, 14px, uppercase badge",
+      "description": "Outfit, 14px, #334155"
+    },
+
+    "sidebar_navigation": {
+      "description": "Left sidebar for main navigation",
+      "background": "#0F172A",
+      "text": "#CBD5E1",
+      "text_active": "#F8FAFC",
+      "active_indicator": "#3B82F6 left border or background highlight",
+      "hover_background": "#1E293B"
+    }
+  }
+}

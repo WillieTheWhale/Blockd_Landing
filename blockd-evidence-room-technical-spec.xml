@@ -1,0 +1,3332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════════════╗
+  ║                                                                              ║
+  ║   BLOCKD "THE EVIDENCE ROOM" LANDING PAGE                                   ║
+  ║   Complete Technical Design Document                                         ║
+  ║                                                                              ║
+  ║   Version: 1.0.0                                                            ║
+  ║   Date: January 2026                                                        ║
+  ║   Author: Strategic Design Team                                             ║
+  ║                                                                              ║
+  ║   This document provides exhaustive specifications for Claude Code          ║
+  ║   to implement the complete landing page. No detail should be assumed.      ║
+  ║   Use all available tools, MCP servers, and resources to achieve the        ║
+  ║   highest quality result possible.                                          ║
+  ║                                                                              ║
+  ╚══════════════════════════════════════════════════════════════════════════════╝
+-->
+
+<technical_design_document>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 1: EXECUTIVE INSTRUCTIONS FOR CLAUDE CODE                           -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <claude_code_instructions>
+    <priority>HIGHEST</priority>
+    <time_constraint>NONE - Take as long as needed to achieve excellence</time_constraint>
+    
+    <philosophy>
+      This landing page represents Blockd's first impression to potential customers.
+      Every pixel, every animation, every interaction must demonstrate the same level
+      of technical sophistication that Blockd brings to interview security. We are not
+      building a "good enough" page - we are building an Awwwards-worthy experience
+      that developers will screenshot and designers will study.
+      
+      Quality over speed. Excellence over expedience. 
+      
+      If a component requires 10 iterations to get right, do 10 iterations.
+      If an animation needs frame-by-frame tuning, tune every frame.
+      If a visualization needs custom shaders, write custom shaders.
+    </philosophy>
+    
+    <tool_usage_directive>
+      <instruction>
+        You are STRONGLY ENCOURAGED to use any and all available tools, MCP servers,
+        and external resources to achieve the best possible result. This includes but
+        is not limited to:
+      </instruction>
+      
+      <mcp_servers>
+        <server name="figma">
+          <purpose>Design complex UI components, create illustrations, design icons</purpose>
+          <installation>Install the Figma MCP server if not already available</installation>
+          <use_cases>
+            - Design the complete icon set (12+ icons)
+            - Create component mockups for review before coding
+            - Design complex illustrations like the isometric browser
+            - Create the gaze heatmap visual design
+            - Design the glassmorphic card variations
+          </use_cases>
+        </server>
+        
+        <server name="framer">
+          <purpose>Prototype animations, create motion designs, export production code</purpose>
+          <installation>Install the Framer MCP server if not already available</installation>
+          <use_cases>
+            - Prototype the hero section animations
+            - Design scroll-triggered animation sequences
+            - Create micro-interaction prototypes
+            - Export production-ready animation code
+            - Test animation timing and easing curves
+          </use_cases>
+        </server>
+        
+        <server name="filesystem">
+          <purpose>Create, read, and manage project files</purpose>
+          <use_cases>
+            - Generate complete project structure
+            - Create all component files
+            - Write configuration files
+            - Manage assets and resources
+          </use_cases>
+        </server>
+        
+        <server name="browser">
+          <purpose>Test implementations, fetch resources, verify designs</purpose>
+          <use_cases>
+            - Test the landing page in real browser
+            - Fetch font files and external resources
+            - Verify animations and interactions work correctly
+            - Cross-browser compatibility testing
+          </use_cases>
+        </server>
+      </mcp_servers>
+      
+      <additional_tools>
+        <tool>
+          <name>NPM/Package Installation</name>
+          <directive>Install any packages needed without hesitation</directive>
+          <examples>
+            - three.js for 3D effects if beneficial
+            - lottie-web for complex animations
+            - canvas-confetti for celebratory effects
+            - Any visualization library that improves quality
+          </examples>
+        </tool>
+        
+        <tool>
+          <name>External APIs</name>
+          <directive>Use external APIs if they improve the result</directive>
+          <examples>
+            - Font APIs for typography
+            - Image optimization APIs
+            - Any other beneficial services
+          </examples>
+        </tool>
+        
+        <tool>
+          <name>AI Image Generation</name>
+          <directive>If needed for placeholder assets or backgrounds, use available tools</directive>
+        </tool>
+      </additional_tools>
+      
+      <quality_checkpoints>
+        <checkpoint phase="design">
+          Before coding any major component, create a design mockup in Figma
+          to validate the visual approach. Share the design for conceptual
+          approval before implementation.
+        </checkpoint>
+        
+        <checkpoint phase="animation">
+          Before implementing complex animations, prototype them in Framer
+          to validate timing, easing, and feel. Animation is where "good"
+          becomes "exceptional."
+        </checkpoint>
+        
+        <checkpoint phase="implementation">
+          After building each section, test it in a real browser. Take
+          screenshots. Verify against the specifications. Iterate until
+          perfect.
+        </checkpoint>
+        
+        <checkpoint phase="final">
+          Run Lighthouse audit. Score should be 90+ on all metrics.
+          Test on mobile devices. Test reduced motion preferences.
+          Verify all accessibility requirements are met.
+        </checkpoint>
+      </quality_checkpoints>
+    </tool_usage_directive>
+  </claude_code_instructions>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 2: PROJECT OVERVIEW                                                  -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <project_overview>
+    <name>Blockd - The Evidence Room</name>
+    <type>Marketing Landing Page</type>
+    <concept>
+      A data visualization-forward landing page that presents Blockd's detection 
+      capabilities through interactive, real-time evidence displays. Visitors 
+      experience the product by exploring gaze heatmaps, risk score gauges, 
+      AI similarity analyses, and security event timelines - the same evidence 
+      an interviewer would see.
+    </concept>
+    
+    <core_thesis>
+      "Evidence illuminated from darkness" - Dark backgrounds represent the 
+      unknown (where cheating hides). Data visualizations emerge as luminous 
+      evidence, literally bringing truth to light.
+    </core_thesis>
+    
+    <aesthetic_category>Forensic Tech Noir</aesthetic_category>
+    <aesthetic_influences>
+      <influence weight="primary">Tech Noir / Neon Noir - High contrast, surveillance motifs, neon accents piercing darkness</influence>
+      <influence weight="primary">Abstract Tech - Circuit patterns, holographic interfaces, data flow visualization</influence>
+      <influence weight="primary">Glassmorphism - Frosted panels, layered depth, translucent surfaces</influence>
+      <influence weight="secondary">Forensic UI - Clinical precision, grid-based layouts, timestamp annotations</influence>
+      <influence weight="secondary">Brutalism - Raw honesty in data presentation, function over decoration</influence>
+    </aesthetic_influences>
+    
+    <target_audience>
+      <primary>Engineering Leaders and VPs of Engineering at Series A-C companies</primary>
+      <secondary>Technical Hiring Managers at enterprises</secondary>
+      <tertiary>HR Directors at privacy-conscious organizations</tertiary>
+      <characteristics>
+        - Technically sophisticated
+        - Appreciate design quality and technical depth
+        - Have experienced bad hires from cheating
+        - Value evidence over claims
+        - Skeptical of "too good to be true" marketing
+      </characteristics>
+    </target_audience>
+    
+    <key_messages priority_order="true">
+      <message rank="1">Evidence, not accusations - We show data, humans decide</message>
+      <message rank="2">Understanding, not surveillance - We comprehend context, not just watch</message>
+      <message rank="3">Technical sophistication - Multi-LLM AI, native browser, real-time analysis</message>
+      <message rank="4">Candidate-friendly - No invasive proctoring, privacy respected</message>
+    </key_messages>
+    
+    <success_metrics>
+      <metric type="technical">Lighthouse Performance Score >= 90</metric>
+      <metric type="technical">Lighthouse Accessibility Score >= 95</metric>
+      <metric type="technical">First Contentful Paint &lt; 1.5s</metric>
+      <metric type="technical">Time to Interactive &lt; 3.5s</metric>
+      <metric type="qualitative">Would be featured on Awwwards</metric>
+      <metric type="qualitative">Developers would screenshot and share</metric>
+      <metric type="qualitative">Differentiates clearly from competitor pages</metric>
+    </success_metrics>
+  </project_overview>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 3: TECHNOLOGY STACK                                                  -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <technology_stack>
+    <framework>
+      <name>Next.js</name>
+      <version>14.x or latest stable</version>
+      <router>App Router</router>
+      <rendering_strategy>
+        <default>Server Components for static content</default>
+        <interactive>Client Components for visualizations and animations</interactive>
+      </rendering_strategy>
+      <rationale>
+        Next.js provides excellent performance, SEO optimization, and the
+        flexibility to mix server and client rendering as needed.
+      </rationale>
+    </framework>
+    
+    <styling>
+      <primary>
+        <name>Tailwind CSS</name>
+        <version>3.4.x or latest</version>
+        <configuration>Custom theme extending Blockd color palette</configuration>
+      </primary>
+      <supplementary>
+        <name>CSS Modules</name>
+        <use_case>Complex animations and component-specific styles</use_case>
+      </supplementary>
+    </styling>
+    
+    <animation>
+      <primary>
+        <name>Framer Motion</name>
+        <version>Latest stable</version>
+        <use_cases>
+          - Scroll-triggered animations
+          - Component mount/unmount transitions
+          - Gesture-based interactions
+          - Layout animations
+          - Shared element transitions
+        </use_cases>
+      </primary>
+      <secondary>
+        <name>CSS Animations</name>
+        <use_cases>
+          - Continuous effects (scan lines, pulses)
+          - Simple hover transitions
+          - Loading states
+        </use_cases>
+      </secondary>
+      <optional>
+        <name>GSAP (GreenSock)</name>
+        <use_cases>
+          - Complex timeline sequences
+          - Advanced scroll-linked animations
+          - Only if Framer Motion proves insufficient
+        </use_cases>
+      </optional>
+    </animation>
+    
+    <data_visualization>
+      <primary>
+        <name>D3.js</name>
+        <version>7.x</version>
+        <use_cases>
+          - Gaze heatmap rendering
+          - Timeline visualization
+          - Connection line animations
+        </use_cases>
+      </primary>
+      <secondary>
+        <name>Visx</name>
+        <rationale>React-friendly D3 wrappers if pure D3 becomes unwieldy</rationale>
+      </secondary>
+      <supplementary>
+        <name>HTML Canvas API</name>
+        <use_cases>
+          - High-performance heatmap rendering
+          - Particle effects
+          - Custom drawing operations
+        </use_cases>
+      </supplementary>
+    </data_visualization>
+    
+    <state_management>
+      <primary>
+        <name>Zustand</name>
+        <version>Latest stable</version>
+        <use_cases>
+          - Visualization state (filters, timeline position, active views)
+          - UI state (modals, tooltips, active sections)
+        </use_cases>
+      </primary>
+      <secondary>
+        <name>React useState/useReducer</name>
+        <use_cases>Local component state</use_cases>
+      </secondary>
+    </state_management>
+    
+    <additional_packages>
+      <package>
+        <name>clsx</name>
+        <purpose>Conditional class name composition</purpose>
+      </package>
+      <package>
+        <name>tailwind-merge</name>
+        <purpose>Merge Tailwind classes without conflicts</purpose>
+      </package>
+      <package>
+        <name>@radix-ui/react-*</name>
+        <purpose>Accessible primitive components (tooltips, toggles, sliders)</purpose>
+      </package>
+      <package>
+        <name>lucide-react</name>
+        <purpose>Icon library for standard icons</purpose>
+      </package>
+      <package>
+        <name>react-intersection-observer</name>
+        <purpose>Efficient scroll observation for animations</purpose>
+      </package>
+      <package>
+        <name>usehooks-ts</name>
+        <purpose>Utility hooks (useMediaQuery, useDebounce, etc.)</purpose>
+      </package>
+    </additional_packages>
+    
+    <fonts>
+      <font role="display">
+        <name>Space Grotesk</name>
+        <weights>500, 600, 700</weights>
+        <source>Google Fonts or self-hosted</source>
+        <loading>font-display: swap</loading>
+      </font>
+      <font role="body">
+        <name>Inter</name>
+        <weights>400, 500, 600</weights>
+        <source>Google Fonts or self-hosted</source>
+        <loading>font-display: swap</loading>
+      </font>
+      <font role="mono">
+        <name>JetBrains Mono</name>
+        <weights>400, 500</weights>
+        <source>Google Fonts or self-hosted</source>
+        <loading>font-display: swap</loading>
+      </font>
+    </fonts>
+  </technology_stack>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 4: DESIGN SYSTEM SPECIFICATIONS                                      -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <design_system>
+    
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    <!-- 4.1 COLOR PALETTE                                                           -->
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    
+    <color_palette>
+      <brand_colors>
+        <color name="primary-dark" role="background-primary">
+          <hex>#0F172A</hex>
+          <rgb>15, 23, 42</rgb>
+          <hsl>222, 47%, 11%</hsl>
+          <usage>
+            Primary page background, the "void" from which evidence emerges.
+            Used for 75% of page area.
+          </usage>
+          <tailwind_key>slate-900</tailwind_key>
+        </color>
+        
+        <color name="secondary-dark" role="surface">
+          <hex>#334155</hex>
+          <rgb>51, 65, 85</rgb>
+          <hsl>215, 25%, 27%</hsl>
+          <usage>
+            Card backgrounds, layered surfaces, depth creation.
+            Glassmorphic panels use this at various opacities.
+          </usage>
+          <tailwind_key>slate-700</tailwind_key>
+        </color>
+        
+        <color name="light-slate" role="secondary-text">
+          <hex>#CBD5E1</hex>
+          <rgb>203, 213, 225</rgb>
+          <hsl>213, 27%, 84%</hsl>
+          <usage>
+            Body text, labels, annotations, grid lines, borders.
+            The "clinical" color for precision elements.
+          </usage>
+          <tailwind_key>slate-300</tailwind_key>
+        </color>
+        
+        <color name="accent-blue" role="accent">
+          <hex>#3B82F6</hex>
+          <rgb>59, 130, 246</rgb>
+          <hsl>217, 91%, 60%</hsl>
+          <usage>
+            CTAs, active states, "truth revealed" moments, verified indicators.
+            Used sparingly (1-4% of page) for maximum impact.
+            THE spotlight color that illuminates evidence.
+          </usage>
+          <tailwind_key>blue-500</tailwind_key>
+        </color>
+        
+        <color name="near-white" role="primary-text">
+          <hex>#F8FAFC</hex>
+          <rgb>248, 250, 252</rgb>
+          <hsl>210, 40%, 98%</hsl>
+          <usage>
+            Headlines, primary text, emphasized data values.
+            The "light" that reveals truth.
+          </usage>
+          <tailwind_key>slate-50</tailwind_key>
+        </color>
+      </brand_colors>
+      
+      <semantic_colors>
+        <color name="risk-minimal" role="status">
+          <hex>#3B82F6</hex>
+          <description>Same as accent blue - verified, clean, trustworthy</description>
+        </color>
+        <color name="risk-low" role="status">
+          <hex>#22C55E</hex>
+          <rgb>34, 197, 94</rgb>
+          <description>Green for explicitly positive/verified states</description>
+        </color>
+        <color name="risk-medium" role="status">
+          <hex>#FBBF24</hex>
+          <rgb>251, 191, 36</rgb>
+          <description>Amber for attention/warning without alarm</description>
+        </color>
+        <color name="risk-high" role="status">
+          <hex>#F97316</hex>
+          <rgb>249, 115, 22</rgb>
+          <description>Orange for investigation warranted</description>
+        </color>
+        <color name="risk-critical" role="status">
+          <hex>#EF4444</hex>
+          <rgb>239, 68, 68</rgb>
+          <description>Red for strong evidence of anomaly</description>
+        </color>
+      </semantic_colors>
+      
+      <opacity_scale>
+        <opacity value="0.03" use="Noise texture overlay" />
+        <opacity value="0.08" use="Subtle borders on glass panels" />
+        <opacity value="0.10" use="Hover backgrounds, spotlight gradients" />
+        <opacity value="0.20" use="Disabled states, inactive borders" />
+        <opacity value="0.30" use="Secondary backgrounds, connection lines" />
+        <opacity value="0.40" use="Glass panel backgrounds (shallow depth)" />
+        <opacity value="0.60" use="Glass panel backgrounds (primary depth)" />
+        <opacity value="0.70" use="Glass panel backgrounds (foreground)" />
+        <opacity value="1.00" use="Solid elements, primary text, CTAs" />
+      </opacity_scale>
+      
+      <gradients>
+        <gradient name="spotlight">
+          <type>radial</type>
+          <definition>radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%)</definition>
+          <usage>Emanates from important data points to draw attention</usage>
+        </gradient>
+        <gradient name="page-vignette">
+          <type>radial</type>
+          <definition>radial-gradient(ellipse at center, transparent 0%, rgba(15, 23, 42, 0.3) 100%)</definition>
+          <usage>Subtle darkening at page edges for focus</usage>
+        </gradient>
+        <gradient name="glass-surface">
+          <type>linear</type>
+          <definition>linear-gradient(135deg, rgba(51, 65, 85, 0.7) 0%, rgba(51, 65, 85, 0.5) 100%)</definition>
+          <usage>Glass panel surfaces with subtle gradient</usage>
+        </gradient>
+        <gradient name="risk-bar">
+          <type>linear</type>
+          <definition>linear-gradient(90deg, #3B82F6 0%, #22C55E 25%, #FBBF24 50%, #F97316 75%, #EF4444 100%)</definition>
+          <usage>Risk indicator backgrounds showing full spectrum</usage>
+        </gradient>
+      </gradients>
+      
+      <tailwind_config>
+        <note>Add these to your tailwind.config.js theme.extend.colors</note>
+        <config><![CDATA[
+colors: {
+  blockd: {
+    void: '#0F172A',
+    surface: '#334155',
+    muted: '#CBD5E1',
+    accent: '#3B82F6',
+    light: '#F8FAFC',
+    // Risk colors
+    'risk-minimal': '#3B82F6',
+    'risk-low': '#22C55E',
+    'risk-medium': '#FBBF24',
+    'risk-high': '#F97316',
+    'risk-critical': '#EF4444',
+  }
+}
+        ]]></config>
+      </tailwind_config>
+    </color_palette>
+    
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    <!-- 4.2 TYPOGRAPHY                                                               -->
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    
+    <typography>
+      <font_families>
+        <family name="display" value="'Space Grotesk', system-ui, sans-serif" />
+        <family name="body" value="'Inter', system-ui, sans-serif" />
+        <family name="mono" value="'JetBrains Mono', 'Fira Code', monospace" />
+      </font_families>
+      
+      <type_scale>
+        <!-- Display/Hero Typography -->
+        <level name="hero-headline">
+          <size>clamp(48px, 8vw, 80px)</size>
+          <line_height>1.1</line_height>
+          <font_weight>700</font_weight>
+          <font_family>display</font_family>
+          <letter_spacing>-0.02em</letter_spacing>
+          <color>near-white</color>
+          <tailwind>text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight</tailwind>
+        </level>
+        
+        <level name="section-headline">
+          <size>clamp(32px, 5vw, 48px)</size>
+          <line_height>1.2</line_height>
+          <font_weight>700</font_weight>
+          <font_family>display</font_family>
+          <letter_spacing>-0.01em</letter_spacing>
+          <color>near-white</color>
+          <tailwind>text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight</tailwind>
+        </level>
+        
+        <level name="subsection-headline">
+          <size>clamp(24px, 3vw, 32px)</size>
+          <line_height>1.3</line_height>
+          <font_weight>600</font_weight>
+          <font_family>display</font_family>
+          <letter_spacing>0</letter_spacing>
+          <color>near-white</color>
+          <tailwind>text-2xl md:text-3xl font-semibold</tailwind>
+        </level>
+        
+        <level name="card-title">
+          <size>20px</size>
+          <line_height>1.4</line_height>
+          <font_weight>600</font_weight>
+          <font_family>display</font_family>
+          <letter_spacing>0</letter_spacing>
+          <color>near-white</color>
+          <tailwind>text-xl font-semibold</tailwind>
+        </level>
+        
+        <!-- Body Typography -->
+        <level name="body-large">
+          <size>18px</size>
+          <line_height>1.6</line_height>
+          <font_weight>400</font_weight>
+          <font_family>body</font_family>
+          <letter_spacing>0</letter_spacing>
+          <color>light-slate</color>
+          <tailwind>text-lg leading-relaxed</tailwind>
+        </level>
+        
+        <level name="body-default">
+          <size>16px</size>
+          <line_height>1.6</line_height>
+          <font_weight>400</font_weight>
+          <font_family>body</font_family>
+          <letter_spacing>0</letter_spacing>
+          <color>light-slate</color>
+          <tailwind>text-base leading-relaxed</tailwind>
+        </level>
+        
+        <level name="body-small">
+          <size>14px</size>
+          <line_height>1.5</line_height>
+          <font_weight>400</font_weight>
+          <font_family>body</font_family>
+          <letter_spacing>0</letter_spacing>
+          <color>light-slate</color>
+          <tailwind>text-sm leading-normal</tailwind>
+        </level>
+        
+        <!-- Data Typography (Monospace) -->
+        <level name="data-value-large">
+          <size>48px</size>
+          <line_height>1.2</line_height>
+          <font_weight>500</font_weight>
+          <font_family>mono</font_family>
+          <letter_spacing>-0.01em</letter_spacing>
+          <color>near-white</color>
+          <note>Use tabular-nums for alignment</note>
+          <tailwind>text-5xl font-mono font-medium tabular-nums</tailwind>
+        </level>
+        
+        <level name="data-value-medium">
+          <size>32px</size>
+          <line_height>1.2</line_height>
+          <font_weight>500</font_weight>
+          <font_family>mono</font_family>
+          <letter_spacing>0</letter_spacing>
+          <color>near-white</color>
+          <tailwind>text-3xl font-mono font-medium tabular-nums</tailwind>
+        </level>
+        
+        <level name="data-label">
+          <size>12px</size>
+          <line_height>1.4</line_height>
+          <font_weight>500</font_weight>
+          <font_family>mono</font_family>
+          <letter_spacing>0.05em</letter_spacing>
+          <color>light-slate</color>
+          <text_transform>uppercase</text_transform>
+          <tailwind>text-xs font-mono font-medium tracking-wider uppercase</tailwind>
+        </level>
+        
+        <level name="timestamp">
+          <size>11px</size>
+          <line_height>1.2</line_height>
+          <font_weight>400</font_weight>
+          <font_family>mono</font_family>
+          <letter_spacing>0.02em</letter_spacing>
+          <color>light-slate at 60% opacity</color>
+          <format>HH:mm:ss.SSS</format>
+          <tailwind>text-xs font-mono tracking-wide text-slate-300/60</tailwind>
+        </level>
+        
+        <level name="annotation">
+          <size>10px</size>
+          <line_height>1.3</line_height>
+          <font_weight>500</font_weight>
+          <font_family>body</font_family>
+          <letter_spacing>0.1em</letter_spacing>
+          <text_transform>uppercase</text_transform>
+          <color>light-slate</color>
+          <tailwind>text-[10px] font-medium tracking-widest uppercase</tailwind>
+        </level>
+      </type_scale>
+      
+      <special_treatments>
+        <treatment name="headline-reveal">
+          <description>Characters fade in sequentially left-to-right</description>
+          <animation>Each character: opacity 0→1, duration 0.05s, stagger 0.03s</animation>
+          <total_duration>Approximately 0.8s for average headline</total_duration>
+        </treatment>
+        
+        <treatment name="data-countup">
+          <description>Numbers count up from 0 to final value</description>
+          <animation>Rapid initial counting, slowing as approaching target</animation>
+          <duration>1.2s with ease-out</duration>
+        </treatment>
+        
+        <treatment name="typewriter">
+          <description>Text types out character by character</description>
+          <animation>Variable timing to simulate human typing</animation>
+          <use_case>Code snippets, terminal-style elements</use_case>
+        </treatment>
+      </special_treatments>
+    </typography>
+    
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    <!-- 4.3 SPACING SYSTEM                                                          -->
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    
+    <spacing>
+      <base_unit>4px</base_unit>
+      
+      <scale>
+        <space name="0" value="0px" tailwind="0" />
+        <space name="1" value="4px" tailwind="1" />
+        <space name="2" value="8px" tailwind="2" />
+        <space name="3" value="12px" tailwind="3" />
+        <space name="4" value="16px" tailwind="4" />
+        <space name="5" value="20px" tailwind="5" />
+        <space name="6" value="24px" tailwind="6" />
+        <space name="8" value="32px" tailwind="8" />
+        <space name="10" value="40px" tailwind="10" />
+        <space name="12" value="48px" tailwind="12" />
+        <space name="16" value="64px" tailwind="16" />
+        <space name="20" value="80px" tailwind="20" />
+        <space name="24" value="96px" tailwind="24" />
+        <space name="32" value="128px" tailwind="32" />
+      </scale>
+      
+      <layout_spacing>
+        <item name="section-padding-y-desktop" value="120px" tailwind="py-32" />
+        <item name="section-padding-y-tablet" value="80px" tailwind="md:py-20" />
+        <item name="section-padding-y-mobile" value="60px" tailwind="py-16" />
+        
+        <item name="container-max-width" value="1440px" />
+        <item name="container-padding-desktop" value="80px" tailwind="px-20" />
+        <item name="container-padding-tablet" value="40px" tailwind="md:px-10" />
+        <item name="container-padding-mobile" value="20px" tailwind="px-5" />
+        
+        <item name="card-padding" value="24px" tailwind="p-6" />
+        <item name="card-gap" value="24px" tailwind="gap-6" />
+        
+        <item name="component-group-gap" value="48px" tailwind="gap-12" />
+      </layout_spacing>
+    </spacing>
+    
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    <!-- 4.4 BORDER RADIUS                                                           -->
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    
+    <border_radius>
+      <radius name="none" value="0px" tailwind="rounded-none" />
+      <radius name="sm" value="4px" tailwind="rounded" use="Small buttons, tags" />
+      <radius name="md" value="8px" tailwind="rounded-lg" use="Cards, inputs, secondary buttons" />
+      <radius name="lg" value="12px" tailwind="rounded-xl" use="Primary cards, modals" />
+      <radius name="xl" value="16px" tailwind="rounded-2xl" use="Hero elements, feature cards" />
+      <radius name="2xl" value="24px" tailwind="rounded-3xl" use="Large containers" />
+      <radius name="full" value="9999px" tailwind="rounded-full" use="Circular elements, pills" />
+    </border_radius>
+    
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    <!-- 4.5 SHADOWS                                                                 -->
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    
+    <shadows>
+      <note>
+        In dark mode, traditional shadows are less visible. We use elevation 
+        through background opacity changes and glows instead of drop shadows.
+      </note>
+      
+      <shadow name="card-default">
+        <value>0 4px 24px rgba(0, 0, 0, 0.3)</value>
+        <use>Standard card elevation</use>
+      </shadow>
+      
+      <shadow name="card-hover">
+        <value>0 8px 32px rgba(0, 0, 0, 0.4)</value>
+        <use>Elevated card on hover</use>
+      </shadow>
+      
+      <shadow name="glow-blue">
+        <value>0 0 20px rgba(59, 130, 246, 0.3)</value>
+        <use>CTA buttons, active states</use>
+      </shadow>
+      
+      <shadow name="glow-blue-intense">
+        <value>0 0 40px rgba(59, 130, 246, 0.5)</value>
+        <use>CTA hover, emphasized elements</use>
+      </shadow>
+      
+      <shadow name="glow-subtle">
+        <value>0 0 60px rgba(59, 130, 246, 0.15)</value>
+        <use>Spotlight effect around important data</use>
+      </shadow>
+      
+      <shadow name="inner-glow">
+        <value>inset 0 0 20px rgba(59, 130, 246, 0.1)</value>
+        <use>Active input fields, focused elements</use>
+      </shadow>
+    </shadows>
+    
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    <!-- 4.6 GLASSMORPHISM SPECIFICATIONS                                            -->
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    
+    <glassmorphism>
+      <description>
+        Glassmorphism creates depth and hierarchy through translucent, frosted-glass 
+        surfaces. Elements at different "depths" have varying blur and opacity levels.
+      </description>
+      
+      <depth_levels>
+        <level name="foreground" depth="1">
+          <background>rgba(51, 65, 85, 0.7)</background>
+          <backdrop_blur>16px</backdrop_blur>
+          <border>1px solid rgba(203, 213, 225, 0.1)</border>
+          <border_radius>12px</border_radius>
+          <use>Primary cards, modals, hero dashboard</use>
+        </level>
+        
+        <level name="mid-ground" depth="2">
+          <background>rgba(51, 65, 85, 0.5)</background>
+          <backdrop_blur>12px</backdrop_blur>
+          <border>1px solid rgba(203, 213, 225, 0.08)</border>
+          <border_radius>8px</border_radius>
+          <use>Secondary cards, nested elements</use>
+        </level>
+        
+        <level name="background" depth="3">
+          <background>rgba(51, 65, 85, 0.3)</background>
+          <backdrop_blur>8px</backdrop_blur>
+          <border>1px solid rgba(203, 213, 225, 0.05)</border>
+          <border_radius>8px</border_radius>
+          <use>Tertiary elements, context panels</use>
+        </level>
+      </depth_levels>
+      
+      <css_implementation><![CDATA[
+.glass-panel {
+  background: rgba(51, 65, 85, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(203, 213, 225, 0.08);
+  border-radius: 12px;
+}
+
+.glass-panel--foreground {
+  background: rgba(51, 65, 85, 0.7);
+  backdrop-filter: blur(16px);
+  border-color: rgba(203, 213, 225, 0.1);
+}
+
+.glass-panel--background {
+  background: rgba(51, 65, 85, 0.3);
+  backdrop-filter: blur(8px);
+  border-color: rgba(203, 213, 225, 0.05);
+}
+      ]]></css_implementation>
+      
+      <tailwind_utilities><![CDATA[
+// Add to tailwind.config.js
+theme: {
+  extend: {
+    backdropBlur: {
+      'xs': '4px',
+    },
+    backgroundOpacity: {
+      '3': '0.03',
+      '8': '0.08',
+    }
+  }
+}
+      ]]></tailwind_utilities>
+    </glassmorphism>
+    
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    <!-- 4.7 ANIMATION TOKENS                                                        -->
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    
+    <animation_tokens>
+      <durations>
+        <duration name="instant" value="0ms" use="Immediate feedback" />
+        <duration name="fast" value="150ms" use="Hovers, micro-interactions" />
+        <duration name="normal" value="300ms" use="Standard transitions" />
+        <duration name="slow" value="500ms" use="Page transitions, reveals" />
+        <duration name="slower" value="800ms" use="Complex animations" />
+        <duration name="slowest" value="1200ms" use="Hero animations, data countup" />
+      </durations>
+      
+      <easings>
+        <easing name="ease-out" value="cubic-bezier(0.25, 0.46, 0.45, 0.94)" use="Standard exit" />
+        <easing name="ease-in-out" value="cubic-bezier(0.42, 0, 0.58, 1)" use="Symmetric motion" />
+        <easing name="spring" value="cubic-bezier(0.34, 1.56, 0.64, 1)" use="Bouncy, playful" />
+        <easing name="smooth" value="cubic-bezier(0.4, 0, 0.2, 1)" use="Material-style smooth" />
+        <easing name="sharp" value="cubic-bezier(0.4, 0, 0.6, 1)" use="Snappy response" />
+      </easings>
+      
+      <stagger_delays>
+        <delay name="fast" value="50ms" use="List items, rapid sequences" />
+        <delay name="normal" value="100ms" use="Standard stagger" />
+        <delay name="slow" value="150ms" use="Deliberate reveals" />
+      </stagger_delays>
+    </animation_tokens>
+    
+  </design_system>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 5: COMPONENT SPECIFICATIONS                                          -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <components>
+    
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    <!-- 5.1 NAVIGATION                                                              -->
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    
+    <component name="Navigation">
+      <description>Fixed top navigation bar with glassmorphic background on scroll</description>
+      
+      <structure>
+        <element name="container">
+          <type>header</type>
+          <position>fixed top-0 left-0 right-0</position>
+          <z_index>50</z_index>
+          <height>72px</height>
+          <padding>0 container-padding</padding>
+        </element>
+        
+        <element name="logo">
+          <position>left</position>
+          <content>Blockd wordmark or logo</content>
+          <link>/ (home)</link>
+        </element>
+        
+        <element name="nav-links">
+          <position>right</position>
+          <items>
+            <item>Product</item>
+            <item>Pricing</item>
+            <item>Documentation</item>
+          </items>
+          <spacing>32px between items</spacing>
+          <style>body-default, light-slate, hover: near-white</style>
+        </element>
+        
+        <element name="cta-buttons">
+          <position>right, after nav-links</position>
+          <items>
+            <item type="ghost">Log In</item>
+            <item type="primary">Start Free Trial</item>
+          </items>
+        </element>
+      </structure>
+      
+      <states>
+        <state name="initial">
+          <background>transparent</background>
+          <border>none</border>
+        </state>
+        
+        <state name="scrolled" trigger="scroll > 50px">
+          <background>rgba(15, 23, 42, 0.8)</background>
+          <backdrop_blur>12px</backdrop_blur>
+          <border_bottom>1px solid rgba(203, 213, 225, 0.1)</border_bottom>
+          <transition>all 0.3s ease</transition>
+        </state>
+      </states>
+      
+      <responsive>
+        <breakpoint name="mobile" max="768px">
+          <nav_links>hidden</nav_links>
+          <hamburger_menu>visible</hamburger_menu>
+          <mobile_drawer>
+            <background>glassmorphism foreground</background>
+            <position>full screen overlay</position>
+            <animation>slide from right, 0.3s</animation>
+          </mobile_drawer>
+        </breakpoint>
+      </responsive>
+    </component>
+    
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    <!-- 5.2 BUTTONS                                                                 -->
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    
+    <component name="Button">
+      <variants>
+        <variant name="primary">
+          <description>Main call-to-action button</description>
+          <styles>
+            <background>#3B82F6</background>
+            <text_color>#F8FAFC</text_color>
+            <font>body, 16px, weight 500</font>
+            <padding>16px 32px</padding>
+            <border_radius>8px</border_radius>
+            <box_shadow>0 0 20px rgba(59, 130, 246, 0.3)</box_shadow>
+          </styles>
+          <hover>
+            <background>#2563EB</background>
+            <box_shadow>0 0 30px rgba(59, 130, 246, 0.5)</box_shadow>
+            <transform>translateY(-2px)</transform>
+            <transition>all 0.2s ease</transition>
+          </hover>
+          <active>
+            <transform>translateY(0)</transform>
+            <box_shadow>0 0 15px rgba(59, 130, 246, 0.3)</box_shadow>
+          </active>
+          <focus>
+            <outline>2px solid #3B82F6</outline>
+            <outline_offset>2px</outline_offset>
+          </focus>
+        </variant>
+        
+        <variant name="secondary">
+          <description>Ghost/outline button for secondary actions</description>
+          <styles>
+            <background>transparent</background>
+            <border>1px solid rgba(203, 213, 225, 0.3)</border>
+            <text_color>#CBD5E1</text_color>
+            <font>body, 16px, weight 500</font>
+            <padding>16px 32px</padding>
+            <border_radius>8px</border_radius>
+          </styles>
+          <hover>
+            <border_color>#3B82F6</border_color>
+            <text_color>#F8FAFC</text_color>
+            <background>rgba(59, 130, 246, 0.1)</background>
+            <transition>all 0.2s ease</transition>
+          </hover>
+        </variant>
+        
+        <variant name="text">
+          <description>Text-only button for tertiary actions</description>
+          <styles>
+            <background>transparent</background>
+            <text_color>#CBD5E1</text_color>
+            <font>body, 14px, weight 500</font>
+            <padding>8px 16px</padding>
+          </styles>
+          <hover>
+            <text_color>#F8FAFC</text_color>
+            <text_decoration>underline</text_decoration>
+          </hover>
+        </variant>
+      </variants>
+      
+      <sizes>
+        <size name="sm">
+          <padding>10px 20px</padding>
+          <font_size>14px</font_size>
+        </size>
+        <size name="md">
+          <padding>16px 32px</padding>
+          <font_size>16px</font_size>
+        </size>
+        <size name="lg">
+          <padding>20px 40px</padding>
+          <font_size>18px</font_size>
+        </size>
+      </sizes>
+      
+      <icon_support>
+        <with_icon_left>
+          <icon_size>20px</icon_size>
+          <gap>8px</gap>
+        </with_icon_left>
+        <with_icon_right>
+          <icon_size>20px</icon_size>
+          <gap>8px</gap>
+        </with_icon_right>
+        <icon_only>
+          <padding>16px</padding>
+          <aspect_ratio>1:1</aspect_ratio>
+        </icon_only>
+      </icon_support>
+    </component>
+    
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    <!-- 5.3 CARDS                                                                   -->
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    
+    <component name="EvidenceCard">
+      <description>Primary container for displaying a piece of evidence</description>
+      
+      <structure><![CDATA[
+┌─────────────────────────────────────────────────────┐
+│ [Icon]  Card Title                      [Timestamp] │  <- Header
+├─────────────────────────────────────────────────────┤
+│                                                     │
+│           [Primary Visualization]                   │  <- Content
+│                                                     │
+├─────────────────────────────────────────────────────┤
+│ [Status Badge]              [Action Button →]       │  <- Footer
+└─────────────────────────────────────────────────────┘
+      ]]></structure>
+      
+      <styling>
+        <container>
+          <background>rgba(51, 65, 85, 0.6)</background>
+          <backdrop_blur>12px</backdrop_blur>
+          <border>1px solid rgba(203, 213, 225, 0.08)</border>
+          <border_radius>12px</border_radius>
+          <box_shadow>0 4px 24px rgba(0, 0, 0, 0.3)</box_shadow>
+          <padding>24px</padding>
+        </container>
+        
+        <header>
+          <height>48px</height>
+          <display>flex, align-items: center, justify-content: space-between</display>
+          <border_bottom>1px solid rgba(203, 213, 225, 0.05)</border_bottom>
+          <padding_bottom>16px</padding_bottom>
+          <margin_bottom>16px</margin_bottom>
+        </header>
+        
+        <title>
+          <display>flex, align-items: center, gap: 12px</display>
+          <icon_size>20px</icon_size>
+          <icon_color>light-slate</icon_color>
+          <text>card-title typography</text>
+        </title>
+        
+        <timestamp>
+          <typography>timestamp level</typography>
+        </timestamp>
+        
+        <content>
+          <min_height>200px</min_height>
+          <display>flex, align-items: center, justify-content: center</display>
+        </content>
+        
+        <footer>
+          <height>40px</height>
+          <display>flex, align-items: center, justify-content: space-between</display>
+          <border_top>1px solid rgba(203, 213, 225, 0.05)</border_top>
+          <padding_top>16px</padding_top>
+          <margin_top>16px</margin_top>
+        </footer>
+      </styling>
+      
+      <hover_state>
+        <border_color>rgba(59, 130, 246, 0.3)</border_color>
+        <box_shadow>0 8px 32px rgba(59, 130, 246, 0.15)</box_shadow>
+        <transition>all 0.2s ease</transition>
+      </hover_state>
+      
+      <variants>
+        <variant name="compact">
+          <padding>16px</padding>
+          <header_height>36px</header_height>
+          <use>Dashboard widgets, smaller displays</use>
+        </variant>
+        
+        <variant name="full-width">
+          <width>100%</width>
+          <max_width>none</max_width>
+          <use>Gaze heatmap, timeline sections</use>
+        </variant>
+        
+        <variant name="alert">
+          <border_left>3px solid [severity-color]</border_left>
+          <use>Security event cards</use>
+          <severity_colors>
+            <low>#3B82F6</low>
+            <medium>#FBBF24</medium>
+            <high>#EF4444</high>
+          </severity_colors>
+        </variant>
+      </variants>
+    </component>
+    
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    <!-- 5.4 DATA VISUALIZATIONS                                                     -->
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    
+    <component name="GazeHeatmap">
+      <description>
+        Interactive visualization showing gaze patterns during an interview.
+        Allows toggling between "normal" and "suspicious" interview data.
+      </description>
+      
+      <container>
+        <aspect_ratio>16:9</aspect_ratio>
+        <background>#0F172A with subtle noise texture</background>
+        <border>1px solid rgba(203, 213, 225, 0.1)</border>
+        <border_radius>8px</border_radius>
+        <overflow>hidden</overflow>
+      </container>
+      
+      <rendering>
+        <technology>HTML Canvas</technology>
+        <layers>
+          <layer name="background" z="0">
+            Solid background with grid pattern
+          </layer>
+          <layer name="screen-boundary" z="1">
+            Dashed rectangle indicating screen area
+            Color: #CBD5E1 at 30%
+            Stroke: 2px dashed
+          </layer>
+          <layer name="heatmap" z="2">
+            Gaussian blur heat points
+            Each point: position (x,y), duration (affects radius), timestamp
+          </layer>
+          <layer name="annotations" z="3">
+            Labels for off-screen zones, pattern indicators
+          </layer>
+          <layer name="scan-line" z="4">
+            Animated horizontal line showing "analysis in progress"
+          </layer>
+        </layers>
+      </rendering>
+      
+      <heat_rendering>
+        <point_algorithm>
+          For each gaze point:
+          1. Draw circle at (x, y) position
+          2. Radius based on dwell time (longer = larger)
+          3. Apply Gaussian blur (20-40px based on radius)
+          4. Use additive blending for overlapping points
+        </point_algorithm>
+        
+        <color_gradient>
+          <stop offset="0%">transparent</stop>
+          <stop offset="40%">rgba(59, 130, 246, 0.3)</stop>
+          <stop offset="70%">rgba(59, 130, 246, 0.6)</stop>
+          <stop offset="100%">#F8FAFC</stop>
+        </color_gradient>
+      </heat_rendering>
+      
+      <off_screen_zones>
+        <zone position="left">
+          <label>OFF-SCREEN: LEFT</label>
+          <indicator>Arrow pointing left</indicator>
+          <color>#EF4444 at 20%</color>
+        </zone>
+        <zone position="right">
+          <label>OFF-SCREEN: RIGHT</label>
+          <indicator>Arrow pointing right</indicator>
+          <color>#EF4444 at 20%</color>
+        </zone>
+        <zone position="top">
+          <label>OFF-SCREEN: TOP</label>
+          <color>#EF4444 at 20%</color>
+        </zone>
+        <zone position="bottom">
+          <label>OFF-SCREEN: BOTTOM</label>
+          <color>#EF4444 at 20%</color>
+        </zone>
+      </off_screen_zones>
+      
+      <toggle_control>
+        <position>centered above heatmap</position>
+        <type>segmented control / toggle</type>
+        <options>
+          <option value="normal">Normal Interview</option>
+          <option value="suspicious">Suspicious Interview</option>
+        </options>
+        <transition>Cross-fade between datasets over 0.4s</transition>
+      </toggle_control>
+      
+      <supporting_metrics>
+        <position>below heatmap</position>
+        <layout>horizontal flex, 3-4 items</layout>
+        <items>
+          <item>
+            <label>Off-screen Events</label>
+            <value_normal>2</value_normal>
+            <value_suspicious>14</value_suspicious>
+          </item>
+          <item>
+            <label>Attention Score</label>
+            <value_normal>0.89</value_normal>
+            <value_suspicious>0.52</value_suspicious>
+          </item>
+          <item>
+            <label>Reading Pattern</label>
+            <value_normal>No</value_normal>
+            <value_suspicious>Detected</value_suspicious>
+            <value_suspicious_color>#EF4444</value_suspicious_color>
+          </item>
+        </items>
+      </supporting_metrics>
+      
+      <sample_data>
+        <normal_interview>
+          <description>
+            500-800 gaze points, mostly within screen bounds.
+            Natural wandering pattern, occasional off-screen (2-3 events).
+            Clusters around center and relevant screen areas.
+          </description>
+          <off_screen_events>2</off_screen_events>
+          <attention_score>0.89</attention_score>
+          <reading_pattern>false</reading_pattern>
+        </normal_interview>
+        
+        <suspicious_interview>
+          <description>
+            500-800 gaze points with systematic left-to-right patterns.
+            Frequent off-screen glances (14+ events).
+            Clear reading pattern indicating looking at something off-screen.
+          </description>
+          <off_screen_events>14</off_screen_events>
+          <attention_score>0.52</attention_score>
+          <reading_pattern>true</reading_pattern>
+        </suspicious_interview>
+      </sample_data>
+    </component>
+    
+    <component name="RiskGauge">
+      <description>Arc gauge showing overall risk score from 0.00 to 1.00</description>
+      
+      <layout>
+        <type>radial arc</type>
+        <arc_degrees>180</arc_degrees>
+        <direction>starts left, ends right</direction>
+      </layout>
+      
+      <dimensions>
+        <width>200px</width>
+        <height>120px (half of width)</height>
+      </dimensions>
+      
+      <elements>
+        <track>
+          <stroke_width>12px</stroke_width>
+          <color>#334155 at 40%</color>
+          <linecap>round</linecap>
+        </track>
+        
+        <progress>
+          <stroke_width>12px</stroke_width>
+          <color>Based on value:
+            0.00-0.49: #3B82F6
+            0.50-0.69: #22C55E
+            0.70-0.84: #FBBF24
+            0.85-1.00: #EF4444
+          </color>
+          <linecap>round</linecap>
+          <animation>Fill from 0 to value, 1.2s, spring easing</animation>
+        </progress>
+        
+        <center_value>
+          <position>center of arc</position>
+          <value_typography>data-value-large, 48px</value_typography>
+          <label_typography>data-label, 12px</label_typography>
+          <label_values>
+            <range min="0.00" max="0.49">MINIMAL</range>
+            <range min="0.50" max="0.69">LOW</range>
+            <range min="0.70" max="0.84">MEDIUM</range>
+            <range min="0.85" max="1.00">HIGH</range>
+          </label_values>
+        </center_value>
+      </elements>
+      
+      <animation>
+        <trigger>In viewport</trigger>
+        <arc_fill>
+          <duration>1.2s</duration>
+          <easing>cubic-bezier(0.34, 1.56, 0.64, 1)</easing>
+          <delay>0.2s after entering viewport</delay>
+        </arc_fill>
+        <number_countup>
+          <duration>1.0s</duration>
+          <easing>ease-out</easing>
+          <format>0.00</format>
+        </number_countup>
+      </animation>
+    </component>
+    
+    <component name="SimilarityBarChart">
+      <description>Horizontal bar chart showing AI similarity scores for each LLM</description>
+      
+      <layout>
+        <orientation>horizontal</orientation>
+        <bar_count>3 (GPT-4, Claude, Gemini)</bar_count>
+      </layout>
+      
+      <bar_specifications>
+        <height>32px</height>
+        <gap>12px</gap>
+        <label_width>120px</label_width>
+        <value_width>60px</value_width>
+        <border_radius>4px</border_radius>
+      </bar_specifications>
+      
+      <elements>
+        <label>
+          <position>left of bar</position>
+          <typography>body-small, light-slate</typography>
+          <content>Model name (e.g., "GPT-4")</content>
+        </label>
+        
+        <track>
+          <color>#334155 at 30%</color>
+          <width>flexible (fills remaining space)</width>
+        </track>
+        
+        <bar>
+          <color>
+            <low>Gradient #3B82F6 to #22C55E (0-40%)</low>
+            <medium>Gradient #22C55E to #FBBF24 (40-70%)</medium>
+            <high>Gradient #FBBF24 to #EF4444 (70-100%)</high>
+          </color>
+          <animation>Grow from 0% to value, 0.8s, stagger 100ms</animation>
+        </bar>
+        
+        <value>
+          <position>right of bar</position>
+          <typography>data-label, mono</typography>
+          <format>XX%</format>
+        </value>
+      </elements>
+      
+      <sample_data>
+        <human_answer>
+          <gpt4>23%</gpt4>
+          <claude>19%</claude>
+          <gemini>21%</gemini>
+        </human_answer>
+        <ai_assisted>
+          <gpt4>78%</gpt4>
+          <claude>72%</claude>
+          <gemini>75%</gemini>
+        </ai_assisted>
+      </sample_data>
+    </component>
+    
+    <component name="Timeline">
+      <description>Horizontal timeline showing events during an interview session</description>
+      
+      <layout>
+        <orientation>horizontal</orientation>
+        <height>80px</height>
+        <width>100%</width>
+      </layout>
+      
+      <elements>
+        <track>
+          <height>2px</height>
+          <color>#334155</color>
+          <position>vertical center</position>
+        </track>
+        
+        <progress_fill>
+          <height>2px</height>
+          <color>#3B82F6</color>
+          <width>Based on current scrubber position</width>
+        </progress_fill>
+        
+        <time_labels>
+          <position>below track</position>
+          <typography>timestamp</typography>
+          <intervals>Every 5 minutes for 45-minute interview</intervals>
+        </time_labels>
+        
+        <event_markers>
+          <size>12px diameter circle</size>
+          <position>on track at event timestamp</position>
+          <colors>
+            <info>#3B82F6</info>
+            <warning>#FBBF24</warning>
+            <critical>#EF4444</critical>
+          </colors>
+          <hover>Expand to 16px, show tooltip</hover>
+        </event_markers>
+        
+        <scrubber>
+          <handle>
+            <size>20px circle</size>
+            <color>#F8FAFC</color>
+            <border>2px solid #3B82F6</border>
+          </handle>
+          <draggable>true</draggable>
+          <updates>All visualizations when dragged</updates>
+        </scrubber>
+      </elements>
+      
+      <tooltip>
+        <trigger>Hover on event marker</trigger>
+        <content>
+          <title>Event type (e.g., "Screen Recording Detected")</title>
+          <timestamp>14:23:07</timestamp>
+          <details>Process name, additional info</details>
+        </content>
+        <style>glassmorphism background, arrow pointing to marker</style>
+      </tooltip>
+    </component>
+    
+    <component name="SecurityEventCard">
+      <description>Card displaying a single security event with severity indicator</description>
+      
+      <structure>
+        <severity_indicator>
+          <type>left border, 3px width</type>
+          <colors>
+            <info>#3B82F6</info>
+            <warning>#FBBF24</warning>
+            <critical>#EF4444</critical>
+          </colors>
+        </severity_indicator>
+        
+        <icon>
+          <size>24px</size>
+          <color>Match severity</color>
+          <position>left</position>
+        </icon>
+        
+        <content>
+          <title>Event type (e.g., "Window Focus Change")</title>
+          <description>Additional details (e.g., "Switched to external application")</description>
+        </content>
+        
+        <timestamp>
+          <position>right</position>
+          <typography>timestamp level</typography>
+        </timestamp>
+      </structure>
+      
+      <styling>
+        <background>rgba(51, 65, 85, 0.4)</background>
+        <padding>16px</padding>
+        <border_radius>8px</border_radius>
+        <margin_bottom>12px</margin_bottom>
+      </styling>
+      
+      <sample_events>
+        <event severity="info">
+          <type>Window Focus Change</type>
+          <description>Returned to interview window</description>
+          <timestamp>14:15:32</timestamp>
+        </event>
+        <event severity="warning">
+          <type>Clipboard Activity</type>
+          <description>Paste operation detected</description>
+          <timestamp>14:18:45</timestamp>
+        </event>
+        <event severity="critical">
+          <type>Screen Recording Detected</type>
+          <description>Process: OBS Studio (PID: 4521)</description>
+          <timestamp>14:23:07</timestamp>
+        </event>
+      </sample_events>
+    </component>
+    
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    <!-- 5.5 FORM ELEMENTS                                                           -->
+    <!-- ─────────────────────────────────────────────────────────────────────────── -->
+    
+    <component name="Toggle">
+      <description>Switch toggle for binary options</description>
+      
+      <dimensions>
+        <track_width>48px</track_width>
+        <track_height>24px</track_height>
+        <thumb_size>20px</thumb_size>
+      </dimensions>
+      
+      <styling>
+        <track_off>
+          <background>#334155</background>
+          <border_radius>12px</border_radius>
+        </track_off>
+        <track_on>
+          <background>#3B82F6</background>
+        </track_on>
+        <thumb>
+          <background>#F8FAFC</background>
+          <border_radius>50%</border_radius>
+          <position>2px from edge</position>
+        </thumb>
+      </styling>
+      
+      <animation>
+        <type>spring</type>
+        <duration>0.2s</duration>
+      </animation>
+    </component>
+    
+    <component name="SegmentedControl">
+      <description>Multi-option toggle for switching between views</description>
+      
+      <styling>
+        <container>
+          <background>#334155 at 50%</background>
+          <padding>4px</padding>
+          <border_radius>8px</border_radius>
+        </container>
+        
+        <option_inactive>
+          <background>transparent</background>
+          <text_color>#CBD5E1</text_color>
+          <padding>12px 24px</padding>
+        </option_inactive>
+        
+        <option_active>
+          <background>#3B82F6</background>
+          <text_color>#F8FAFC</text_color>
+          <border_radius>6px</border_radius>
+        </option_active>
+        
+        <indicator>
+          <type>sliding background</type>
+          <animation>0.2s spring</animation>
+        </indicator>
+      </styling>
+    </component>
+    
+    <component name="TextInput">
+      <description>Text input field for AI detection demo</description>
+      
+      <styling>
+        <container>
+          <background>rgba(51, 65, 85, 0.4)</background>
+          <border>1px solid rgba(203, 213, 225, 0.2)</border>
+          <border_radius>8px</border_radius>
+          <padding>16px</padding>
+        </container>
+        
+        <placeholder>
+          <color>#CBD5E1 at 50%</color>
+        </placeholder>
+        
+        <focus>
+          <border_color>#3B82F6</border_color>
+          <box_shadow>inset 0 0 20px rgba(59, 130, 246, 0.1)</box_shadow>
+        </focus>
+      </styling>
+      
+      <multiline>
+        <min_height>120px</min_height>
+        <resize>vertical</resize>
+      </multiline>
+    </component>
+    
+  </components>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 6: PAGE STRUCTURE AND SECTIONS                                       -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <page_structure>
+    
+    <section id="hero" viewport_position="1">
+      <name>Hero Section</name>
+      <purpose>First impression, communicate core value prop, show product preview</purpose>
+      
+      <layout>
+        <type>two-column</type>
+        <left_column>45%</left_column>
+        <right_column>55%</right_column>
+        <height>100vh minimum</height>
+        <padding_top>120px (below nav)</padding_top>
+        <vertical_align>center</vertical_align>
+      </layout>
+      
+      <left_column>
+        <headline>
+          <text>Evidence, Not Accusations.</text>
+          <typography>hero-headline</typography>
+          <animation>headline-reveal on load</animation>
+        </headline>
+        
+        <subhead>
+          <text>See exactly what happened. Gaze patterns, AI similarity scores, security events—comprehensive evidence for every hiring decision.</text>
+          <typography>body-large</typography>
+          <max_width>480px</max_width>
+          <animation>fade up from 20px, 0.4s, 0.5s delay</animation>
+        </subhead>
+        
+        <cta_group>
+          <animation>fade in, 0.3s, 0.7s delay</animation>
+          <buttons>
+            <button type="primary">Start Free Trial</button>
+            <button type="secondary" icon="play">Watch Demo</button>
+          </buttons>
+          <gap>16px</gap>
+        </cta_group>
+      </left_column>
+      
+      <right_column>
+        <content name="hero-dashboard">
+          <type>Interactive Dashboard Preview</type>
+          <container>glassmorphism foreground</container>
+          <animation>fade in with glow pulse, 0.5s, 0.8s delay</animation>
+          
+          <elements>
+            <element name="live-indicator">
+              <position>top-left</position>
+              <content>Pulsing dot + "LIVE"</content>
+              <dot_color>#22C55E</dot_color>
+              <animation>Continuous pulse</animation>
+            </element>
+            
+            <element name="mini-gaze-heatmap">
+              <position>top area, ~40% of card height</position>
+              <behavior>Updates with new gaze point every 2-3 seconds</behavior>
+            </element>
+            
+            <element name="risk-gauge-mini">
+              <position>bottom-left quadrant</position>
+              <behavior>Slowly oscillates between 0.15 and 0.25</behavior>
+            </element>
+            
+            <element name="event-feed">
+              <position>bottom-right quadrant</position>
+              <content>3-4 recent security events, scrolling</content>
+              <behavior>New events appear periodically</behavior>
+            </element>
+            
+            <element name="timestamp">
+              <position>bottom-right corner</position>
+              <behavior>Real-time clock updating</behavior>
+            </element>
+          </elements>
+          
+          <interactivity>
+            <hover>Tooltips explain each dashboard element</hover>
+            <click_play>Starts simulated interview playback</click_play>
+          </interactivity>
+        </content>
+      </right_column>
+      
+      <background_effects>
+        <effect name="subtle-grid">
+          <description>Very faint grid pattern, 40px spacing</description>
+          <opacity>0.03</opacity>
+        </effect>
+        <effect name="vignette">
+          <description>Subtle darkening at edges</description>
+        </effect>
+        <effect name="spotlight">
+          <description>Subtle radial glow behind dashboard</description>
+          <color>rgba(59, 130, 246, 0.1)</color>
+        </effect>
+      </background_effects>
+    </section>
+    
+    <section id="problem" viewport_position="2">
+      <name>Problem Visualization</name>
+      <purpose>Quantify the cheating problem, show Blockd's superior detection</purpose>
+      
+      <headline>
+        <text>Cheating Has Evolved. Detection Must Too.</text>
+        <typography>section-headline</typography>
+        <animation>fade up on scroll</animation>
+      </headline>
+      
+      <subhead>
+        <text>Traditional proctoring catches less than half of cheating attempts. Blockd's multi-layered approach achieves 95%+ detection rates.</text>
+        <typography>body-large</typography>
+        <animation>fade up, 100ms delay</animation>
+      </subhead>
+      
+      <visualization name="detection-comparison">
+        <type>Grouped bar chart</type>
+        <groups>
+          <group name="Traditional Proctoring">
+            <bar label="Tab Switching" value="70%" />
+            <bar label="AI Assistance" value="15%" />
+            <bar label="Second Monitor" value="25%" />
+            <bar label="VM Usage" value="10%" />
+          </group>
+          <group name="Blockd">
+            <bar label="Tab Switching" value="98%" color="accent" />
+            <bar label="AI Assistance" value="95%" color="accent" />
+            <bar label="Second Monitor" value="92%" color="accent" />
+            <bar label="VM Usage" value="99%" color="accent" />
+          </group>
+        </groups>
+        <animation>Bars grow on scroll into view, staggered</animation>
+      </visualization>
+      
+      <stat_callout>
+        <large_number>73%</large_number>
+        <label>of students admit to cheating on online assessments</label>
+        <source>Stanford University Study</source>
+        <animation>Number counts up from 0</animation>
+      </stat_callout>
+    </section>
+    
+    <section id="gaze-intelligence" viewport_position="3">
+      <name>Gaze Intelligence</name>
+      <purpose>Deep dive into eye tracking capabilities</purpose>
+      
+      <headline>
+        <text>Eyes Don't Lie</text>
+        <typography>section-headline</typography>
+      </headline>
+      
+      <subhead>
+        <text>MediaPipe's 468-point facial landmark detection tracks gaze patterns at 30 FPS. Off-screen glances, reading patterns, and attention drift are captured in real-time.</text>
+        <typography>body-large</typography>
+      </subhead>
+      
+      <content>
+        <component ref="GazeHeatmap">
+          <configuration>
+            <toggle_enabled>true</toggle_enabled>
+            <interactive>true</interactive>
+            <metrics_visible>true</metrics_visible>
+          </configuration>
+        </component>
+      </content>
+      
+      <feature_points>
+        <point>
+          <icon>eye</icon>
+          <title>30 FPS Tracking</title>
+          <description>Real-time gaze analysis with sub-50ms latency</description>
+        </point>
+        <point>
+          <icon>alert</icon>
+          <title>Off-Screen Detection</title>
+          <description>Knows when candidates look away from the interview</description>
+        </point>
+        <point>
+          <icon>chart</icon>
+          <title>Pattern Recognition</title>
+          <description>LSTM neural networks identify reading vs. thinking patterns</description>
+        </point>
+      </feature_points>
+    </section>
+    
+    <section id="ai-detection" viewport_position="4">
+      <name>AI Detection</name>
+      <purpose>Explain multi-LLM comparison and demonstrate it</purpose>
+      
+      <headline>
+        <text>AI Fighting AI</text>
+        <typography>section-headline</typography>
+      </headline>
+      
+      <subhead>
+        <text>The only way to reliably detect AI assistance is to understand how AI responds. We generate comparative answers from GPT-4, Claude, and Gemini in real-time.</text>
+        <typography>body-large</typography>
+      </subhead>
+      
+      <content_layout>
+        <type>two-column</type>
+        <left>Similarity visualization + Risk gauge</left>
+        <right>Detection pipeline explanation</right>
+      </content_layout>
+      
+      <left_content>
+        <component ref="SimilarityBarChart" />
+        <component ref="RiskGauge" />
+      </left_content>
+      
+      <right_content>
+        <detection_pipeline>
+          <step number="1">
+            <title>Question Captured</title>
+            <description>Interview question is processed</description>
+          </step>
+          <step number="2">
+            <title>Multi-LLM Generation</title>
+            <description>GPT-4, Claude, and Gemini generate answers</description>
+          </step>
+          <step number="3">
+            <title>Embedding Comparison</title>
+            <description>384-dimensional vector similarity computed</description>
+          </step>
+          <step number="4">
+            <title>Linguistic Analysis</title>
+            <description>Perplexity scoring, n-gram overlap, stylometry</description>
+          </step>
+          <step number="5">
+            <title>XGBoost Ensemble</title>
+            <description>Final risk score: 0.00 to 1.00</description>
+          </step>
+        </detection_pipeline>
+        <pipeline_animation>
+          Steps highlight sequentially on scroll, with connecting lines animating between them
+        </pipeline_animation>
+      </right_content>
+      
+      <interactive_demo optional="true">
+        <description>
+          Optional: Allow visitors to paste text and see a simulated analysis.
+          This is impressive but requires careful implementation to avoid abuse.
+        </description>
+        <components>
+          <input ref="TextInput" placeholder="Paste a sample answer to analyze..." />
+          <button type="primary">Analyze</button>
+          <results>Similarity scores and risk assessment</results>
+        </components>
+        <disclaimer>Demo uses simplified analysis for illustration purposes</disclaimer>
+      </interactive_demo>
+    </section>
+    
+    <section id="security" viewport_position="5">
+      <name>Security Monitoring</name>
+      <purpose>Show comprehensive security event detection</purpose>
+      
+      <headline>
+        <text>Nothing Escapes Notice</text>
+        <typography>section-headline</typography>
+      </headline>
+      
+      <subhead>
+        <text>Native browser-level monitoring detects screen recording, VMs, remote access tools, and suspicious process activity—all without invasive system access.</text>
+        <typography>body-large</typography>
+      </subhead>
+      
+      <content>
+        <component ref="Timeline">
+          <configuration>
+            <duration>45 minutes (simulated interview)</duration>
+            <events_count>15-20</events_count>
+            <interactive>true</interactive>
+          </configuration>
+        </component>
+        
+        <event_list>
+          <filter_controls>
+            <filter name="type">All, Process, Window, Clipboard, Screen</filter>
+            <filter name="severity">All, Info, Warning, Critical</filter>
+          </filter_controls>
+          
+          <component ref="SecurityEventCard" repeat="5-8 events" />
+        </event_list>
+        
+        <summary_stats>
+          <stat>
+            <value>23</value>
+            <label>Total Events</label>
+          </stat>
+          <stat>
+            <value>5</value>
+            <label>Warnings</label>
+            <color>#FBBF24</color>
+          </stat>
+          <stat>
+            <value>1</value>
+            <label>Critical</label>
+            <color>#EF4444</color>
+          </stat>
+        </summary_stats>
+      </content>
+      
+      <detection_categories>
+        <category>
+          <icon>monitor</icon>
+          <title>Screen Recording</title>
+          <examples>OBS, Camtasia, QuickTime</examples>
+        </category>
+        <category>
+          <icon>cpu</icon>
+          <title>Virtual Machines</title>
+          <examples>VMware, VirtualBox, Parallels</examples>
+        </category>
+        <category>
+          <icon>share</icon>
+          <title>Remote Access</title>
+          <examples>TeamViewer, AnyDesk, Zoom screen share</examples>
+        </category>
+        <category>
+          <icon>clipboard</icon>
+          <title>Clipboard Activity</title>
+          <examples>Suspicious paste patterns</examples>
+        </category>
+      </detection_categories>
+    </section>
+    
+    <section id="report" viewport_position="6">
+      <name>The Report</name>
+      <purpose>Show what hiring managers receive after an interview</purpose>
+      
+      <headline>
+        <text>Comprehensive Evidence Reports</text>
+        <typography>section-headline</typography>
+      </headline>
+      
+      <subhead>
+        <text>Every interview generates a detailed report with gaze heatmaps, AI analysis, security events, and risk assessment. The human makes the final call—with full evidence to support it.</text>
+        <typography>body-large</typography>
+      </subhead>
+      
+      <content>
+        <report_preview>
+          <type>PDF-style document render</type>
+          <pages_shown>2-3 pages in stacked/fanned arrangement</pages_shown>
+          <content>
+            <page_1>Summary with risk score, key findings</page_1>
+            <page_2>Gaze heatmap and attention analysis</page_2>
+            <page_3>AI detection results and security timeline</page_3>
+          </content>
+          <interactivity>Hover to slightly rotate/separate pages</interactivity>
+        </report_preview>
+        
+        <cta>
+          <button type="secondary" icon="download">Download Sample Report</button>
+        </cta>
+      </content>
+    </section>
+    
+    <section id="scale" viewport_position="7">
+      <name>Integration &amp; Scale</name>
+      <purpose>Show enterprise readiness and integration capabilities</purpose>
+      
+      <headline>
+        <text>Built for Enterprise Scale</text>
+        <typography>section-headline</typography>
+      </headline>
+      
+      <content_layout>
+        <type>three-column grid</type>
+      </content_layout>
+      
+      <metrics>
+        <metric>
+          <value>500+</value>
+          <label>Concurrent Sessions</label>
+          <animation>Count up</animation>
+        </metric>
+        <metric>
+          <value>30</value>
+          <unit>FPS</unit>
+          <label>Eye Tracking</label>
+        </metric>
+        <metric>
+          <value>&lt;5s</value>
+          <label>AI Analysis Latency</label>
+        </metric>
+        <metric>
+          <value>99.9%</value>
+          <label>Uptime SLA</label>
+        </metric>
+      </metrics>
+      
+      <integrations>
+        <headline>Integrates with your stack</headline>
+        <logos>
+          <logo>Greenhouse</logo>
+          <logo>Lever</logo>
+          <logo>Workday</logo>
+          <logo>Okta</logo>
+          <logo>Azure AD</logo>
+        </logos>
+      </integrations>
+      
+      <api_preview optional="true">
+        <code_block language="javascript"><![CDATA[
+const blockd = new BlockdClient({ apiKey: 'your-api-key' });
+
+const session = await blockd.sessions.create({
+  interviewee: 'candidate@example.com',
+  questions: ['Explain TCP vs UDP...'],
+  webhookUrl: 'https://your-app.com/webhook'
+});
+
+// Candidate joins via session.joinUrl
+// Real-time events stream to your webhook
+        ]]></code_block>
+      </api_preview>
+    </section>
+    
+    <section id="cta-final" viewport_position="8">
+      <name>Final CTA</name>
+      <purpose>Convert interested visitors</purpose>
+      
+      <layout>
+        <type>centered</type>
+        <max_width>600px</max_width>
+        <padding>120px vertical</padding>
+      </layout>
+      
+      <headline>
+        <text>See the Evidence for Yourself</text>
+        <typography>section-headline</typography>
+      </headline>
+      
+      <subhead>
+        <text>Start your free trial today. No credit card required.</text>
+        <typography>body-large</typography>
+      </subhead>
+      
+      <cta>
+        <button type="primary" size="lg">Start Free Trial</button>
+      </cta>
+      
+      <trust_indicators>
+        <item>14-day free trial</item>
+        <item>No credit card required</item>
+        <item>SOC 2 compliant</item>
+      </trust_indicators>
+    </section>
+    
+    <section id="footer" viewport_position="9">
+      <name>Footer</name>
+      
+      <layout>
+        <type>four-column</type>
+        <padding>64px vertical</padding>
+        <border_top>1px solid rgba(203, 213, 225, 0.1)</border_top>
+      </layout>
+      
+      <columns>
+        <column name="brand">
+          <logo>Blockd</logo>
+          <tagline>Interview integrity, verified.</tagline>
+          <social_links>
+            <link>Twitter/X</link>
+            <link>LinkedIn</link>
+            <link>GitHub</link>
+          </social_links>
+        </column>
+        
+        <column name="product">
+          <title>Product</title>
+          <links>
+            <link>Features</link>
+            <link>Pricing</link>
+            <link>Security</link>
+            <link>Enterprise</link>
+          </links>
+        </column>
+        
+        <column name="resources">
+          <title>Resources</title>
+          <links>
+            <link>Documentation</link>
+            <link>API Reference</link>
+            <link>Blog</link>
+            <link>Status</link>
+          </links>
+        </column>
+        
+        <column name="company">
+          <title>Company</title>
+          <links>
+            <link>About</link>
+            <link>Careers</link>
+            <link>Contact</link>
+            <link>Privacy</link>
+            <link>Terms</link>
+          </links>
+        </column>
+      </columns>
+      
+      <bottom_bar>
+        <copyright>© 2026 Blockd. All rights reserved.</copyright>
+      </bottom_bar>
+    </section>
+    
+  </page_structure>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 7: ANIMATION SPECIFICATIONS                                          -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <animations>
+    
+    <animation_system>
+      <library>Framer Motion (primary), CSS (secondary)</library>
+      
+      <reduced_motion_support>
+        <required>true</required>
+        <behavior>
+          When prefers-reduced-motion is enabled:
+          - Disable all transform animations
+          - Disable parallax effects
+          - Keep opacity transitions (instant or very fast)
+          - Replace continuous animations with static states
+          - Scan line effect: hidden
+          - Data visualizations: show final state immediately
+        </behavior>
+      </reduced_motion_support>
+    </animation_system>
+    
+    <page_load_sequence>
+      <step order="1" element="background">
+        <animation>Fade from black (#000000) to void (#0F172A)</animation>
+        <duration>0.3s</duration>
+        <delay>0s</delay>
+      </step>
+      
+      <step order="2" element="navigation">
+        <animation>Slide down from -20px with fade</animation>
+        <duration>0.4s</duration>
+        <delay>0.2s</delay>
+        <easing>ease-out</easing>
+      </step>
+      
+      <step order="3" element="hero-headline">
+        <animation>Character-by-character fade in (headline-reveal)</animation>
+        <duration>0.6s total</duration>
+        <delay>0.3s</delay>
+      </step>
+      
+      <step order="4" element="hero-subhead">
+        <animation>Fade in + translateY(20px → 0)</animation>
+        <duration>0.4s</duration>
+        <delay>0.5s</delay>
+        <easing>ease-out</easing>
+      </step>
+      
+      <step order="5" element="hero-ctas">
+        <animation>Fade in + scale(0.95 → 1)</animation>
+        <duration>0.3s</duration>
+        <delay>0.7s</delay>
+        <easing>ease-out</easing>
+      </step>
+      
+      <step order="6" element="hero-dashboard">
+        <animation>Fade in with blue glow pulse</animation>
+        <duration>0.5s</duration>
+        <delay>0.8s</delay>
+        <glow_pulse>
+          <from>0 0 0 rgba(59, 130, 246, 0)</from>
+          <to>0 0 60px rgba(59, 130, 246, 0.3)</to>
+          <back_to>0 0 30px rgba(59, 130, 246, 0.15)</back_to>
+          <duration>1.5s</duration>
+        </glow_pulse>
+      </step>
+      
+      <step order="7" element="dashboard-elements">
+        <animation>Begin continuous "live" animations</animation>
+        <delay>1.3s</delay>
+      </step>
+    </page_load_sequence>
+    
+    <scroll_triggered_animations>
+      <default_behavior>
+        <trigger>Element enters viewport at 30% visibility</trigger>
+        <animation>Fade in + translateY(40px → 0)</animation>
+        <duration>0.5s</duration>
+        <easing>cubic-bezier(0.25, 0.46, 0.45, 0.94)</easing>
+        <stagger_children>100ms</stagger_children>
+      </default_behavior>
+      
+      <section_headlines>
+        <trigger>Element enters viewport at 50%</trigger>
+        <animation>Fade in + translateY(30px → 0)</animation>
+        <duration>0.6s</duration>
+      </section_headlines>
+      
+      <cards>
+        <trigger>Element enters viewport at 20%</trigger>
+        <animation>Fade in + translateY(40px → 0) + scale(0.98 → 1)</animation>
+        <duration>0.5s</duration>
+        <stagger>150ms if multiple cards</stagger>
+      </cards>
+      
+      <data_visualizations>
+        <trigger>Element enters viewport at 50%</trigger>
+        <delay>0.2s after entering</delay>
+        <specific_animations>
+          <gaze_heatmap>Heat points fade in with random delays (0.1-0.5s per point)</gaze_heatmap>
+          <risk_gauge>Arc fills from 0 to value, 1.2s, spring easing</risk_gauge>
+          <bar_chart>Bars grow from 0%, 0.8s per bar, 100ms stagger</bar_chart>
+          <timeline>Events appear as dots popping in along line</timeline>
+        </specific_animations>
+      </data_visualizations>
+      
+      <stat_numbers>
+        <animation>Count up from 0</animation>
+        <duration>1.0s</duration>
+        <easing>ease-out (slows as approaching target)</easing>
+      </stat_numbers>
+    </scroll_triggered_animations>
+    
+    <continuous_animations>
+      <animation name="scan-line">
+        <description>Horizontal line with soft glow moving across visualizations</description>
+        <element>1px height, #3B82F6, with 30px blur glow</element>
+        <movement>Top to bottom of container</movement>
+        <duration>8-12 seconds per cycle</duration>
+        <timing>linear</timing>
+        <opacity>0 at edges, 1 in middle (fade in/out)</opacity>
+        <css><![CDATA[
+@keyframes scanLine {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.scan-line {
+  animation: scanLine 10s linear infinite;
+}
+        ]]></css>
+      </animation>
+      
+      <animation name="live-indicator-pulse">
+        <description>Pulsing dot for "LIVE" indicator</description>
+        <keyframes>
+          <frame at="0%">scale(1), opacity(1)</frame>
+          <frame at="50%">scale(1.2), opacity(0.7)</frame>
+          <frame at="100%">scale(1), opacity(1)</frame>
+        </keyframes>
+        <duration>2s</duration>
+        <timing>ease-in-out</timing>
+        <iteration>infinite</iteration>
+      </animation>
+      
+      <animation name="connection-line-flow">
+        <description>Marching ants effect on connection lines</description>
+        <property>stroke-dashoffset</property>
+        <from>0</from>
+        <to>16</to>
+        <duration>1s</duration>
+        <timing>linear</timing>
+        <iteration>infinite</iteration>
+        <stroke-dasharray>8, 8</stroke-dasharray>
+      </animation>
+      
+      <animation name="glow-pulse-subtle">
+        <description>Subtle pulsing glow on important elements</description>
+        <property>box-shadow</property>
+        <keyframes>
+          <frame at="0%">0 0 20px rgba(59, 130, 246, 0.2)</frame>
+          <frame at="50%">0 0 30px rgba(59, 130, 246, 0.35)</frame>
+          <frame at="100%">0 0 20px rgba(59, 130, 246, 0.2)</frame>
+        </keyframes>
+        <duration>3s</duration>
+        <timing>ease-in-out</timing>
+        <iteration>infinite</iteration>
+      </animation>
+    </continuous_animations>
+    
+    <micro_interactions>
+      <interaction name="button-hover">
+        <trigger>mouseenter</trigger>
+        <animations>
+          <property name="transform">translateY(-2px)</property>
+          <property name="box-shadow">intensify glow</property>
+          <property name="background">darken slightly (primary) or add tint (secondary)</property>
+        </animations>
+        <duration>0.2s</duration>
+        <easing>ease-out</easing>
+      </interaction>
+      
+      <interaction name="card-hover">
+        <trigger>mouseenter</trigger>
+        <animations>
+          <property name="transform">translateY(-4px)</property>
+          <property name="border-color">rgba(59, 130, 246, 0.3)</property>
+          <property name="box-shadow">0 8px 32px rgba(59, 130, 246, 0.15)</property>
+        </animations>
+        <duration>0.2s</duration>
+        <easing>ease-out</easing>
+      </interaction>
+      
+      <interaction name="data-point-hover">
+        <trigger>mouseenter on chart element</trigger>
+        <animations>
+          <property name="transform">scale(1.2)</property>
+          <property name="filter">add subtle glow</property>
+        </animations>
+        <duration>0.15s</duration>
+        <tooltip>Fade in from below, 0.2s, 0.1s delay</tooltip>
+      </interaction>
+      
+      <interaction name="link-hover">
+        <trigger>mouseenter</trigger>
+        <animations>
+          <property name="color">#F8FAFC (from #CBD5E1)</property>
+          <property name="text-decoration">underline draws from left to right</property>
+        </animations>
+        <duration>0.15s</duration>
+      </interaction>
+      
+      <interaction name="toggle-switch">
+        <trigger>click</trigger>
+        <animations>
+          <property name="thumb-position">slide to opposite side</property>
+          <property name="track-color">switch between off/on colors</property>
+        </animations>
+        <duration>0.2s</duration>
+        <easing>spring (slight bounce)</easing>
+      </interaction>
+    </micro_interactions>
+    
+    <framer_motion_examples><![CDATA[
+// Scroll-triggered section animation
+const sectionVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 40 
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.25, 0.46, 0.45, 0.94],
+      staggerChildren: 0.1
+    }
+  }
+};
+
+// Use with useInView hook
+<motion.section
+  variants={sectionVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+>
+  {children}
+</motion.section>
+
+// Risk gauge arc animation
+const gaugeVariants = {
+  hidden: { pathLength: 0 },
+  visible: { 
+    pathLength: riskScore,
+    transition: {
+      duration: 1.2,
+      ease: [0.34, 1.56, 0.64, 1] // spring overshoot
+    }
+  }
+};
+
+// Staggered card entrance
+const containerVariants = {
+  visible: {
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.98 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: { duration: 0.5 }
+  }
+};
+    ]]></framer_motion_examples>
+    
+  </animations>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 8: RESPONSIVE DESIGN                                                 -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <responsive_design>
+    
+    <breakpoints>
+      <breakpoint name="mobile" max="639px" />
+      <breakpoint name="tablet" min="640px" max="1023px" />
+      <breakpoint name="desktop" min="1024px" max="1279px" />
+      <breakpoint name="large" min="1280px" max="1535px" />
+      <breakpoint name="xlarge" min="1536px" />
+    </breakpoints>
+    
+    <mobile_adaptations max="639px">
+      <navigation>
+        <nav_links>hidden, replaced with hamburger menu</nav_links>
+        <mobile_drawer>Full-screen overlay, slide from right</mobile_drawer>
+      </navigation>
+      
+      <hero>
+        <layout>Single column, stacked</layout>
+        <dashboard_preview>Simplified or hidden, show static image instead</dashboard_preview>
+        <headline_size>text-4xl (36-40px)</headline_size>
+      </hero>
+      
+      <sections>
+        <padding>60px vertical, 20px horizontal</padding>
+        <two_column_layouts>Stack vertically</two_column_layouts>
+      </sections>
+      
+      <visualizations>
+        <gaze_heatmap>
+          <aspect_ratio>4:3 (more square for mobile)</aspect_ratio>
+          <toggle>Below heatmap instead of above</toggle>
+        </gaze_heatmap>
+        <bar_charts>Full width, increased bar height</bar_charts>
+        <timeline>Vertical orientation instead of horizontal</timeline>
+      </visualizations>
+      
+      <animations>
+        <complex_animations>Simplified or removed</complex_animations>
+        <scan_line>Hidden</scan_line>
+        <parallax>Disabled</parallax>
+      </animations>
+    </mobile_adaptations>
+    
+    <tablet_adaptations min="640px" max="1023px">
+      <navigation>
+        <approach>Can show abbreviated nav or hamburger</approach>
+      </navigation>
+      
+      <hero>
+        <layout>Can be stacked or 50/50 split</layout>
+        <dashboard_preview>Simplified version</dashboard_preview>
+      </hero>
+      
+      <sections>
+        <padding>80px vertical, 40px horizontal</padding>
+      </sections>
+      
+      <grid_layouts>
+        <cards>2-column grid</cards>
+      </grid_layouts>
+    </tablet_adaptations>
+    
+    <desktop_and_above min="1024px">
+      <all_features>Enabled</all_features>
+      <max_width>1440px container</max_width>
+    </desktop_and_above>
+    
+  </responsive_design>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 9: ACCESSIBILITY REQUIREMENTS                                        -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <accessibility>
+    
+    <standards>
+      <target>WCAG 2.1 Level AA</target>
+    </standards>
+    
+    <color_contrast>
+      <requirement>All text must meet 4.5:1 contrast ratio (3:1 for large text)</requirement>
+      <verified_combinations>
+        <combination text="#F8FAFC" background="#0F172A" ratio="15.8:1">PASS AAA</combination>
+        <combination text="#CBD5E1" background="#0F172A" ratio="8.1:1">PASS AAA</combination>
+        <combination text="#F8FAFC" background="#3B82F6" ratio="4.6:1">PASS AA</combination>
+        <combination text="#3B82F6" background="#0F172A" ratio="4.9:1">PASS AA (large text only)</combination>
+      </verified_combinations>
+      <note>Use #3B82F6 for UI elements, not body text on dark backgrounds</note>
+    </color_contrast>
+    
+    <keyboard_navigation>
+      <requirement>All interactive elements must be keyboard accessible</requirement>
+      <focus_indicators>
+        <style>2px solid #3B82F6, 2px offset</style>
+        <visibility>Always visible on focus, never removed</visibility>
+      </focus_indicators>
+      <tab_order>Logical flow matching visual order</tab_order>
+      <skip_link>Provide "Skip to main content" link</skip_link>
+    </keyboard_navigation>
+    
+    <screen_readers>
+      <requirement>All content must be accessible to screen readers</requirement>
+      
+      <images>
+        <decorative>Use alt="" or aria-hidden="true"</decorative>
+        <informative>Provide descriptive alt text</informative>
+        <complex_visualizations>Provide text summary of key information</complex_visualizations>
+      </images>
+      
+      <interactive_elements>
+        <buttons>Clear, descriptive labels</buttons>
+        <links>Indicate destination or action</links>
+        <custom_controls>Appropriate ARIA roles and states</custom_controls>
+      </interactive_elements>
+      
+      <dynamic_content>
+        <live_regions>Use aria-live for updating data</live_regions>
+        <announcements>Announce significant changes</announcements>
+      </dynamic_content>
+      
+      <data_visualizations>
+        <gaze_heatmap>
+          <summary>Provide text description: "Gaze heatmap showing X off-screen events, attention score of Y"</summary>
+          <sr_only>Include visually hidden text with key data points</sr_only>
+        </gaze_heatmap>
+        <risk_gauge>
+          <role>role="meter"</role>
+          <attributes>aria-valuenow, aria-valuemin, aria-valuemax, aria-valuetext</attributes>
+        </risk_gauge>
+        <charts>
+          <data_table>Provide accessible data table alternative</data_table>
+        </charts>
+      </data_visualizations>
+    </screen_readers>
+    
+    <reduced_motion>
+      <requirement>Respect prefers-reduced-motion media query</requirement>
+      <implementation>
+        <css><![CDATA[
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .scan-line,
+  .parallax {
+    display: none;
+  }
+}
+        ]]></css>
+        <framer_motion>
+          Use useReducedMotion() hook to conditionally disable animations
+        </framer_motion>
+      </implementation>
+    </reduced_motion>
+    
+    <semantic_html>
+      <requirement>Use semantic HTML elements appropriately</requirement>
+      <elements>
+        <header>Site header with navigation</header>
+        <nav>Navigation menus</nav>
+        <main>Primary page content</main>
+        <section>Distinct content sections with headings</section>
+        <article>Self-contained content pieces</article>
+        <aside>Supplementary content</aside>
+        <footer>Site footer</footer>
+      </elements>
+      <headings>
+        <requirement>Logical heading hierarchy (h1 → h2 → h3)</requirement>
+        <h1>One per page, main title</h1>
+        <h2>Section headings</h2>
+        <h3>Subsection headings</h3>
+      </headings>
+    </semantic_html>
+    
+  </accessibility>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 10: PERFORMANCE REQUIREMENTS                                         -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <performance>
+    
+    <targets>
+      <lighthouse_performance>90+</lighthouse_performance>
+      <first_contentful_paint>Under 1.5s</first_contentful_paint>
+      <largest_contentful_paint>Under 2.5s</largest_contentful_paint>
+      <time_to_interactive>Under 3.5s</time_to_interactive>
+      <cumulative_layout_shift>Under 0.1</cumulative_layout_shift>
+      <first_input_delay>Under 100ms</first_input_delay>
+    </targets>
+    
+    <optimization_strategies>
+      
+      <images>
+        <formats>WebP with JPEG/PNG fallbacks</formats>
+        <loading>lazy loading for below-fold images</loading>
+        <srcset>Provide multiple resolutions</srcset>
+        <dimensions>Always specify width and height to prevent CLS</dimensions>
+      </images>
+      
+      <fonts>
+        <loading>font-display: swap</loading>
+        <subsetting>Subset to only required characters if possible</subsetting>
+        <preload>Preload critical fonts</preload>
+        <fallbacks>Use system font stack as fallback</fallbacks>
+      </fonts>
+      
+      <javascript>
+        <code_splitting>Split by route and component</code_splitting>
+        <tree_shaking>Ensure unused code is eliminated</tree_shaking>
+        <lazy_loading>Lazy load below-fold components</lazy_loading>
+        <bundle_analysis>Analyze and optimize bundle size</bundle_analysis>
+      </javascript>
+      
+      <css>
+        <critical_css>Inline critical above-fold styles</critical_css>
+        <unused_css>Remove unused Tailwind classes with purge</unused_css>
+        <minification>Minify in production</minification>
+      </css>
+      
+      <animations>
+        <hardware_acceleration>Use transform and opacity for animations</hardware_acceleration>
+        <will_change>Use sparingly on animated elements</will_change>
+        <frame_rate>Target 60fps for all animations</frame_rate>
+        <off_screen>Pause animations for off-screen elements</off_screen>
+      </animations>
+      
+      <canvas_visualizations>
+        <rendering>Use requestAnimationFrame</rendering>
+        <throttling>Throttle updates when not visible</throttling>
+        <resolution>Match device pixel ratio, cap at 2x</resolution>
+        <cleanup>Properly dispose of canvas contexts</cleanup>
+      </canvas_visualizations>
+      
+      <network>
+        <preconnect>Preconnect to font and API origins</preconnect>
+        <prefetch>Prefetch likely next navigations</prefetch>
+        <compression>Enable Brotli/gzip compression</compression>
+        <caching>Set appropriate cache headers</caching>
+      </network>
+      
+    </optimization_strategies>
+    
+    <device_considerations>
+      <low_end_devices>
+        <particle_count>Reduce if navigator.hardwareConcurrency &lt; 4</particle_count>
+        <animation_complexity>Simplify animations</animation_complexity>
+        <canvas_resolution>Use lower resolution</canvas_resolution>
+      </low_end_devices>
+      
+      <mobile>
+        <touch_optimization>Optimize for touch interactions</touch_optimization>
+        <viewport>Properly handle viewport changes</viewport>
+        <memory>Be mindful of memory constraints</memory>
+      </mobile>
+    </device_considerations>
+    
+  </performance>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 11: FILE STRUCTURE                                                   -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <file_structure><![CDATA[
+blockd-landing/
+├── app/
+│   ├── layout.tsx                 # Root layout with fonts, metadata
+│   ├── page.tsx                   # Main landing page
+│   ├── globals.css                # Global styles, Tailwind imports
+│   └── favicon.ico
+│
+├── components/
+│   ├── ui/                        # Base UI components
+│   │   ├── button.tsx
+│   │   ├── card.tsx
+│   │   ├── toggle.tsx
+│   │   ├── segmented-control.tsx
+│   │   ├── tooltip.tsx
+│   │   ├── slider.tsx
+│   │   └── input.tsx
+│   │
+│   ├── layout/                    # Layout components
+│   │   ├── navigation.tsx
+│   │   ├── footer.tsx
+│   │   ├── section.tsx
+│   │   └── container.tsx
+│   │
+│   ├── sections/                  # Page sections
+│   │   ├── hero-section.tsx
+│   │   ├── problem-section.tsx
+│   │   ├── gaze-section.tsx
+│   │   ├── ai-detection-section.tsx
+│   │   ├── security-section.tsx
+│   │   ├── report-section.tsx
+│   │   ├── scale-section.tsx
+│   │   └── cta-section.tsx
+│   │
+│   ├── visualizations/            # Data visualization components
+│   │   ├── gaze-heatmap.tsx
+│   │   ├── risk-gauge.tsx
+│   │   ├── similarity-chart.tsx
+│   │   ├── timeline.tsx
+│   │   ├── detection-bars.tsx
+│   │   └── event-card.tsx
+│   │
+│   ├── dashboard/                 # Hero dashboard components
+│   │   ├── hero-dashboard.tsx
+│   │   ├── mini-heatmap.tsx
+│   │   ├── mini-gauge.tsx
+│   │   ├── event-feed.tsx
+│   │   └── live-indicator.tsx
+│   │
+│   └── effects/                   # Visual effect components
+│       ├── scan-line.tsx
+│       ├── spotlight.tsx
+│       ├── grid-pattern.tsx
+│       └── noise-overlay.tsx
+│
+├── hooks/                         # Custom React hooks
+│   ├── use-scroll-animation.ts
+│   ├── use-intersection.ts
+│   ├── use-reduced-motion.ts
+│   ├── use-canvas.ts
+│   └── use-countup.ts
+│
+├── lib/                           # Utility libraries
+│   ├── utils.ts                   # General utilities
+│   ├── cn.ts                      # Class name helper
+│   ├── animations.ts              # Animation variants/configs
+│   └── constants.ts               # Shared constants
+│
+├── data/                          # Sample data for visualizations
+│   ├── gaze-data-normal.json
+│   ├── gaze-data-suspicious.json
+│   ├── security-events.json
+│   └── sample-analysis.json
+│
+├── public/
+│   ├── images/
+│   │   ├── logo.svg
+│   │   ├── logo-wordmark.svg
+│   │   └── og-image.png
+│   │
+│   ├── fonts/                     # Self-hosted fonts (if used)
+│   │   ├── SpaceGrotesk-*.woff2
+│   │   ├── Inter-*.woff2
+│   │   └── JetBrainsMono-*.woff2
+│   │
+│   └── icons/                     # Custom icons (if not using library)
+│       └── *.svg
+│
+├── styles/
+│   └── animations.css             # Complex CSS animations
+│
+├── types/
+│   └── index.ts                   # TypeScript type definitions
+│
+├── tailwind.config.ts             # Tailwind configuration
+├── next.config.js                 # Next.js configuration
+├── tsconfig.json                  # TypeScript configuration
+├── package.json
+└── README.md
+  ]]></file_structure>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 12: SAMPLE DATA SPECIFICATIONS                                       -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <sample_data>
+    
+    <gaze_data_format>
+      <description>JSON format for gaze heatmap data</description>
+      <structure><![CDATA[
+{
+  "sessionId": "demo-session-001",
+  "duration": 2700, // seconds (45 minutes)
+  "metadata": {
+    "type": "normal" | "suspicious",
+    "offScreenEvents": number,
+    "attentionScore": number,
+    "readingPatternDetected": boolean
+  },
+  "points": [
+    {
+      "timestamp": 0, // seconds from start
+      "x": 0.52, // normalized 0-1 (relative to screen)
+      "y": 0.48, // normalized 0-1
+      "duration": 150, // milliseconds at this position
+      "isOffScreen": false,
+      "direction": null | "left" | "right" | "top" | "bottom"
+    },
+    // ... hundreds of points
+  ]
+}
+      ]]></structure>
+      
+      <normal_interview_characteristics>
+        <total_points>600-800</total_points>
+        <off_screen_percentage>2-5%</off_screen_percentage>
+        <distribution>Clusters around center and natural focus points</distribution>
+        <movement>Natural saccades and fixations</movement>
+        <patterns>No systematic reading pattern</patterns>
+      </normal_interview_characteristics>
+      
+      <suspicious_interview_characteristics>
+        <total_points>600-800</total_points>
+        <off_screen_percentage>15-25%</off_screen_percentage>
+        <distribution>More edge-focused, frequent off-screen</distribution>
+        <movement>Systematic left-to-right patterns</movement>
+        <patterns>Clear reading pattern indicating external source</patterns>
+      </suspicious_interview_characteristics>
+    </gaze_data_format>
+    
+    <security_events_format>
+      <structure><![CDATA[
+{
+  "sessionId": "demo-session-001",
+  "events": [
+    {
+      "id": "evt-001",
+      "timestamp": 45, // seconds from start
+      "type": "window_focus" | "clipboard" | "process" | "screen_recording" | "vm_detected",
+      "severity": "info" | "warning" | "critical",
+      "title": "Window Focus Change",
+      "description": "Returned to interview window",
+      "metadata": {
+        // Type-specific metadata
+      }
+    }
+  ]
+}
+      ]]></structure>
+      
+      <event_types>
+        <type name="window_focus">
+          <severity>info</severity>
+          <frequency>Common</frequency>
+          <example_description>Switched to external application for 3.2 seconds</example_description>
+        </type>
+        <type name="clipboard">
+          <severity>warning</severity>
+          <frequency>Occasional</frequency>
+          <example_description>Paste operation detected (247 characters)</example_description>
+        </type>
+        <type name="process">
+          <severity>warning to critical</severity>
+          <frequency>Rare</frequency>
+          <example_description>Suspicious process detected: screen-recorder.exe</example_description>
+        </type>
+        <type name="screen_recording">
+          <severity>critical</severity>
+          <frequency>Rare</frequency>
+          <example_description>Screen recording software active: OBS Studio (PID: 4521)</example_description>
+        </type>
+        <type name="vm_detected">
+          <severity>critical</severity>
+          <frequency>Rare</frequency>
+          <example_description>Virtual machine environment detected: VMware</example_description>
+        </type>
+      </event_types>
+    </security_events_format>
+    
+    <ai_analysis_format>
+      <structure><![CDATA[
+{
+  "questionId": "q-001",
+  "question": "Explain the difference between TCP and UDP protocols.",
+  "answer": "...", // The candidate's answer
+  "analysis": {
+    "similarity": {
+      "gpt4": 0.23,
+      "claude": 0.19,
+      "gemini": 0.21
+    },
+    "perplexity": 42.3,
+    "ngramOverlap": 0.15,
+    "stylometricScore": 0.88, // How "human" the writing style is
+    "riskScore": 0.21,
+    "riskLevel": "minimal", // minimal | low | medium | high
+    "flags": []
+  }
+}
+      ]]></structure>
+      
+      <human_answer_sample>
+        <similarity_range>0.15 - 0.35</similarity_range>
+        <perplexity_range>35 - 60</perplexity_range>
+        <risk_score_range>0.10 - 0.40</risk_score_range>
+      </human_answer_sample>
+      
+      <ai_assisted_sample>
+        <similarity_range>0.65 - 0.90</similarity_range>
+        <perplexity_range>15 - 30</perplexity_range>
+        <risk_score_range>0.70 - 0.95</risk_score_range>
+        <flags>["high_similarity_gpt4", "low_perplexity", "pattern_match_detected"]</flags>
+      </ai_assisted_sample>
+    </ai_analysis_format>
+    
+  </sample_data>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 13: ICON SPECIFICATIONS                                              -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <icons>
+    
+    <icon_style>
+      <stroke_width>1.5px</stroke_width>
+      <line_cap>round</line_cap>
+      <line_join>round</line_join>
+      <corner_radius>2px on corners</corner_radius>
+      <base_size>24x24px</base_size>
+      <color>currentColor (inherits from parent)</color>
+    </icon_style>
+    
+    <required_icons>
+      <icon name="eye">
+        <usage>Gaze tracking, attention, visibility</usage>
+        <design>Simple eye outline with pupil</design>
+      </icon>
+      
+      <icon name="brain">
+        <usage>AI detection, intelligence, analysis</usage>
+        <design>Brain outline or neural network nodes</design>
+      </icon>
+      
+      <icon name="shield-check">
+        <usage>Security verified, protection active</usage>
+        <design>Shield with checkmark inside</design>
+      </icon>
+      
+      <icon name="shield-alert">
+        <usage>Security warning, threat detected</usage>
+        <design>Shield with exclamation mark</design>
+      </icon>
+      
+      <icon name="clock">
+        <usage>Timing, latency, duration</usage>
+        <design>Simple clock face</design>
+      </icon>
+      
+      <icon name="waveform">
+        <usage>Audio, speech patterns</usage>
+        <design>Audio waveform bars</design>
+      </icon>
+      
+      <icon name="chart-bar">
+        <usage>Statistics, comparison, data</usage>
+        <design>Vertical bar chart</design>
+      </icon>
+      
+      <icon name="alert-triangle">
+        <usage>Warning, attention needed</usage>
+        <design>Triangle with exclamation</design>
+      </icon>
+      
+      <icon name="check-circle">
+        <usage>Success, verified, passed</usage>
+        <design>Circle with checkmark</design>
+      </icon>
+      
+      <icon name="x-circle">
+        <usage>Error, failed, blocked</usage>
+        <design>Circle with X</design>
+      </icon>
+      
+      <icon name="monitor">
+        <usage>Screen, display, recording</usage>
+        <design>Computer monitor outline</design>
+      </icon>
+      
+      <icon name="cpu">
+        <usage>VM, processing, hardware</usage>
+        <design>CPU chip outline</design>
+      </icon>
+      
+      <icon name="share">
+        <usage>Screen share, remote access</usage>
+        <design>Share/broadcast symbol</design>
+      </icon>
+      
+      <icon name="clipboard">
+        <usage>Clipboard activity, paste</usage>
+        <design>Clipboard outline</design>
+      </icon>
+      
+      <icon name="document">
+        <usage>Report, file, evidence</usage>
+        <design>Document/paper outline</design>
+      </icon>
+      
+      <icon name="download">
+        <usage>Download action</usage>
+        <design>Arrow pointing down into tray</design>
+      </icon>
+      
+      <icon name="play">
+        <usage>Play demo, video</usage>
+        <design>Play triangle</design>
+      </icon>
+      
+      <icon name="arrow-right">
+        <usage>Navigation, proceed</usage>
+        <design>Simple right arrow</design>
+      </icon>
+      
+      <icon name="chevron-down">
+        <usage>Dropdown, expand</usage>
+        <design>Downward chevron</design>
+      </icon>
+      
+      <icon name="menu">
+        <usage>Mobile menu toggle</usage>
+        <design>Hamburger (3 horizontal lines)</design>
+      </icon>
+      
+      <icon name="x">
+        <usage>Close, dismiss</usage>
+        <design>X mark</design>
+      </icon>
+    </required_icons>
+    
+    <icon_library_recommendation>
+      <primary>Lucide React</primary>
+      <rationale>
+        Comprehensive icon set with consistent style, React-native components,
+        and matches our design specifications well.
+      </rationale>
+      <installation>npm install lucide-react</installation>
+      <usage><![CDATA[
+import { Eye, Brain, ShieldCheck, Clock } from 'lucide-react';
+
+<Eye className="w-5 h-5 text-slate-300" />
+      ]]></usage>
+    </icon_library_recommendation>
+    
+    <custom_icons_if_needed>
+      <tool>Figma</tool>
+      <export_format>SVG</export_format>
+      <optimization>Run through SVGO</optimization>
+      <react_conversion>Use SVGR or create React components manually</react_conversion>
+    </custom_icons_if_needed>
+    
+  </icons>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 14: SEO AND METADATA                                                 -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <seo>
+    
+    <metadata>
+      <title>Blockd - Interview Integrity Platform | AI-Powered Cheating Detection</title>
+      <description>Ensure candidates are evaluated on their actual abilities with Blockd's AI-powered interview security platform. Native browser monitoring, multi-LLM detection, real-time eye tracking.</description>
+      <keywords>interview security, cheating detection, AI proctoring, remote hiring, technical interviews, eye tracking, candidate assessment</keywords>
+    </metadata>
+    
+    <open_graph>
+      <og_type>website</og_type>
+      <og_title>Blockd - Evidence, Not Accusations</og_title>
+      <og_description>The interview integrity platform that understands interviews—not just watches them. AI-powered detection, native browser security, comprehensive evidence.</og_description>
+      <og_image>/og-image.png</og_image>
+      <og_image_dimensions>1200x630</og_image_dimensions>
+    </open_graph>
+    
+    <twitter>
+      <twitter_card>summary_large_image</twitter_card>
+      <twitter_title>Blockd - Interview Integrity Platform</twitter_title>
+      <twitter_description>AI-powered cheating detection for remote technical interviews. Evidence, not accusations.</twitter_description>
+      <twitter_image>/og-image.png</twitter_image>
+    </twitter>
+    
+    <structured_data>
+      <type>SoftwareApplication</type>
+      <properties>
+        <name>Blockd</name>
+        <applicationCategory>BusinessApplication</applicationCategory>
+        <operatingSystem>Web, Windows, macOS, Linux</operatingSystem>
+        <description>Enterprise-grade interview security and AI-powered anti-cheating platform</description>
+      </properties>
+    </structured_data>
+    
+    <favicon>
+      <sizes>16x16, 32x32, 180x180 (apple-touch-icon)</sizes>
+      <format>PNG and ICO</format>
+    </favicon>
+    
+  </seo>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 15: TESTING REQUIREMENTS                                             -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <testing>
+    
+    <visual_testing>
+      <browsers>
+        <browser>Chrome (latest)</browser>
+        <browser>Firefox (latest)</browser>
+        <browser>Safari (latest)</browser>
+        <browser>Edge (latest)</browser>
+      </browsers>
+      
+      <devices>
+        <device>Desktop 1920x1080</device>
+        <device>Desktop 1440x900</device>
+        <device>Laptop 1366x768</device>
+        <device>Tablet 768x1024</device>
+        <device>Mobile 375x812 (iPhone X)</device>
+        <device>Mobile 390x844 (iPhone 12/13)</device>
+        <device>Mobile 360x800 (Android)</device>
+      </devices>
+    </visual_testing>
+    
+    <functional_testing>
+      <category name="navigation">
+        <test>All nav links work correctly</test>
+        <test>Mobile menu opens/closes properly</test>
+        <test>Scroll behavior is smooth</test>
+        <test>Navigation state changes on scroll</test>
+      </category>
+      
+      <category name="interactive_elements">
+        <test>All buttons are clickable and provide feedback</test>
+        <test>Toggle switches work correctly</test>
+        <test>Timeline scrubber is draggable</test>
+        <test>Tooltips appear on hover</test>
+      </category>
+      
+      <category name="visualizations">
+        <test>Gaze heatmap renders correctly</test>
+        <test>Risk gauge animates properly</test>
+        <test>Charts display accurate data</test>
+        <test>Toggle between data views works</test>
+      </category>
+      
+      <category name="animations">
+        <test>Scroll animations trigger at correct points</test>
+        <test>Animations complete without glitches</test>
+        <test>Reduced motion preference is respected</test>
+        <test>No layout shift during animations</test>
+      </category>
+    </functional_testing>
+    
+    <performance_testing>
+      <test>Lighthouse audit scores 90+ on all metrics</test>
+      <test>No console errors in production</test>
+      <test>Page loads under 3 seconds on 3G</test>
+      <test>Animations maintain 60fps</test>
+    </performance_testing>
+    
+    <accessibility_testing>
+      <test>All content accessible via keyboard</test>
+      <test>Screen reader navigation is logical</test>
+      <test>Color contrast meets WCAG AA</test>
+      <test>Focus indicators are visible</test>
+      <test>All images have alt text</test>
+      <test>ARIA attributes are correct</test>
+    </accessibility_testing>
+    
+  </testing>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 16: IMPLEMENTATION PHASES                                            -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <implementation_phases>
+    
+    <phase number="1" name="Foundation">
+      <duration>Estimated 1-2 sessions</duration>
+      <tasks>
+        <task>Set up Next.js project with App Router</task>
+        <task>Configure Tailwind CSS with custom theme</task>
+        <task>Set up font loading (Space Grotesk, Inter, JetBrains Mono)</task>
+        <task>Create base UI components (Button, Card, etc.)</task>
+        <task>Create layout components (Container, Section)</task>
+        <task>Implement Navigation component</task>
+        <task>Implement Footer component</task>
+        <task>Set up project structure and utilities</task>
+      </tasks>
+      <deliverable>Basic page structure with navigation, styled with brand colors</deliverable>
+    </phase>
+    
+    <phase number="2" name="Static Content">
+      <duration>Estimated 2-3 sessions</duration>
+      <tasks>
+        <task>Build Hero section layout (without dashboard interactivity)</task>
+        <task>Build all section structures with content</task>
+        <task>Create glassmorphic card components</task>
+        <task>Add background effects (grid, spotlight, vignette)</task>
+        <task>Ensure full mobile responsiveness</task>
+        <task>Add basic scroll-triggered animations</task>
+      </tasks>
+      <deliverable>Complete page with all sections, responsive, static visualizations</deliverable>
+    </phase>
+    
+    <phase number="3" name="Visualizations">
+      <duration>Estimated 3-4 sessions</duration>
+      <tasks>
+        <task priority="high">Build GazeHeatmap component with Canvas</task>
+        <task priority="high">Create sample gaze data (normal and suspicious)</task>
+        <task priority="high">Build RiskGauge component with arc animation</task>
+        <task>Build SimilarityBarChart component</task>
+        <task>Build Timeline component with event markers</task>
+        <task>Build SecurityEventCard component</task>
+        <task>Implement data toggle for gaze heatmap</task>
+        <task>Connect all visualizations with sample data</task>
+      </tasks>
+      <deliverable>All data visualizations working with sample data</deliverable>
+    </phase>
+    
+    <phase number="4" name="Interactivity">
+      <duration>Estimated 2-3 sessions</duration>
+      <tasks>
+        <task>Build Hero Dashboard preview with live updates</task>
+        <task>Add timeline scrubbing functionality</task>
+        <task>Implement security event filtering</task>
+        <task>Add hover states and tooltips everywhere</task>
+        <task>Implement scan-line and continuous animations</task>
+        <task>(Optional) Build AI detection interactive demo</task>
+      </tasks>
+      <deliverable>Fully interactive page with all micro-interactions</deliverable>
+    </phase>
+    
+    <phase number="5" name="Polish and Optimization">
+      <duration>Estimated 2-3 sessions</duration>
+      <tasks>
+        <task>Fine-tune all animation timing and easing</task>
+        <task>Implement reduced motion support</task>
+        <task>Performance optimization pass</task>
+        <task>Accessibility audit and fixes</task>
+        <task>Cross-browser testing and fixes</task>
+        <task>Mobile interaction refinement</task>
+        <task>Final visual polish</task>
+      </tasks>
+      <deliverable>Production-ready, optimized, accessible landing page</deliverable>
+    </phase>
+    
+    <phase number="6" name="Assets and Final Details">
+      <duration>Estimated 1-2 sessions</duration>
+      <tasks>
+        <task>Create or source all required icons</task>
+        <task>Create OG image and favicon</task>
+        <task>Set up SEO metadata</task>
+        <task>Create sample report PDF for download</task>
+        <task>Final testing across all devices</task>
+        <task>Documentation and code cleanup</task>
+      </tasks>
+      <deliverable>Complete, deployable landing page</deliverable>
+    </phase>
+    
+  </implementation_phases>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  <!-- SECTION 17: FINAL NOTES FOR CLAUDE CODE                                      -->
+  <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+  
+  <final_notes>
+    
+    <quality_expectations>
+      This landing page must be exceptional. It's the first impression for a sophisticated
+      technical product, and every detail matters. When in doubt, choose the option that
+      demonstrates more technical sophistication and attention to detail.
+      
+      The goal is not to ship quickly—it's to ship something that would make both
+      designers and developers impressed. Something that could be featured on Awwwards
+      or shared in design communities as an example of excellent work.
+    </quality_expectations>
+    
+    <iteration_guidance>
+      Don't hesitate to iterate. If the first version of a component doesn't feel right,
+      rebuild it. If an animation feels off, tune it until it's perfect. The specification
+      provides direction, but the implementation requires craft and judgment.
+      
+      When working on visualizations, take time to make them feel alive and authentic.
+      The gaze heatmap should feel like real data. The risk gauge should feel weighty
+      and meaningful. Small details compound into exceptional experiences.
+    </iteration_guidance>
+    
+    <tool_encouragement>
+      Use Figma MCP to design before coding complex components.
+      Use Framer MCP to prototype animations before implementing them.
+      Use browser testing to verify everything works as expected.
+      Install any package that would improve the quality of the result.
+      Take whatever time is needed to achieve excellence.
+    </tool_encouragement>
+    
+    <success_criteria>
+      The landing page is successful when:
+      1. A technical founder would immediately understand Blockd's value
+      2. A designer would screenshot it for inspiration
+      3. A developer would want to inspect how it was built
+      4. A potential customer would trust Blockd based on the quality shown
+      5. The page feels sophisticated, trustworthy, and technically impressive
+    </success_criteria>
+    
+    <contact_for_questions>
+      If any part of this specification is unclear or seems contradictory,
+      use best judgment to resolve it in the direction of higher quality.
+      The specification is a guide, not a constraint on excellence.
+    </contact_for_questions>
+    
+  </final_notes>
+  
+</technical_design_document>

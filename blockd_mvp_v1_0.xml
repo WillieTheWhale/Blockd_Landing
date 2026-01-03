@@ -1,0 +1,1443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Blockd Interview Security Platform
+  Complete System Architecture & Deployment Guide
+  Version 1.0.0 - November 2025
+-->
+<blockd_platform version="1.0.0" date="2025-11-24">
+  
+  <metadata>
+    <title>Blockd Interview Security Platform</title>
+    <subtitle>Complete System Architecture &amp; Deployment Guide</subtitle>
+    <author>Blockd Development Team</author>
+    <date>November 2025</date>
+    <version>1.0.0</version>
+  </metadata>
+
+  <!-- ========================================== -->
+  <!-- SECTION 1: EXECUTIVE SUMMARY              -->
+  <!-- ========================================== -->
+  <executive_summary>
+    
+    <project_overview>
+      <description>
+        Blockd is an enterprise-grade interview security and AI-powered anti-cheating platform designed to ensure the integrity of technical interviews conducted remotely. The platform combines advanced security monitoring, artificial intelligence-based answer detection, real-time eye tracking, and comprehensive session management to provide a robust solution for organizations conducting thousands of concurrent interviews.
+      </description>
+    </project_overview>
+
+    <key_capabilities>
+      <capability name="Custom Chromium Browser">
+        Native browser fork with embedded security monitoring that cannot be bypassed
+      </capability>
+      <capability name="AI-Powered Detection">
+        Multi-LLM comparison (GPT-4, Claude, Gemini) with XGBoost ensemble classification
+      </capability>
+      <capability name="Eye Tracking">
+        Real-time gaze analysis at 30 FPS with MediaPipe FaceMesh and off-screen detection
+      </capability>
+      <capability name="Security Monitoring">
+        Process detection, VM detection, window tracking, and clipboard monitoring
+      </capability>
+      <capability name="Real-time Video">
+        WebRTC streaming with mediasoup SFU supporting 100+ concurrent streams
+      </capability>
+      <capability name="Comprehensive Reporting">
+        Automated risk scoring, detailed analytics, and PDF report generation
+      </capability>
+    </key_capabilities>
+
+    <technology_highlights>
+      <category name="Frontend">
+        <technologies>React 19.2.0, TypeScript 5.9.3, Vite 6.x, Tailwind CSS 4.x</technologies>
+      </category>
+      <category name="Backend">
+        <technologies>Node.js 24.11.0, Python 3.14.0, Fastify 5.x, FastAPI 0.121.3</technologies>
+      </category>
+      <category name="Databases">
+        <technologies>PostgreSQL 18.1, Redis 8.4, TimescaleDB 2.x, RabbitMQ 4.x</technologies>
+      </category>
+      <category name="ML/AI">
+        <technologies>PyTorch 2.5.x, MediaPipe 0.10.x, OpenAI GPT-4, Claude 3.5, Gemini 1.5</technologies>
+      </category>
+      <category name="Browser">
+        <technologies>Chromium 142.0.7444.175 (custom fork)</technologies>
+      </category>
+      <category name="Infrastructure">
+        <technologies>Docker 27.x, Kubernetes 1.31, Terraform, Helm 3.x</technologies>
+      </category>
+    </technology_highlights>
+
+    <implementation_metrics>
+      <metric name="Total Files">674+ production files</metric>
+      <metric name="Lines of Code">91,000+ lines</metric>
+      <metric name="Microservices">8 backend services fully implemented</metric>
+      <metric name="Development Phases">6 phases</metric>
+      <metric name="Test Coverage">68+ test scenarios, E2E, integration, and load tests</metric>
+      <metric name="Documentation">16+ comprehensive specification documents</metric>
+    </implementation_metrics>
+
+  </executive_summary>
+
+  <!-- ========================================== -->
+  <!-- SECTION 2: SYSTEM ARCHITECTURE            -->
+  <!-- ========================================== -->
+  <system_architecture>
+
+    <high_level_architecture>
+      <description>
+        The Blockd platform employs a microservices architecture with three primary layers.
+      </description>
+      <layers>
+        <layer number="1" name="Interviewee Layer">
+          Custom Chromium browser with embedded security and eye tracking
+        </layer>
+        <layer number="2" name="Backend Layer">
+          8 microservices handling authentication, sessions, AI analysis, and video
+        </layer>
+        <layer number="3" name="Interviewer Layer">
+          React web application for real-time monitoring and session management
+        </layer>
+      </layers>
+    </high_level_architecture>
+
+    <component_diagram>
+      <interviewee_experience>
+        <name>Blocked Chromium Browser (Desktop Native)</name>
+        <features>
+          <feature>Security Monitoring</feature>
+          <feature>Eye Tracking</feature>
+          <feature>Video Capture</feature>
+          <feature>System Telemetry</feature>
+          <feature>Fullscreen Lock</feature>
+          <feature>Process Detection</feature>
+        </features>
+        <communication>WebSocket + Protocol Buffers</communication>
+      </interviewee_experience>
+
+      <backend_microservices>
+        <service>API Gateway (Fastify)</service>
+        <service>Video Service</service>
+        <service>AI Detection</service>
+        <service>Eye Tracking</service>
+        <service>Response Timing</service>
+        <service>Auth Service</service>
+        <communication>HTTPS + WebSocket</communication>
+      </backend_microservices>
+
+      <interviewer_experience>
+        <name>React Web App (Browser-based)</name>
+        <features>
+          <feature>Real-time Video</feature>
+          <feature>Security Dashboard</feature>
+          <feature>Session Management</feature>
+          <feature>AI Detection Results</feature>
+          <feature>Gaze Heatmaps</feature>
+          <feature>Comprehensive Reports</feature>
+        </features>
+      </interviewer_experience>
+    </component_diagram>
+
+    <data_flow_architecture>
+      
+      <phase name="Interview Question Asked">
+        <step name="AI Detection Service">
+          <action>Generate AI answers (GPT-4, Claude, Gemini)</action>
+          <action>Compute embeddings (pgvector)</action>
+          <action>Cache in Redis (24h TTL)</action>
+        </step>
+      </phase>
+
+      <phase name="Interviewee Responds">
+        <input>Audio/Text</input>
+        <processing>
+          <step>Speech-to-Text (Whisper API)</step>
+          <step>Response Timing Analysis</step>
+        </processing>
+      </phase>
+
+      <phase name="AI Similarity Scoring">
+        <methods>
+          <method>Semantic similarity (cosine, 384-dim vectors)</method>
+          <method>N-gram overlap (Jaccard index)</method>
+          <method>Perplexity scoring (GPT-2)</method>
+          <method>Stylometric analysis</method>
+        </methods>
+        <output>XGBoost ensemble → Risk Score (0.0-1.0)</output>
+      </phase>
+
+      <phase name="Continuous Monitoring">
+        
+        <monitoring_type name="Eye Tracking" rate="30 FPS">
+          <component>MediaPipe FaceMesh (468 facial landmarks)</component>
+          <component>Gaze vector computation</component>
+          <component>Kalman filtering (smooth tracking)</component>
+          <component>Off-screen detection</component>
+          <component>Pattern recognition (reading, drift)</component>
+        </monitoring_type>
+
+        <monitoring_type name="Security Telemetry" interval="every 5 seconds">
+          <component>Process enumeration (detect OBS, VMware, etc.)</component>
+          <component>Window focus tracking</component>
+          <component>Screen recording detection</component>
+          <component>VM detection (CPUID, registry, SMBIOS)</component>
+          <component>Clipboard monitoring</component>
+          <component>System metrics (CPU, memory)</component>
+        </monitoring_type>
+
+        <storage>
+          <database>TimescaleDB</database>
+          <retention>30-day retention</retention>
+          <compression>7-day compression</compression>
+        </storage>
+      </phase>
+
+      <phase name="Output">
+        <output>Generate Risk Score &amp; Comprehensive Report (PDF)</output>
+      </phase>
+
+    </data_flow_architecture>
+
+  </system_architecture>
+
+  <!-- ========================================== -->
+  <!-- SECTION 3: TECHNOLOGY STACK               -->
+  <!-- ========================================== -->
+  <technology_stack>
+
+    <frontend_technologies>
+
+      <interviewer_web_application>
+        <description>
+          The interviewer-facing application is a modern single-page application built with cutting-edge web technologies.
+        </description>
+        <technologies>
+          <technology name="React" version="19.2.0" purpose="UI framework with concurrent features"/>
+          <technology name="TypeScript" version="5.9.3" purpose="Type-safe development"/>
+          <technology name="Vite" version="6.x" purpose="Fast build tool with HMR"/>
+          <technology name="Tailwind CSS" version="4.x" purpose="Utility-first CSS framework"/>
+          <technology name="shadcn/ui" version="Latest" purpose="Pre-built accessible components"/>
+          <technology name="Zustand" version="5.x" purpose="Lightweight state management"/>
+          <technology name="TanStack Query" version="5.x" purpose="Server state management"/>
+          <technology name="React Router" version="7.x" purpose="Client-side routing"/>
+          <technology name="Socket.io Client" version="4.x" purpose="WebSocket real-time communication"/>
+          <technology name="mediasoup-client" version="3.x" purpose="WebRTC video streaming"/>
+          <technology name="React Hook Form" version="Latest" purpose="Form state management"/>
+          <technology name="Zod" version="Latest" purpose="Runtime type validation"/>
+        </technologies>
+      </interviewer_web_application>
+
+      <interviewee_chromium_browser>
+        <description>A complete fork of Chromium with custom security and monitoring capabilities.</description>
+        <specifications>
+          <spec name="Base Version">Chromium 142.0.7444.175 (Stable, November 2025)</spec>
+          <spec name="Build System">GN + Ninja build system</spec>
+          <spec name="Languages">C++ (browser core), JavaScript/TypeScript (UI), Objective-C++ (macOS)</spec>
+          <spec name="Build Requirements">100+ GB disk, 16+ GB RAM, 8+ CPU cores</spec>
+          <spec name="Build Time">2-8 hours initial, 10-60 minutes incremental</spec>
+        </specifications>
+        
+        <chromium_modifications>
+          <browser_process>
+            <path purpose="Security monitoring">chrome/browser/blocked/blocked_security/</path>
+            <path purpose="System telemetry">chrome/browser/blocked/blocked_telemetry/</path>
+            <path purpose="Backend communication">chrome/browser/blocked/blocked_ipc/</path>
+            <path purpose="Video capture">chrome/browser/blocked/blocked_video/</path>
+            <path purpose="UI restrictions">chrome/browser/ui/blocked/</path>
+          </browser_process>
+          <renderer_process>
+            <path purpose="Eye tracking module">content/renderer/blocked_eye_tracking/</path>
+            <path purpose="Video frame processing">content/renderer/blocked_video/</path>
+            <path purpose="Renderer-to-browser IPC">content/renderer/blocked_ipc/</path>
+          </renderer_process>
+          <third_party_integration>
+            <path purpose="MediaPipe FaceMesh">third_party/mediapipe/</path>
+          </third_party_integration>
+        </chromium_modifications>
+      </interviewee_chromium_browser>
+
+    </frontend_technologies>
+
+    <backend_technologies>
+
+      <microservices_stack>
+        <service name="API Gateway">
+          <technology>Fastify 5.x, Node.js 24.11.0</technology>
+          <purpose>Request routing, rate limiting, JWT auth</purpose>
+        </service>
+        <service name="Auth Service">
+          <technology>Node.js 24.11.0, bcrypt</technology>
+          <purpose>Authentication, MFA, OAuth 2.0</purpose>
+        </service>
+        <service name="Session Service">
+          <technology>Node.js 24.11.0, Prisma</technology>
+          <purpose>Session lifecycle, state machine</purpose>
+        </service>
+        <service name="WebSocket Service">
+          <technology>Socket.io 4.x, Redis adapter</technology>
+          <purpose>Real-time bidirectional communication</purpose>
+        </service>
+        <service name="AI Detection">
+          <technology>Python 3.14.0, PyTorch 2.5.x</technology>
+          <purpose>Multi-LLM comparison, XGBoost classification</purpose>
+        </service>
+        <service name="Eye Tracking">
+          <technology>Python 3.14.0, MediaPipe 0.10.x</technology>
+          <purpose>Gaze analysis, LSTM anomaly detection</purpose>
+        </service>
+        <service name="Response Timing">
+          <technology>Python 3.14.0, Whisper</technology>
+          <purpose>Speech-to-text, timing anomaly detection</purpose>
+        </service>
+        <service name="Video Service">
+          <technology>Python 3.14.0, mediasoup 3.19.11</technology>
+          <purpose>WebRTC SFU, FFmpeg recording</purpose>
+        </service>
+      </microservices_stack>
+
+      <database_layer>
+        <database name="PostgreSQL" version="18.1">
+          <purpose>Primary relational data (users, sessions)</purpose>
+        </database>
+        <database name="TimescaleDB" version="2.x">
+          <purpose>Time-series data (gaze, telemetry, events)</purpose>
+        </database>
+        <database name="pgvector" version="0.7.x">
+          <purpose>Vector embeddings for AI similarity</purpose>
+        </database>
+        <database name="Redis Cluster" version="8.4">
+          <purpose>Caching, sessions, rate limiting</purpose>
+        </database>
+        <database name="RabbitMQ" version="4.x">
+          <purpose>Message queue, async job processing</purpose>
+        </database>
+        
+        <schema_highlights>
+          <item>11 core tables: users, organizations, sessions, questions, answers, etc.</item>
+          <item>31 indexes: Optimized for query performance</item>
+          <item>2 hypertables: gaze events, browser telemetry (TimescaleDB)</item>
+          <item>Retention policies: 30-day default, 7-day compression</item>
+          <item>Replication: 1 primary + 2 read replicas</item>
+        </schema_highlights>
+      </database_layer>
+
+    </backend_technologies>
+
+    <infrastructure_technologies>
+      <technology name="Docker" purpose="Containerization (8 multi-stage Dockerfiles)"/>
+      <technology name="Kubernetes" purpose="Orchestration (v1.31, 15+ manifests)"/>
+      <technology name="Helm" purpose="Package management (charts for dev/staging/prod)"/>
+      <technology name="Terraform" purpose="Infrastructure as Code (4 modules: cluster, database, storage, monitoring)"/>
+      <technology name="GitHub Actions" purpose="CI/CD pipelines (5 workflows: test, build, deploy-staging, deploy-prod, security)"/>
+      <technology name="Prometheus" purpose="Metrics collection (16 production alerts)"/>
+      <technology name="Grafana" purpose="Visualization (6 pre-built dashboards)"/>
+      <technology name="External Secrets Operator" purpose="Secrets management (AWS Secrets Manager integration)"/>
+    </infrastructure_technologies>
+
+  </technology_stack>
+
+  <!-- ========================================== -->
+  <!-- SECTION 4: COMPONENT SPECIFICATIONS       -->
+  <!-- ========================================== -->
+  <component_specifications>
+
+    <database_layer>
+
+      <postgresql_schema>
+        <description>The database schema consists of 11 core tables supporting the complete interview workflow.</description>
+        
+        <tables>
+          <table name="organizations">
+            <column name="id" type="UUID" constraints="PRIMARY KEY DEFAULT uuid_generate_v4()"/>
+            <column name="name" type="VARCHAR(255)" constraints="NOT NULL"/>
+            <column name="created_at" type="TIMESTAMP" constraints="DEFAULT NOW()"/>
+          </table>
+
+          <table name="users">
+            <column name="id" type="UUID" constraints="PRIMARY KEY DEFAULT uuid_generate_v4()"/>
+            <column name="email" type="VARCHAR(255)" constraints="UNIQUE NOT NULL"/>
+            <column name="password_hash" type="VARCHAR(255)" comment="bcrypt (12 rounds)"/>
+            <column name="full_name" type="VARCHAR(255)" constraints="NOT NULL"/>
+            <column name="role" type="user_role" constraints="NOT NULL" comment="admin, interviewer, interviewee, viewer"/>
+            <column name="organization_id" type="UUID" constraints="REFERENCES organizations(id)"/>
+            <column name="mfa_enabled" type="BOOLEAN" constraints="DEFAULT FALSE"/>
+            <column name="mfa_secret" type="VARCHAR(32)" comment="Base32-encoded TOTP secret"/>
+            <column name="email_verified" type="BOOLEAN" constraints="DEFAULT FALSE"/>
+            <column name="created_at" type="TIMESTAMP" constraints="DEFAULT NOW()"/>
+            <column name="updated_at" type="TIMESTAMP" constraints="DEFAULT NOW()"/>
+          </table>
+
+          <table name="interview_sessions">
+            <column name="id" type="UUID" constraints="PRIMARY KEY DEFAULT uuid_generate_v4()"/>
+            <column name="organization_id" type="UUID" constraints="REFERENCES organizations(id)"/>
+            <column name="interviewer_id" type="UUID" constraints="REFERENCES users(id)"/>
+            <column name="interviewee_id" type="UUID" constraints="REFERENCES users(id)"/>
+            <column name="status" type="session_status" constraints="NOT NULL"/>
+            <column name="scheduled_start" type="TIMESTAMP"/>
+            <column name="actual_start" type="TIMESTAMP"/>
+            <column name="actual_end" type="TIMESTAMP"/>
+            <column name="session_token" type="VARCHAR(255)" constraints="UNIQUE"/>
+            <column name="video_recording_url" type="TEXT"/>
+            <column name="risk_score" type="DECIMAL(3,2)" comment="0.00 to 1.00"/>
+            <column name="created_at" type="TIMESTAMP" constraints="DEFAULT NOW()"/>
+            <column name="updated_at" type="TIMESTAMP" constraints="DEFAULT NOW()"/>
+          </table>
+
+          <table name="security_events">
+            <column name="id" type="UUID" constraints="PRIMARY KEY DEFAULT uuid_generate_v4()"/>
+            <column name="session_id" type="UUID" constraints="REFERENCES interview_sessions(id)"/>
+            <column name="event_type" type="security_event_type" constraints="NOT NULL"/>
+            <column name="severity" type="event_severity" constraints="NOT NULL"/>
+            <column name="description" type="TEXT"/>
+            <column name="metadata" type="JSONB"/>
+            <column name="timestamp" type="TIMESTAMP" constraints="DEFAULT NOW()"/>
+          </table>
+
+          <table name="ai_answer_cache">
+            <column name="id" type="UUID" constraints="PRIMARY KEY DEFAULT uuid_generate_v4()"/>
+            <column name="question_hash" type="VARCHAR(64)" constraints="NOT NULL"/>
+            <column name="model_name" type="VARCHAR(50)" constraints="NOT NULL"/>
+            <column name="answer_text" type="TEXT" constraints="NOT NULL"/>
+            <column name="embedding" type="vector(384)" comment="pgvector"/>
+            <column name="perplexity_score" type="FLOAT"/>
+            <column name="generated_at" type="TIMESTAMP" constraints="DEFAULT NOW()"/>
+            <column name="access_count" type="INTEGER" constraints="DEFAULT 0"/>
+            <column name="last_accessed" type="TIMESTAMP"/>
+            <unique_constraint columns="question_hash, model_name"/>
+          </table>
+
+          <table name="gaze_events" type="hypertable">
+            <column name="session_id" type="UUID" constraints="NOT NULL"/>
+            <column name="timestamp" type="TIMESTAMP" constraints="NOT NULL"/>
+            <column name="gaze_x" type="FLOAT" comment="Normalized 0-1"/>
+            <column name="gaze_y" type="FLOAT" comment="Normalized 0-1"/>
+            <column name="is_off_screen" type="BOOLEAN"/>
+            <column name="off_screen_direction" type="VARCHAR(20)"/>
+            <column name="confidence" type="FLOAT"/>
+            <timescaledb_config>
+              <hypertable partition_column="timestamp"/>
+              <retention_policy interval="30 days"/>
+              <compression_policy interval="7 days"/>
+            </timescaledb_config>
+          </table>
+        </tables>
+      </postgresql_schema>
+
+      <redis_configuration>
+        <description>Redis cluster configuration for high availability</description>
+        <topology>6 nodes (3 primaries + 3 replicas)</topology>
+        <memory>64 GB total (21.3 GB per primary)</memory>
+        <persistence>AOF with fsync every second</persistence>
+        <eviction>allkeys-lru for cache management</eviction>
+        <use_cases>
+          <use_case ttl="1h">Session tokens</use_case>
+          <use_case>Rate limiting counters</use_case>
+          <use_case ttl="24h">AI answer cache</use_case>
+          <use_case>Real-time session data</use_case>
+          <use_case>WebSocket connection state</use_case>
+        </use_cases>
+      </redis_configuration>
+
+      <rabbitmq_topology>
+        <description>Message queue architecture for asynchronous processing</description>
+        
+        <exchanges>
+          <exchange name="video_processing" type="topic" purpose="Video encoding and upload"/>
+          <exchange name="ai_detection" type="direct" purpose="AI analysis requests"/>
+          <exchange name="security_events" type="fanout" purpose="Real-time security alerts"/>
+          <exchange name="gaze_analysis" type="direct" purpose="Eye tracking pattern analysis"/>
+          <exchange name="dlx" type="dead letter exchange" purpose="Failed message handling"/>
+        </exchanges>
+
+        <queues total="20">
+          <queue>video_processing.encode</queue>
+          <queue>video_processing.upload</queue>
+          <queue>ai_detection.similarity</queue>
+          <queue>ai_detection.perplexity</queue>
+          <queue>gaze_analysis.pattern</queue>
+          <queue>gaze_analysis.anomaly</queue>
+          <queue>security_events.high_priority</queue>
+          <queue>security_events.normal</queue>
+          <queue comment="12 more specialized queues">...</queue>
+        </queues>
+
+        <workers>
+          <type>Celery workers (Python) for task execution</type>
+          <scaling>10-50 workers per queue (auto-scaling)</scaling>
+          <retry max_retries="3" delay="exponential backoff"/>
+        </workers>
+      </rabbitmq_topology>
+
+    </database_layer>
+
+    <backend_microservices>
+
+      <api_gateway>
+        <description>
+          The API Gateway serves as the single entry point for all client requests, handling authentication, rate limiting, and request routing.
+        </description>
+        <framework>Fastify 5.x with TypeScript</framework>
+        
+        <configuration>
+          <jwt_authentication>
+            <algorithm>RS256</algorithm>
+            <expiration>1h</expiration>
+          </jwt_authentication>
+          <rate_limiting backend="Redis">
+            <max_requests>100</max_requests>
+            <time_window>1 minute</time_window>
+          </rate_limiting>
+          <routes prefix="/api/v1">
+            <route_group prefix="/auth">authRoutes</route_group>
+            <route_group prefix="/sessions">sessionRoutes</route_group>
+            <route_group prefix="/analysis">analysisRoutes</route_group>
+            <route_group prefix="/browser">browserRoutes</route_group>
+          </routes>
+        </configuration>
+
+        <endpoints count="30+">
+          <endpoint method="POST" path="/api/v1/auth/register" description="User registration"/>
+          <endpoint method="POST" path="/api/v1/auth/login" description="Authentication with JWT"/>
+          <endpoint method="POST" path="/api/v1/auth/refresh" description="Refresh access token"/>
+          <endpoint method="POST" path="/api/v1/sessions" description="Create interview session"/>
+          <endpoint method="GET" path="/api/v1/sessions/:id" description="Get session details"/>
+          <endpoint method="POST" path="/api/v1/sessions/:id/start" description="Start session"/>
+          <endpoint method="POST" path="/api/v1/sessions/:id/end" description="End session"/>
+          <endpoint method="POST" path="/api/v1/analysis/answer" description="Analyze answer with AI"/>
+          <endpoint method="POST" path="/api/v1/browser/security/event" description="Report security event"/>
+          <endpoint method="POST" path="/api/v1/browser/telemetry/batch" description="Batch upload telemetry"/>
+        </endpoints>
+      </api_gateway>
+
+      <authentication_service>
+        <description>Handles user authentication with multiple methods and MFA support.</description>
+        <features>
+          <feature name="JWT Tokens">
+            <algorithm>RS256</algorithm>
+            <access_token_expiration>1h</access_token_expiration>
+            <refresh_token_expiration>7d</refresh_token_expiration>
+          </feature>
+          <feature name="MFA">
+            <type>TOTP (Time-based One-Time Password)</type>
+            <qr_code_generation>true</qr_code_generation>
+          </feature>
+          <feature name="OAuth 2.0">
+            <provider>Google</provider>
+            <provider>Microsoft</provider>
+          </feature>
+          <feature name="Password Security">
+            <algorithm>bcrypt</algorithm>
+            <rounds>12</rounds>
+            <minimum_length>12 characters</minimum_length>
+          </feature>
+          <feature name="Session Management">
+            <backend>Redis</backend>
+            <automatic_expiration>true</automatic_expiration>
+          </feature>
+          <feature name="Role-Based Access Control">
+            <role>admin</role>
+            <role>interviewer</role>
+            <role>interviewee</role>
+            <role>viewer</role>
+          </feature>
+        </features>
+      </authentication_service>
+
+      <ai_detection_service>
+        <description>
+          The AI Detection Service is the core intellectual property of the platform, implementing sophisticated analysis to detect AI-generated answers.
+        </description>
+        
+        <architecture>
+          <llm_clients>
+            <client name="gpt-4">OpenAIClient</client>
+            <client name="claude-3.5-sonnet">AnthropicClient</client>
+            <client name="gemini-1.5-pro">GoogleClient</client>
+          </llm_clients>
+          <embedding_model>SentenceTransformer('all-MiniLM-L6-v2')</embedding_model>
+          <classifier>XGBClassifier.load('ai_detector_v2.model')</classifier>
+        </architecture>
+
+        <analysis_pipeline>
+          <step number="1">Generate AI answers from all LLMs (with caching)</step>
+          <step number="2">Compute embeddings (384-dimensional vectors)</step>
+          <step number="3">Calculate semantic similarity (cosine)</step>
+          <step number="4">Calculate perplexity score using GPT-2</step>
+          <step number="5">N-gram overlap (Jaccard index)</step>
+          <step number="6">Stylometric analysis</step>
+          <step number="7">XGBoost ensemble prediction</step>
+          <step number="8">Generate flags</step>
+        </analysis_pipeline>
+
+        <risk_categorization>
+          <level name="Minimal" score_range="0.00 - 0.49" interpretation="Likely human-generated"/>
+          <level name="Low" score_range="0.50 - 0.69" interpretation="Probably human, minor similarities"/>
+          <level name="Medium" score_range="0.70 - 0.84" interpretation="Investigate further, notable AI patterns"/>
+          <level name="High" score_range="0.85 - 1.00" interpretation="Likely AI-generated, strong evidence"/>
+        </risk_categorization>
+      </ai_detection_service>
+
+      <eye_tracking_service>
+        <description>Real-time gaze analysis using computer vision and machine learning.</description>
+        
+        <architecture>
+          <component name="Face Detection">MediaPipe FaceMesh with 468 facial landmarks</component>
+          <component name="Gaze Estimation">Custom CNN based on ResNet-18 architecture</component>
+          <component name="Kalman Filtering">Smooth tracking with noise reduction</component>
+          <component name="LSTM Autoencoder">Anomaly detection for suspicious patterns</component>
+        </architecture>
+
+        <performance>
+          <fps>30</fps>
+          <latency>&lt;50ms</latency>
+          <cpu_usage>&lt;15%</cpu_usage>
+        </performance>
+
+        <gaze_analysis_pipeline>
+          <step number="1">Detect face with MediaPipe (468 landmarks)</step>
+          <step number="2">Extract eye/iris landmarks</step>
+          <step number="3">Estimate gaze vector (3D)</step>
+          <step number="4">Apply Kalman filter for smoothing</step>
+          <step number="5">Apply calibration matrix (3x3 transform)</step>
+          <step number="6">Convert to screen coordinates (0-1 normalized)</step>
+          <step number="7">Detect off-screen gaze</step>
+          <step number="8">Pattern analysis with LSTM</step>
+        </gaze_analysis_pipeline>
+      </eye_tracking_service>
+
+      <video_service>
+        <description>WebRTC-based video streaming with mediasoup SFU (Selective Forwarding Unit).</description>
+        <technology>mediasoup 3.19.11 (WebRTC SFU)</technology>
+        <capacity>100+ concurrent streams</capacity>
+        <resolution>Adaptive (240p - 720p)</resolution>
+        <frame_rate>30 FPS default</frame_rate>
+        <recording>FFmpeg with hardware acceleration (NVENC, QuickSync)</recording>
+        <storage>S3-compatible (AWS S3, MinIO, Cloudflare R2)</storage>
+        <latency>&lt;1 second end-to-end</latency>
+      </video_service>
+
+    </backend_microservices>
+
+    <frontend_application>
+
+      <architecture_overview>
+        <description>The interviewer web application is a modern React SPA.</description>
+        <directory_structure>
+          <directory path="frontend/interviewer-app/src">
+            <subdirectory path="components" purpose="UI components (shadcn/ui + custom)">
+              <subdirectory path="ui" purpose="20+ shadcn/ui primitives"/>
+              <file>VideoPlayer.tsx</file>
+              <file>SecurityEventsDashboard.tsx</file>
+              <file>GazeHeatmap.tsx</file>
+              <file>AIDetectionResults.tsx</file>
+              <file>RealtimeChat.tsx</file>
+            </subdirectory>
+            <subdirectory path="pages" purpose="Route pages">
+              <file>LoginPage.tsx</file>
+              <file>DashboardPage.tsx</file>
+              <file>SessionsPage.tsx</file>
+              <file>SessionDetailPage.tsx</file>
+              <file>SettingsPage.tsx</file>
+            </subdirectory>
+            <subdirectory path="hooks" purpose="Custom React hooks">
+              <file>useAuth.ts</file>
+              <file>useWebSocket.ts</file>
+              <file>useWebRTC.ts</file>
+              <file>useSession.ts</file>
+            </subdirectory>
+            <subdirectory path="stores" purpose="Zustand state management">
+              <file>auth-store.ts</file>
+              <file>session-store.ts</file>
+              <file>realtime-store.ts</file>
+            </subdirectory>
+            <subdirectory path="lib" purpose="Utilities">
+              <file>api-client.ts</file>
+              <file>validations.ts</file>
+              <file>utils.ts</file>
+            </subdirectory>
+          </directory>
+          <file>package.json</file>
+          <file>vite.config.ts</file>
+          <file>tsconfig.json</file>
+        </directory_structure>
+      </architecture_overview>
+
+      <key_features>
+        <feature_group name="Authentication &amp; Session Management">
+          <feature>Login with email/password or OAuth (Google, Microsoft)</feature>
+          <feature>MFA support with TOTP</feature>
+          <feature>Session creation with dynamic questions editor</feature>
+          <feature>Session list with filters, search, and pagination</feature>
+          <feature>Settings page with profile, security, and preferences</feature>
+        </feature_group>
+        <feature_group name="Real-time Features">
+          <feature>WebSocket connection for real-time events</feature>
+          <feature>WebRTC video player with controls</feature>
+          <feature>Security events dashboard with live updates</feature>
+          <feature>Gaze heatmap with canvas rendering</feature>
+          <feature>AI detection results visualization</feature>
+          <feature>Real-time chat with typing indicators</feature>
+        </feature_group>
+      </key_features>
+
+    </frontend_application>
+
+    <chromium_browser>
+
+      <browser_process_security>
+        <description>
+          The browser process implements comprehensive security monitoring that runs with elevated privileges.
+        </description>
+        
+        <class name="BlockedSecurityService" inherits="KeyedService">
+          <header_path>chrome/browser/blocked/blocked_security/blocked_security_service.h</header_path>
+          <public_methods>
+            <method>StartMonitoring()</method>
+            <method>StopMonitoring()</method>
+            <method>AddObserver(SecurityEventObserver* observer)</method>
+            <method>RemoveObserver(SecurityEventObserver* observer)</method>
+          </public_methods>
+          <private_methods>
+            <method>OnMonitoringTick()</method>
+            <method>CheckProcesses()</method>
+            <method>CheckVirtualMachine()</method>
+            <method>CheckWindowFocus()</method>
+            <method>CheckClipboard()</method>
+            <method>CalculateRiskScore()</method>
+          </private_methods>
+          <members>
+            <member type="std::unique_ptr&lt;PlatformSecurityMonitor&gt;">platform_monitor_</member>
+            <member type="std::deque&lt;SecurityEvent&gt;" max="100">recent_events_</member>
+            <member type="base::ObserverList&lt;SecurityEventObserver&gt;">observers_</member>
+            <member type="base::RepeatingTimer" interval="5 seconds">monitoring_timer_</member>
+          </members>
+        </class>
+
+        <platform_specific_detection>
+          <platform name="Windows">
+            <screen_recorders>OBS, Camtasia, Bandicam</screen_recorders>
+            <vms>VMware, VirtualBox, Hyper-V</vms>
+            <remote_access>TeamViewer, AnyDesk</remote_access>
+            <method>Win32 API, CPUID, Registry</method>
+          </platform>
+          <platform name="macOS">
+            <screen_recorders>QuickTime, ScreenFlow, OBS</screen_recorders>
+            <vms>Parallels, VMware Fusion, VirtualBox</vms>
+            <remote_access>TeamViewer, AnyDesk</remote_access>
+            <method>IOKit, sysctl, NSRunningApp</method>
+          </platform>
+          <platform name="Linux">
+            <screen_recorders>OBS, SimpleScreenRecorder, Kazam</screen_recorders>
+            <vms>QEMU/KVM, VirtualBox, VMware</vms>
+            <remote_access>TeamViewer, AnyDesk</remote_access>
+            <method>/proc, DMI, kernel modules</method>
+          </platform>
+        </platform_specific_detection>
+      </browser_process_security>
+
+      <renderer_process_eye_tracking>
+        <description>
+          Eye tracking runs in the sandboxed renderer process, sending data to the browser process via Mojo IPC.
+        </description>
+        
+        <class name="EyeTracker">
+          <header_path>content/renderer/blocked_eye_tracking/eye_tracker.h</header_path>
+          <public_methods>
+            <method>Start()</method>
+            <method>Stop()</method>
+            <method>Calibrate(CalibrationCallback callback)</method>
+          </public_methods>
+          <private_methods>
+            <method>ProcessFrame(const VideoFrame&amp; frame)</method>
+          </private_methods>
+          <members>
+            <member type="std::unique_ptr&lt;FaceDetector&gt;">face_detector_</member>
+            <member type="std::unique_ptr&lt;GazeEstimator&gt;">gaze_estimator_</member>
+            <member type="std::unique_ptr&lt;base::Thread&gt;">worker_thread_</member>
+            <member type="mojo::Remote&lt;mojom::EyeTrackingHost&gt;">host_</member>
+            <member type="Eigen::Matrix3f">calibration_matrix_</member>
+          </members>
+          <constants>
+            <constant name="kTargetFps" value="30"/>
+            <constant name="kFrameIntervalMs" value="33" comment="1000 / kTargetFps"/>
+          </constants>
+        </class>
+
+        <calibration_process>
+          <step number="1">Display 9 calibration points in 3x3 grid</step>
+          <step number="2">User looks at each point for 2 seconds</step>
+          <step number="3">Collect 60 gaze samples per point (30 FPS × 2 seconds)</step>
+          <step number="4">Calculate 3x3 transformation matrix using least squares</step>
+          <step number="5">Validate accuracy (target: &gt;90%)</step>
+          <step number="6">Store calibration in local state</step>
+          <step number="7">Apply to all future gaze estimates</step>
+        </calibration_process>
+      </renderer_process_eye_tracking>
+
+      <platform_distribution>
+        <description>Complete installer and auto-update infrastructure for all platforms.</description>
+        <platform name="Windows">
+          <installer>NSIS (.exe)</installer>
+          <auto_update>Google Omaha</auto_update>
+          <signing>Authenticode</signing>
+        </platform>
+        <platform name="macOS">
+          <installer>DMG + App Bundle</installer>
+          <auto_update>Sparkle Framework</auto_update>
+          <signing>Developer ID + Notarization</signing>
+        </platform>
+        <platform name="Linux">
+          <installer>DEB, RPM, AppImage</installer>
+          <auto_update>Custom HTTP</auto_update>
+          <signing>GPG</signing>
+        </platform>
+      </platform_distribution>
+
+    </chromium_browser>
+
+  </component_specifications>
+
+  <!-- ========================================== -->
+  <!-- SECTION 5: TESTING & CI/CD                -->
+  <!-- ========================================== -->
+  <testing_and_cicd>
+
+    <testing_infrastructure>
+
+      <test_coverage>
+        <test_type name="E2E Tests" tool="Playwright" files="6 spec files" tests="43 scenarios"/>
+        <test_type name="API Tests" tool="Newman/Postman" files="4 collections" tests="22 tests"/>
+        <test_type name="Load Tests" tool="k6" files="3 scenarios" tests="3 scripts"/>
+        <total files="13 files" tests="68+ tests"/>
+      </test_coverage>
+
+      <e2e_test_scenarios>
+        <spec file="interview-flow.spec.ts">
+          <scenario>Complete interview lifecycle (create, join, conduct, end)</scenario>
+        </spec>
+        <spec file="auth.spec.ts">
+          <scenario>Login with email/password</scenario>
+          <scenario>Login with MFA</scenario>
+          <scenario>OAuth flows (Google, Microsoft)</scenario>
+          <scenario>Registration with email verification</scenario>
+        </spec>
+        <spec file="realtime.spec.ts">
+          <scenario>WebSocket connection and reconnection</scenario>
+          <scenario>Real-time security event updates</scenario>
+          <scenario>Gaze data streaming</scenario>
+          <scenario>Chat messaging</scenario>
+        </spec>
+        <spec file="security.spec.ts">
+          <scenario>Process detection simulation</scenario>
+          <scenario>VM detection scenarios</scenario>
+          <scenario>Window focus tracking</scenario>
+          <scenario>Alert generation</scenario>
+        </spec>
+        <spec file="ai-detection.spec.ts">
+          <scenario>Submit human answer</scenario>
+          <scenario>Submit AI-generated answer</scenario>
+          <scenario>Risk score validation</scenario>
+          <scenario>Flag generation</scenario>
+        </spec>
+        <spec file="video.spec.ts">
+          <scenario>WebRTC connection establishment</scenario>
+          <scenario>Video quality adaptation</scenario>
+          <scenario>Recording start/stop</scenario>
+          <scenario>Multiple concurrent streams</scenario>
+        </spec>
+      </e2e_test_scenarios>
+
+      <load_testing>
+        <scenario name="Normal Load" configuration="100 VUs, steady state" target="500 req/min" duration="10 minutes"/>
+        <scenario name="Peak Load" configuration="500 VUs, steady state" target="2000 req/min" duration="5 minutes"/>
+        <scenario name="Stress Test" configuration="0→1000 VUs ramp" target="Find breaking point" duration="10 minutes"/>
+      </load_testing>
+
+    </testing_infrastructure>
+
+    <cicd_automation>
+
+      <github_actions_workflows>
+        <workflow file="test.yml" stages="Lint → Unit Tests (matrix: 9 services) → Integration Tests → E2E Tests"/>
+        <workflow file="build.yml" stages="Docker Build (matrix: 9 services) → Trivy Scan → Push to Registry"/>
+        <workflow file="deploy-staging.yml" stages="Deploy with Helm → Smoke Tests → Newman API Tests"/>
+        <workflow file="deploy-production.yml" stages="Create Green → Smoke Tests → Switch Traffic → Monitor 10min → Cleanup Blue"/>
+        <workflow file="security.yml" stages="Dependency Scan → Code Scan (CodeQL, SonarQube) → Container Scan"/>
+      </github_actions_workflows>
+
+      <deployment_strategy>
+        
+        <staging_deployment>
+          <trigger>Automatic on push to develop branch</trigger>
+          <strategy>Rolling update (max unavailable: 25%)</strategy>
+          <testing>Automated smoke tests + API integration tests</testing>
+          <rollback>Automatic on test failure</rollback>
+        </staging_deployment>
+
+        <production_deployment>
+          <trigger>Manual approval + push to main branch</trigger>
+          <strategy>Blue-green deployment (zero downtime)</strategy>
+          <process>
+            <step number="1">Deploy green environment (parallel to blue)</step>
+            <step number="2">Run comprehensive smoke tests</step>
+            <step number="3">Switch traffic from blue to green</step>
+            <step number="4">Monitor for 10 minutes (CPU, memory, errors, latency)</step>
+            <step number="5">Automatic rollback if health checks fail</step>
+            <step number="6">Cleanup blue environment after 24 hours</step>
+          </process>
+        </production_deployment>
+
+      </deployment_strategy>
+
+      <monitoring_and_alerting>
+        <prometheus_alerts total="16">
+          <alert name="HighErrorRate" condition="Error rate &gt; 1% for 5 minutes" severity="Critical"/>
+          <alert name="HighLatency" condition="p95 latency &gt; 500ms for 5 minutes" severity="Warning"/>
+          <alert name="ServiceDown" condition="Service unavailable for 1 minute" severity="Critical"/>
+          <alert name="DatabasePoolExhausted" condition="Available connections &lt; 10" severity="Critical"/>
+          <alert name="RedisMemoryHigh" condition="Memory usage &gt; 80%" severity="Warning"/>
+          <alert name="PodCPUHigh" condition="CPU usage &gt; 80% for 10 minutes" severity="Warning"/>
+          <alert name="DiskSpaceLow" condition="Disk usage &gt; 85%" severity="Warning"/>
+        </prometheus_alerts>
+      </monitoring_and_alerting>
+
+    </cicd_automation>
+
+  </testing_and_cicd>
+
+  <!-- ========================================== -->
+  <!-- SECTION 6: DEPLOYMENT GUIDE               -->
+  <!-- ========================================== -->
+  <deployment_guide>
+
+    <prerequisites>
+      
+      <prerequisite name="Kubernetes Cluster">
+        <recommendation>AWS EKS, Google GKE, or Azure AKS</recommendation>
+        <minimum>3 nodes (c6i.2xlarge or equivalent)</minimum>
+        <kubernetes_version>1.31+</kubernetes_version>
+      </prerequisite>
+
+      <prerequisite name="Domain &amp; DNS">
+        <requirement>Domain name (e.g., blockd.com)</requirement>
+        <requirement>DNS management (Route 53, CloudFlare, etc.)</requirement>
+        <requirement>SSL/TLS certificates (Let's Encrypt via cert-manager)</requirement>
+      </prerequisite>
+
+      <prerequisite name="External Services">
+        <requirement>AWS S3 or compatible object storage</requirement>
+        <requirement>LLM API keys (OpenAI, Anthropic, Google)</requirement>
+        <requirement>SMTP server for email notifications</requirement>
+        <requirement>OAuth credentials (Google, Microsoft)</requirement>
+      </prerequisite>
+
+      <prerequisite name="Code Signing Certificates">
+        <requirement platform="Windows">EV Code Signing Certificate</requirement>
+        <requirement platform="macOS">Apple Developer ID Certificate</requirement>
+        <requirement platform="Linux">GPG key for package signing</requirement>
+      </prerequisite>
+
+    </prerequisites>
+
+    <infrastructure_provisioning>
+      
+      <terraform_setup>
+        <commands>
+          <command>cd infrastructure/terraform</command>
+          <command description="Initialize Terraform">terraform init</command>
+          <command description="Create production infrastructure">terraform plan -var-file=environments/production/terraform.tfvars</command>
+          <command description="Apply">terraform apply -var-file=environments/production/terraform.tfvars</command>
+        </commands>
+        <outputs>
+          <output>EKS cluster endpoint</output>
+          <output>RDS PostgreSQL endpoint</output>
+          <output>ElastiCache Redis endpoint</output>
+          <output>S3 bucket names</output>
+        </outputs>
+        <modules_provisioned>
+          <module>EKS cluster with auto-scaling node groups</module>
+          <module>RDS PostgreSQL 18 with Multi-AZ replication</module>
+          <module>ElastiCache Redis 8.4 cluster (6 nodes)</module>
+          <module>Amazon MQ RabbitMQ 4.x cluster</module>
+          <module>S3 buckets with lifecycle policies</module>
+          <module>CloudFront CDN distribution</module>
+          <module>VPC with public/private subnets</module>
+          <module>KMS keys for encryption</module>
+        </modules_provisioned>
+      </terraform_setup>
+
+    </infrastructure_provisioning>
+
+    <database_setup>
+      <commands>
+        <command description="Set environment variables">
+          export PGHOST=&lt;rds-endpoint&gt;
+          export PGDATABASE=blockd
+          export PGUSER=postgres
+          export PGPASSWORD=&lt;password&gt;
+        </command>
+        <command description="Run Alembic migrations">
+          cd database
+          alembic upgrade head
+        </command>
+        <command description="Verify tables">psql -c "\dt"</command>
+        <command description="Create TimescaleDB hypertables">psql -f create_hypertables.sql</command>
+        <command description="Seed initial data (optional)">psql -f seed_data.sql</command>
+      </commands>
+    </database_setup>
+
+    <kubernetes_deployment>
+      
+      <install_dependencies>
+        <command description="Install cert-manager for TLS certificates">
+          kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.13.0/cert-manager.yaml
+        </command>
+        <command description="Install External Secrets Operator">
+          kubectl apply -f k8s/external-secrets/external-secrets-operator.yaml
+        </command>
+        <command description="Install Prometheus + Grafana">
+          helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+          helm install monitoring prometheus-community/kube-prometheus-stack -n monitoring --create-namespace
+        </command>
+        <command description="Install Ingress NGINX">
+          helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+          helm install ingress-nginx ingress-nginx/ingress-nginx -n ingress-nginx --create-namespace
+        </command>
+      </install_dependencies>
+
+      <deploy_blockd_platform>
+        <command description="Create namespace">kubectl create namespace production</command>
+        <command description="Create secrets in AWS Secrets Manager">(Database credentials, API keys, JWT keys, etc.)</command>
+        <command description="Configure External Secrets">kubectl apply -f k8s/external-secrets/ -n production</command>
+        <command description="Deploy Blockd platform">
+          helm install blockd k8s/helm/blockd -n production -f k8s/helm/blockd/values-production.yaml
+        </command>
+        <command description="Verify deployment">kubectl get pods -n production</command>
+        <command description="Check ingress">kubectl get ingress -n production</command>
+        <command description="Check logs">kubectl logs -f deployment/api-gateway -n production</command>
+        
+        <helm_chart_deploys>
+          <item>9 microservice deployments with HPA</item>
+          <item>9 Kubernetes services</item>
+          <item>Ingress with TLS termination</item>
+          <item>ConfigMaps and Secrets</item>
+          <item>PersistentVolumeClaims for PostgreSQL</item>
+          <item>NetworkPolicies for security</item>
+        </helm_chart_deploys>
+      </deploy_blockd_platform>
+
+    </kubernetes_deployment>
+
+    <chromium_browser_build>
+      <commands>
+        <command>cd chromium</command>
+        <command description="Setup build environment (100+ GB disk, 16+ GB RAM)">./setup.sh</command>
+        <setup_actions>
+          <action>Install depot_tools</action>
+          <action>Download Chromium source (~30 GB)</action>
+          <action>Install dependencies</action>
+          <action>Configure environment</action>
+        </setup_actions>
+        <command description="Apply Blocked modifications">./patches/apply-patches.sh</command>
+        <command description="Build browser (2-8 hours depending on CPU)">./build.sh --release</command>
+        <build_outputs>
+          <output platform="Windows">out/Blocked/chrome.exe</output>
+          <output platform="macOS">out/Blocked/Chromium.app</output>
+          <output platform="Linux">out/Blocked/chrome</output>
+        </build_outputs>
+        <create_installers>
+          <installer platform="Windows">cd installer/windows &amp;&amp; ./build_installer.bat</installer>
+          <installer platform="macOS">cd ../mac &amp;&amp; ./create_dmg.sh</installer>
+          <installer platform="Linux">cd ../linux &amp;&amp; ./build_appimage.sh</installer>
+        </create_installers>
+      </commands>
+    </chromium_browser_build>
+
+    <post_deployment_verification>
+      <commands>
+        <command description="Check all pods are running">kubectl get pods -n production</command>
+        <command description="Check ingress has external IP">kubectl get ingress -n production</command>
+        <command description="Test API Gateway">curl https://api.blockd.com/api/v1/health</command>
+        <command description="Test authentication">
+          curl -X POST https://api.blockd.com/api/v1/auth/login \
+            -H "Content-Type: application/json" \
+            -d '{"email":"test@example.com","password":"password123"}'
+        </command>
+        <command description="Run smoke tests">cd tests &amp;&amp; npm run test:api -- --env production</command>
+        <command description="Check monitoring">
+          kubectl port-forward -n monitoring svc/monitoring-grafana 3000:80
+          # Open http://localhost:3000
+        </command>
+        <command description="Check logs for errors">kubectl logs -f deployment/api-gateway -n production | grep ERROR</command>
+      </commands>
+    </post_deployment_verification>
+
+  </deployment_guide>
+
+  <!-- ========================================== -->
+  <!-- SECTION 7: SECURITY ARCHITECTURE          -->
+  <!-- ========================================== -->
+  <security_architecture>
+
+    <threat_model>
+      <threats_mitigated>
+        <threat name="AI Assistance">
+          <detection_method>Multi-LLM similarity, perplexity, n-gram</detection_method>
+          <mitigation>Real-time alert, risk score</mitigation>
+        </threat>
+        <threat name="Second Monitor">
+          <detection_method>Eye tracking, off-screen detection</detection_method>
+          <mitigation>Log events, pattern analysis</mitigation>
+        </threat>
+        <threat name="Virtual Machine">
+          <detection_method>CPUID, registry, SMBIOS checks</detection_method>
+          <mitigation>Block session start</mitigation>
+        </threat>
+        <threat name="Screen Recording">
+          <detection_method>Process enumeration, window detection</detection_method>
+          <mitigation>Terminate process or session</mitigation>
+        </threat>
+        <threat name="Window Switching">
+          <detection_method>Window focus monitoring</detection_method>
+          <mitigation>Log all focus changes</mitigation>
+        </threat>
+        <threat name="Clipboard Use">
+          <detection_method>Clipboard monitoring</detection_method>
+          <mitigation>Log paste events</mitigation>
+        </threat>
+        <threat name="Remote Access">
+          <detection_method>Process detection (TeamViewer, etc.)</detection_method>
+          <mitigation>Block session</mitigation>
+        </threat>
+      </threats_mitigated>
+    </threat_model>
+
+    <authentication_security>
+      <item name="Password Hashing">bcrypt with 12 rounds (cost factor)</item>
+      <item name="JWT Tokens">RS256 algorithm, 1-hour expiration</item>
+      <item name="Refresh Tokens">7-day expiration with rotation</item>
+      <item name="MFA">TOTP with 30-second time step, 6-digit codes</item>
+      <item name="OAuth 2.0">Secure delegation with state parameter</item>
+      <item name="Rate Limiting">100 requests/minute per IP (public), 500/minute (authenticated)</item>
+      <item name="Session Security">HttpOnly cookies, SameSite=Strict</item>
+    </authentication_security>
+
+    <data_security>
+      <item name="Encryption at Rest">AES-256 for databases and S3</item>
+      <item name="Encryption in Transit">TLS 1.3 for all HTTPS traffic</item>
+      <item name="PII Protection">Database-level encryption, access logging</item>
+      <item name="Video Retention">Automatic deletion after 90 days</item>
+      <item name="GDPR Compliance">Data export and deletion workflows</item>
+      <item name="Audit Logging">All authentication events, session lifecycle, security events</item>
+    </data_security>
+
+    <network_security>
+      <item name="Network Policies">Kubernetes NetworkPolicies restrict pod-to-pod traffic</item>
+      <item name="Ingress Security">TLS termination, rate limiting, WAF</item>
+      <item name="Service Mesh">Optional Istio for mTLS between services</item>
+      <item name="Secrets Management">External Secrets Operator with AWS Secrets Manager</item>
+      <item name="IRSA">IAM Roles for Service Accounts (pod-level IAM)</item>
+    </network_security>
+
+  </security_architecture>
+
+  <!-- ========================================== -->
+  <!-- SECTION 8: MONITORING & OPERATIONS        -->
+  <!-- ========================================== -->
+  <monitoring_and_operations>
+
+    <metrics_collection>
+      <prometheus_configuration>
+        <scrape_interval>15 seconds</scrape_interval>
+        <retention>15 days</retention>
+        <storage>50 GB persistent volume</storage>
+        <targets>All pods with prometheus.io/scrape: "true" annotation</targets>
+      </prometheus_configuration>
+
+      <key_metrics>
+        <category name="HTTP">
+          <metric>Request rate</metric>
+          <metric>Latency (p50, p95, p99)</metric>
+          <metric>Error rate</metric>
+          <metric>Status codes</metric>
+        </category>
+        <category name="Database">
+          <metric>Connection pool usage</metric>
+          <metric>Query time</metric>
+          <metric>Active connections</metric>
+        </category>
+        <category name="Redis">
+          <metric>Hit rate</metric>
+          <metric>Memory usage</metric>
+          <metric>Eviction rate</metric>
+          <metric>Command latency</metric>
+        </category>
+        <category name="WebSocket">
+          <metric>Active connections</metric>
+          <metric>Messages/second</metric>
+          <metric>Connection errors</metric>
+        </category>
+        <category name="Video">
+          <metric>Active streams</metric>
+          <metric>Bitrate</metric>
+          <metric>Packet loss</metric>
+          <metric>Encoding time</metric>
+        </category>
+        <category name="AI Detection">
+          <metric>Analysis time</metric>
+          <metric>Cache hit rate</metric>
+          <metric>LLM API latency</metric>
+        </category>
+        <category name="Eye Tracking">
+          <metric>Frame rate</metric>
+          <metric>Processing latency</metric>
+          <metric>Off-screen events</metric>
+        </category>
+      </key_metrics>
+    </metrics_collection>
+
+    <grafana_dashboards count="6">
+      <dashboard number="1" name="API Gateway">Request rate, latency, error rate by endpoint</dashboard>
+      <dashboard number="2" name="Database">Connection pool, query time, replication lag</dashboard>
+      <dashboard number="3" name="Redis">Memory usage, hit rate, command distribution</dashboard>
+      <dashboard number="4" name="WebSocket">Connections over time, message throughput, errors</dashboard>
+      <dashboard number="5" name="AI Detection">Analysis time, cache hit rate, risk score distribution</dashboard>
+      <dashboard number="6" name="Video Streaming">Active streams, bitrate, quality metrics</dashboard>
+    </grafana_dashboards>
+
+    <incident_response>
+      
+      <severity_levels>
+        <level sev="SEV1" description="Critical outage" examples="Platform down, data breach" response_time="15 min"/>
+        <level sev="SEV2" description="Major impact" examples="Service degraded, 20% error rate" response_time="1 hour"/>
+        <level sev="SEV3" description="Minor impact" examples="Non-critical feature broken" response_time="4 hours"/>
+        <level sev="SEV4" description="Low impact" examples="Visual bug, minor inconvenience" response_time="24 hours"/>
+      </severity_levels>
+
+      <rollback_procedure>
+        <command description="Rollback to previous Helm release">helm rollback blockd -n production</command>
+        <command description="Or rollback specific deployment">kubectl rollout undo deployment/api-gateway -n production</command>
+        <command description="Verify rollback">kubectl rollout status deployment/api-gateway -n production</command>
+        <command description="Check logs">kubectl logs -f deployment/api-gateway -n production</command>
+      </rollback_procedure>
+
+    </incident_response>
+
+  </monitoring_and_operations>
+
+  <!-- ========================================== -->
+  <!-- SECTION 9: PERFORMANCE BENCHMARKS         -->
+  <!-- ========================================== -->
+  <performance_benchmarks>
+
+    <target_metrics>
+      <metric name="API Response Time (p95)" target="&lt;200ms" measurement="Prometheus"/>
+      <metric name="WebSocket Message Latency" target="&lt;50ms" measurement="Custom instrumentation"/>
+      <metric name="Video Stream Latency" target="&lt;1s" measurement="WebRTC stats"/>
+      <metric name="AI Detection Time" target="&lt;5s" measurement="FastAPI middleware"/>
+      <metric name="Eye Tracking FPS" target="30 FPS" measurement="Renderer metrics"/>
+      <metric name="Database Query Time (p95)" target="&lt;100ms" measurement="pg_stat_statements"/>
+      <metric name="Page Load Time (p75)" target="&lt;2s" measurement="Lighthouse CI"/>
+    </target_metrics>
+
+    <capacity_planning>
+      <baseline_configuration>
+        <capacity>1000 concurrent sessions</capacity>
+        <capacity>100 active interviews simultaneously</capacity>
+        <capacity>10,000 registered users</capacity>
+        <capacity>1 TB video storage per month</capacity>
+      </baseline_configuration>
+
+      <scaling_strategy>
+        <strategy name="Horizontal">HPA scales pods based on CPU (&gt;70%) and memory (&gt;80%)</strategy>
+        <strategy name="Vertical">Increase pod resources for stateful services</strategy>
+        <strategy name="Database">Add read replicas for high query load</strategy>
+        <strategy name="Redis">Add nodes to cluster for more memory</strategy>
+        <strategy name="Storage">Auto-scaling S3 with lifecycle policies</strategy>
+      </scaling_strategy>
+    </capacity_planning>
+
+  </performance_benchmarks>
+
+  <!-- ========================================== -->
+  <!-- APPENDIX A: API REFERENCE                 -->
+  <!-- ========================================== -->
+  <appendix_api_reference>
+
+    <authentication_endpoints>
+
+      <endpoint method="POST" path="/api/v1/auth/register">
+        <description>Register a new user account.</description>
+        <request_body>
+          <field name="email" type="string" example="interviewer@company.com"/>
+          <field name="password" type="string" example="SecurePass123!"/>
+          <field name="full_name" type="string" example="Jane Doe"/>
+          <field name="role" type="string" example="interviewer"/>
+          <field name="organization_id" type="uuid" example="uuid"/>
+        </request_body>
+        <response status="201 Created">
+          <field name="user_id" type="uuid"/>
+          <field name="email" type="string"/>
+          <field name="access_token" type="string" example="eyJhbGc..."/>
+          <field name="refresh_token" type="string"/>
+          <field name="expires_in" type="integer" value="3600"/>
+        </response>
+      </endpoint>
+
+      <endpoint method="POST" path="/api/v1/auth/login">
+        <description>Authenticate user and obtain JWT tokens.</description>
+        <request_body>
+          <field name="email" type="string" example="interviewer@company.com"/>
+          <field name="password" type="string" example="SecurePass123!"/>
+          <field name="mfa_code" type="string" optional="true" example="123456" comment="Required if MFA enabled"/>
+        </request_body>
+        <response status="200 OK">
+          <field name="user_id" type="uuid"/>
+          <field name="access_token" type="string" example="eyJhbGc..."/>
+          <field name="refresh_token" type="string"/>
+          <field name="expires_in" type="integer" value="3600"/>
+        </response>
+      </endpoint>
+
+    </authentication_endpoints>
+
+    <session_management_endpoints>
+
+      <endpoint method="POST" path="/api/v1/sessions">
+        <description>Create a new interview session.</description>
+        <request_body>
+          <field name="interviewee_id" type="uuid"/>
+          <field name="scheduled_start" type="datetime" example="2025-11-25T10:00:00Z"/>
+          <field name="questions" type="array">
+            <item>
+              <field name="question_text" type="string" example="Explain the difference between TCP and UDP"/>
+              <field name="expected_duration_seconds" type="integer" example="180"/>
+              <field name="difficulty" type="string" example="medium"/>
+            </item>
+          </field>
+        </request_body>
+        <response status="201 Created">
+          <field name="session_id" type="uuid"/>
+          <field name="session_token" type="string" description="token_for_interviewee"/>
+          <field name="status" type="string" value="scheduled"/>
+          <field name="join_url" type="string" example="https://blocked.com/join/token"/>
+        </response>
+      </endpoint>
+
+    </session_management_endpoints>
+
+  </appendix_api_reference>
+
+  <!-- ========================================== -->
+  <!-- APPENDIX B: CONFIGURATION REFERENCE       -->
+  <!-- ========================================== -->
+  <appendix_configuration_reference>
+
+    <environment_variables>
+      <variable name="NODE_ENV" description="Environment: development, staging, production"/>
+      <variable name="API_PORT" description="API Gateway port (default: 8000)"/>
+      <variable name="DATABASE_URL" description="PostgreSQL connection string"/>
+      <variable name="REDIS_URL" description="Redis connection string"/>
+      <variable name="RABBITMQ_URL" description="RabbitMQ connection string"/>
+      <variable name="JWT_PRIVATE_KEY" description="RS256 private key for signing JWTs"/>
+      <variable name="JWT_PUBLIC_KEY" description="RS256 public key for verifying JWTs"/>
+      <variable name="OPENAI_API_KEY" description="OpenAI API key for GPT-4"/>
+      <variable name="ANTHROPIC_API_KEY" description="Anthropic API key for Claude"/>
+      <variable name="GOOGLE_AI_API_KEY" description="Google API key for Gemini"/>
+      <variable name="AWS_ACCESS_KEY_ID" description="AWS credentials for S3"/>
+      <variable name="AWS_SECRET_ACCESS_KEY" description="AWS secret key"/>
+      <variable name="S3_BUCKET_NAME" description="S3 bucket for video storage"/>
+    </environment_variables>
+
+  </appendix_configuration_reference>
+
+  <!-- ========================================== -->
+  <!-- APPENDIX C: TROUBLESHOOTING               -->
+  <!-- ========================================== -->
+  <appendix_troubleshooting>
+
+    <common_issues>
+
+      <issue name="API Gateway Returns 502 Bad Gateway">
+        <symptoms>API requests fail with 502 status code</symptoms>
+        <possible_causes>
+          <cause>Backend service is down</cause>
+          <cause>Database connection pool exhausted</cause>
+          <cause>Network policy blocking traffic</cause>
+        </possible_causes>
+        <solutions>
+          <solution>
+            <command description="Check pod status">kubectl get pods -n production</command>
+            <command description="Check logs">kubectl logs -f deployment/api-gateway -n production</command>
+            <command description="Check database connections">
+              kubectl exec -it deployment/api-gateway -n production -- \
+                psql $DATABASE_URL -c "SELECT count(*) FROM pg_stat_activity;"
+            </command>
+            <command description="Restart deployment if needed">kubectl rollout restart deployment/api-gateway -n production</command>
+          </solution>
+        </solutions>
+      </issue>
+
+      <issue name="Eye Tracking Not Working">
+        <symptoms>No gaze data received from browser</symptoms>
+        <possible_causes>
+          <cause>Camera permission denied</cause>
+          <cause>MediaPipe models not loaded</cause>
+          <cause>Calibration not performed</cause>
+        </possible_causes>
+        <solutions>
+          <solution>
+            <step number="1">Check browser console for errors</step>
+            <step number="2">Verify camera permission granted</step>
+            <step number="3">Run calibration process (9-point grid)</step>
+            <step number="4">Check MediaPipe model files are present</step>
+          </solution>
+        </solutions>
+      </issue>
+
+    </common_issues>
+
+  </appendix_troubleshooting>
+
+  <!-- ========================================== -->
+  <!-- APPENDIX D: GLOSSARY                      -->
+  <!-- ========================================== -->
+  <appendix_glossary>
+    <term name="API Gateway">Centralized entry point for all client requests, handles routing and authentication</term>
+    <term name="Chromium Fork">Custom version of Chromium browser with embedded security features</term>
+    <term name="HPA">Horizontal Pod Autoscaler - Kubernetes feature for auto-scaling pods</term>
+    <term name="JWT">JSON Web Token - Token-based authentication mechanism</term>
+    <term name="MediaPipe">Google's framework for building multimodal ML pipelines</term>
+    <term name="mediasoup">WebRTC Selective Forwarding Unit (SFU) for video streaming</term>
+    <term name="Mojo">Chromium's IPC system for communication between processes</term>
+    <term name="pgvector">PostgreSQL extension for storing and querying vector embeddings</term>
+    <term name="SFU">Selective Forwarding Unit - Video routing architecture</term>
+    <term name="TimescaleDB">PostgreSQL extension optimized for time-series data</term>
+    <term name="TOTP">Time-based One-Time Password - MFA authentication method</term>
+    <term name="WebRTC">Web Real-Time Communication - Peer-to-peer communication protocol</term>
+    <term name="XGBoost">Gradient boosting framework used for AI detection classification</term>
+  </appendix_glossary>
+
+  <!-- ========================================== -->
+  <!-- APPENDIX E: REFERENCES                    -->
+  <!-- ========================================== -->
+  <appendix_references>
+    <reference number="1" name="Chromium Development Documentation" url="https://www.chromium.org/developers/"/>
+    <reference number="2" name="MediaPipe Documentation" url="https://developers.google.com/mediapipe"/>
+    <reference number="3" name="PostgreSQL 18 Documentation" url="https://www.postgresql.org/docs/18/"/>
+    <reference number="4" name="TimescaleDB Documentation" url="https://docs.timescale.com/"/>
+    <reference number="5" name="Kubernetes Documentation" url="https://kubernetes.io/docs/"/>
+    <reference number="6" name="Fastify Documentation" url="https://www.fastify.io/"/>
+    <reference number="7" name="React 19 Documentation" url="https://react.dev/"/>
+    <reference number="8" name="mediasoup Documentation" url="https://mediasoup.org/documentation/"/>
+  </appendix_references>
+
+  <!-- ========================================== -->
+  <!-- APPENDIX F: VERSION HISTORY               -->
+  <!-- ========================================== -->
+  <appendix_version_history>
+    <version number="1.0.0" date="2025-11-24">
+      <change>Initial release - Complete system documentation</change>
+    </version>
+  </appendix_version_history>
+
+</blockd_platform>

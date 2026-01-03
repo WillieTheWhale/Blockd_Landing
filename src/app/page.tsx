@@ -1,65 +1,123 @@
-import Image from "next/image";
+'use client';
+
+import dynamic from 'next/dynamic';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { WaitlistProvider } from '@/contexts/waitlist-context';
+import { WaitlistModal } from '@/components/ui/waitlist-modal';
+import { Navigation } from '@/components/layout/navigation';
+import { Footer } from '@/components/layout/footer';
+import { HeroSection } from '@/components/sections/hero-section';
+import { ProblemSection } from '@/components/sections/problem-section';
+import { GazeSection } from '@/components/sections/gaze-section';
+import { AIDetectionSection } from '@/components/sections/ai-detection-section';
+import { SecuritySection } from '@/components/sections/security-section';
+import { ReportSection } from '@/components/sections/report-section';
+import { ArchitectureSection } from '@/components/sections/architecture-section';
+import { ScaleSection } from '@/components/sections/scale-section';
+import { CTASection } from '@/components/sections/cta-section';
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DYNAMIC IMPORTS FOR CLIENT-SIDE ONLY COMPONENTS
+// ═══════════════════════════════════════════════════════════════════════════
+
+const ParticleField = dynamic(
+  () => import('@/components/three/particle-field').then((mod) => mod.ParticleField),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
+
+const ScrollProgress = dynamic(
+  () => import('@/components/effects/scroll-progress').then((mod) => mod.ScrollProgress),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
+
+const CursorGlow = dynamic(
+  () => import('@/components/effects/cursor-glow').then((mod) => mod.CursorGlow),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MAIN PAGE COMPONENT
+// ═══════════════════════════════════════════════════════════════════════════
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <WaitlistProvider>
+      <TooltipProvider>
+        {/* Waitlist Modal */}
+        <WaitlistModal />
+
+        {/* Three.js Background */}
+        <ParticleField />
+
+        {/* Scroll Progress Indicator */}
+        <ScrollProgress />
+
+        {/* Cursor Glow Effect */}
+        <CursorGlow />
+
+        {/* Navigation */}
+        <Navigation />
+
+        {/* Main Content */}
+        <main id="main-content" className="relative z-10">
+          {/* Hero Section */}
+          <section id="hero">
+            <HeroSection />
+          </section>
+
+          {/* Problem / Detection Comparison */}
+          <section id="problem">
+            <ProblemSection />
+          </section>
+
+          {/* Gaze Intelligence */}
+          <section id="gaze">
+            <GazeSection />
+          </section>
+
+          {/* AI Detection */}
+          <section id="ai-detection">
+            <AIDetectionSection />
+          </section>
+
+          {/* Security Monitoring */}
+          <section id="security">
+            <SecuritySection />
+          </section>
+
+          {/* Evidence Reports */}
+          <section id="report">
+            <ReportSection />
+          </section>
+
+          {/* Architecture & Technology Stack */}
+          <section id="architecture">
+            <ArchitectureSection />
+          </section>
+
+          {/* Enterprise Scale & Integration */}
+          <section id="scale">
+            <ScaleSection />
+          </section>
+
+          {/* Final CTA */}
+          <section id="cta">
+            <CTASection />
+          </section>
+        </main>
+
+        {/* Footer */}
+        <Footer />
+      </TooltipProvider>
+    </WaitlistProvider>
   );
 }
