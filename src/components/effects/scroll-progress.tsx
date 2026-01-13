@@ -34,7 +34,7 @@ export function ScrollProgress() {
   });
 
   // Get active section color
-  const sectionColor = SECTION_COLORS[activeSection] || '#3B82F6';
+  const sectionColor = SECTION_COLORS[activeSection] || '#687193';
 
   if (prefersReducedMotion) {
     return (
@@ -74,7 +74,7 @@ export function ScrollProgress() {
         <div className="flex flex-col gap-2 items-start">
           {Object.entries(SECTION_NAMES).map(([id, name]) => {
             const isActive = id === activeSection;
-            const color = SECTION_COLORS[id] || '#3B82F6';
+            const color = SECTION_COLORS[id] || '#687193';
 
             return (
               <motion.a

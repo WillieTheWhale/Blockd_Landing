@@ -25,7 +25,7 @@ export function CursorGlow() {
   const x = useSpring(mouseX, springConfig);
   const y = useSpring(mouseY, springConfig);
 
-  const color = SECTION_COLORS[activeSection] || '#3B82F6';
+  const color = SECTION_COLORS[activeSection] || '#687193';
 
   useEffect(() => {
     if (prefersReducedMotion) return;

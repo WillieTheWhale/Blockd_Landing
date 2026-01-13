@@ -21,9 +21,9 @@ interface SimilarityChartProps {
 }
 
 function getBarColor(value: number): string {
-  if (value < 40) return '#22C55E';
-  if (value < 70) return '#FBBF24';
-  return '#EF4444';
+  if (value < 40) return '#4ADE80'; // low risk - green
+  if (value < 70) return '#FBBF24'; // medium - amber
+  return '#F87171'; // high risk - red
 }
 
 interface BarProps {
@@ -153,8 +153,8 @@ export function DetectionComparisonChart({ data, className }: DetectionCompariso
                 <motion.div
                   className="h-full rounded"
                   style={{
-                    background: 'linear-gradient(90deg, #3B82F6 0%, #22C55E 100%)',
-                    boxShadow: '0 0 20px rgba(59, 130, 246, 0.4)',
+                    background: 'linear-gradient(90deg, #687193 0%, #4ADE80 100%)',
+                    boxShadow: '0 0 20px rgba(104, 113, 147, 0.4)',
                   }}
                   initial={{ width: 0 }}
                   whileInView={{ width: `${item.blockd}%` }}

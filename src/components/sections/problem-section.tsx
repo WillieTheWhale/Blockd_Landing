@@ -39,9 +39,9 @@ function StatCallout() {
         className="text-6xl md:text-7xl font-mono font-bold text-blockd-accent tabular-nums relative"
         animate={{
           textShadow: [
-            '0 0 20px rgba(59, 130, 246, 0.3)',
-            '0 0 40px rgba(59, 130, 246, 0.5)',
-            '0 0 20px rgba(59, 130, 246, 0.3)',
+            '0 0 20px rgba(104, 113, 147, 0.3)',
+            '0 0 40px rgba(104, 113, 147, 0.5)',
+            '0 0 20px rgba(104, 113, 147, 0.3)',
           ],
         }}
         transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}

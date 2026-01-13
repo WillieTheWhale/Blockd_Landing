@@ -35,17 +35,17 @@ const SECTION_IDS = [
   'cta',
 ];
 
-// Color palette for section-aware effects
+// Color palette for section-aware effects - Light mode (darker colors)
 export const SECTION_COLORS: Record<string, string> = {
-  hero: '#3B82F6',
-  problem: '#6366F1',
-  gaze: '#8B5CF6',
-  'ai-detection': '#A855F7',
-  security: '#3B82F6',
-  report: '#0EA5E9',
-  architecture: '#06B6D4',
-  scale: '#3B82F6',
-  cta: '#2563EB',
+  hero: '#36454F',      // dark slate
+  problem: '#4A5A6A',   // medium slate
+  gaze: '#5A6A7A',      // slate
+  'ai-detection': '#687193', // slate blue
+  security: '#36454F',  // dark slate
+  report: '#4A5A6A',    // medium slate
+  architecture: '#5A6A7A', // slate
+  scale: '#36454F',     // dark slate
+  cta: '#01101B',       // black blue
 };
 
 // PERFORMANCE: Cache for section elements to avoid repeated DOM queries
@@ -186,5 +186,5 @@ export function useScrollSection() {
 // Hook to get current section color
 export function useSectionColor() {
   const { activeSection } = useScrollSection();
-  return SECTION_COLORS[activeSection] || '#3B82F6';
+  return SECTION_COLORS[activeSection] || '#36454F';
 }

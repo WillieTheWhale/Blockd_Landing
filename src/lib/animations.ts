@@ -241,13 +241,13 @@ export const pageLoadSequence = {
 
 export const glowPulseVariants: Variants = {
   initial: {
-    boxShadow: '0 0 20px rgba(59, 130, 246, 0.2)',
+    boxShadow: '0 0 20px rgba(104, 113, 147, 0.2)',
   },
   animate: {
     boxShadow: [
-      '0 0 20px rgba(59, 130, 246, 0.2)',
-      '0 0 40px rgba(59, 130, 246, 0.4)',
-      '0 0 20px rgba(59, 130, 246, 0.2)',
+      '0 0 20px rgba(104, 113, 147, 0.2)',
+      '0 0 40px rgba(104, 113, 147, 0.4)',
+      '0 0 20px rgba(104, 113, 147, 0.2)',
     ],
     transition: {
       duration: 3,

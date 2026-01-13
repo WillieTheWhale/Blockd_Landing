@@ -60,7 +60,7 @@ export function MiniHeatmap({ className }: MiniHeatmapProps) {
     ctx.clearRect(0, 0, rect.width, rect.height);
 
     // Draw background
-    ctx.fillStyle = '#0F172A';
+    ctx.fillStyle = '#01101B';
     ctx.fillRect(0, 0, rect.width, rect.height);
 
     // Draw screen boundary
@@ -77,9 +77,9 @@ export function MiniHeatmap({ className }: MiniHeatmapProps) {
       const y = padding + point.y * (rect.height - padding * 2);
 
       const gradient = ctx.createRadialGradient(x, y, 0, x, y, point.r);
-      gradient.addColorStop(0, 'rgba(59, 130, 246, 0.7)');
-      gradient.addColorStop(0.5, 'rgba(59, 130, 246, 0.2)');
-      gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+      gradient.addColorStop(0, 'rgba(104, 113, 147, 0.7)');
+      gradient.addColorStop(0.5, 'rgba(104, 113, 147, 0.2)');
+      gradient.addColorStop(1, 'rgba(104, 113, 147, 0)');
 
       ctx.globalCompositeOperation = 'lighter';
       ctx.fillStyle = gradient;

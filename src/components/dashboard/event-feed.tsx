@@ -26,9 +26,9 @@ const sampleEvents: Omit<MiniEvent, 'id'>[] = [
 ];
 
 const severityColors = {
-  info: '#3B82F6',
+  info: '#687193',
   warning: '#FBBF24',
-  critical: '#EF4444',
+  critical: '#F87171',
 };
 
 const severityIcons = {

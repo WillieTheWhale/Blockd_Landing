@@ -11,17 +11,17 @@ import { useReducedMotion } from '@/hooks/use-reduced-motion';
 // Section-aware with color transitions and enhanced morphing
 // ═══════════════════════════════════════════════════════════════════════════
 
-// Section color palette for smooth transitions
+// Section color palette for smooth transitions - Light mode (darker particles)
 const SECTION_COLOR_STOPS = [
-  { progress: 0.0, color: new THREE.Color('#3B82F6') },   // hero - blue
-  { progress: 0.12, color: new THREE.Color('#6366F1') },  // problem - indigo
-  { progress: 0.25, color: new THREE.Color('#8B5CF6') },  // gaze - violet
-  { progress: 0.38, color: new THREE.Color('#A855F7') },  // ai-detection - purple
-  { progress: 0.50, color: new THREE.Color('#3B82F6') },  // security - blue
-  { progress: 0.62, color: new THREE.Color('#0EA5E9') },  // report - sky
-  { progress: 0.75, color: new THREE.Color('#06B6D4') },  // architecture - cyan
-  { progress: 0.88, color: new THREE.Color('#3B82F6') },  // scale - blue
-  { progress: 1.0, color: new THREE.Color('#2563EB') },   // cta - electric blue
+  { progress: 0.0, color: new THREE.Color('#36454F') },   // hero - dark slate
+  { progress: 0.12, color: new THREE.Color('#4A5A6A') },  // problem
+  { progress: 0.25, color: new THREE.Color('#5A6A7A') },  // gaze
+  { progress: 0.38, color: new THREE.Color('#36454F') },  // ai-detection - slate blue
+  { progress: 0.50, color: new THREE.Color('#36454F') },  // security - dark slate
+  { progress: 0.62, color: new THREE.Color('#4A5A6A') },  // report
+  { progress: 0.75, color: new THREE.Color('#5A6A7A') },  // architecture
+  { progress: 0.88, color: new THREE.Color('#36454F') },  // scale - dark slate
+  { progress: 1.0, color: new THREE.Color('#01101B') },   // cta - black blue
 ];
 
 // PERFORMANCE: Pre-allocated color object to avoid creating new objects every frame
@@ -187,7 +187,7 @@ function Particles({ count = 3000, interactionRef }: ParticlesProps) {
   // Smooth interpolation values
   const smoothMouse = useRef({ x: 0, y: 0 });
   const smoothScroll = useRef(0);
-  const currentColor = useRef(new THREE.Color('#3B82F6'));
+  const currentColor = useRef(new THREE.Color('#36454F'));
 
   useFrame((state) => {
     if (prefersReducedMotion || !pointsRef.current) return;
@@ -263,7 +263,7 @@ function Particles({ count = 3000, interactionRef }: ParticlesProps) {
       <PointMaterial
         ref={materialRef}
         transparent
-        color="#3B82F6"
+        color="#36454F"
         size={0.04}
         sizeAttenuation={true}
         depthWrite={false}
@@ -291,9 +291,9 @@ function GlowingOrb({ interactionRef }: GlowingOrbProps) {
 
   const smoothMouse = useRef({ x: 0, y: 0 });
   const smoothScroll = useRef(0);
-  const currentColor = useRef(new THREE.Color('#3B82F6'));
+  const currentColor = useRef(new THREE.Color('#36454F'));
   // PERFORMANCE: Pre-allocated color for inner orb to avoid clone() every frame
-  const lightColor = useRef(new THREE.Color('#60A5FA'));
+  const lightColor = useRef(new THREE.Color('#9099BB'));
 
   useFrame((state) => {
     if (prefersReducedMotion || !meshRef.current) return;
@@ -346,7 +346,7 @@ function GlowingOrb({ interactionRef }: GlowingOrbProps) {
         <sphereGeometry args={[2, 64, 64]} />
         <meshBasicMaterial
           ref={outerMaterialRef}
-          color="#3B82F6"
+          color="#36454F"
           transparent
           opacity={0.08}
         />
@@ -355,7 +355,7 @@ function GlowingOrb({ interactionRef }: GlowingOrbProps) {
           <sphereGeometry args={[0.8, 32, 32]} />
           <meshBasicMaterial
             ref={innerMaterialRef}
-            color="#60A5FA"
+            color="#9099BB"
             transparent
             opacity={0.15}
           />
@@ -384,7 +384,7 @@ function ConnectionLines({ interactionRef }: ConnectionLinesProps) {
     for (let i = 0; i < 20; i++) {
       const geometry = new THREE.BufferGeometry();
       const material = new THREE.LineBasicMaterial({
-        color: '#3B82F6',
+        color: '#36454F',
         transparent: true,
         opacity: 0.2,
       });
@@ -484,7 +484,7 @@ function DataStreamRings({ interactionRef }: DataStreamRingsProps) {
 
       geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
       const material = new THREE.LineBasicMaterial({
-        color: '#3B82F6',
+        color: '#36454F',
         transparent: true,
         opacity: 0,
       });
@@ -543,12 +543,12 @@ interface SceneProps {
 function Scene({ interactionRef }: SceneProps) {
   return (
     <>
-      <color attach="background" args={['#0F172A']} />
-      <fog attach="fog" args={['#0F172A', 8, 35]} />
+      <color attach="background" args={['#F3F6FB']} />
+      <fog attach="fog" args={['#F3F6FB', 8, 35]} />
 
       <ambientLight intensity={0.4} />
-      <pointLight position={[10, 10, 10]} intensity={0.4} color="#3B82F6" />
-      <pointLight position={[-10, -10, 5]} intensity={0.2} color="#60A5FA" />
+      <pointLight position={[10, 10, 10]} intensity={0.4} color="#36454F" />
+      <pointLight position={[-10, -10, 5]} intensity={0.2} color="#9099BB" />
 
       <Particles count={2500} interactionRef={interactionRef} />
       <GlowingOrb interactionRef={interactionRef} />

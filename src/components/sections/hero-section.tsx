@@ -100,8 +100,8 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center pt-[72px] overflow-hidden">
       {/* Background effects */}
       <GridPattern className="opacity-50" />
-      <StaticSpotlight position="top-right" size={1000} color="rgba(59, 130, 246, 0.08)" />
-      <StaticSpotlight position="bottom-left" size={800} color="rgba(59, 130, 246, 0.05)" />
+      <StaticSpotlight position="top-right" size={1000} color="rgba(104, 113, 147, 0.08)" />
+      <StaticSpotlight position="bottom-left" size={800} color="rgba(104, 113, 147, 0.05)" />
 
       <Container className="py-16 md:py-20 lg:py-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -177,7 +177,7 @@ export function HeroSection() {
               animate={{ opacity: 0.3 }}
               transition={{ delay: 1, duration: 1 }}
               style={{
-                background: 'radial-gradient(circle at center, rgba(59, 130, 246, 0.3) 0%, transparent 70%)',
+                background: 'radial-gradient(circle at center, rgba(104, 113, 147, 0.2) 0%, transparent 70%)',
               }}
             />
           </div>

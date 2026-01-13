@@ -243,9 +243,9 @@ export function GazeHeatmap({ normalData, suspiciousData, className }: GazeHeatm
 
       // Background gradient
       const bgGradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
-      bgGradient.addColorStop(0, '#0A0F1A');
-      bgGradient.addColorStop(0.5, '#0F172A');
-      bgGradient.addColorStop(1, '#0A0F1A');
+      bgGradient.addColorStop(0, '#000810');
+      bgGradient.addColorStop(0.5, '#01101B');
+      bgGradient.addColorStop(1, '#000810');
       ctx.fillStyle = bgGradient;
       ctx.fillRect(0, 0, rect.width, rect.height);
 
@@ -272,9 +272,9 @@ export function GazeHeatmap({ normalData, suspiciousData, className }: GazeHeatm
       }
 
       // Screen boundary glow
-      ctx.shadowColor = 'rgba(59, 130, 246, 0.3)';
+      ctx.shadowColor = 'rgba(104, 113, 147, 0.3)';
       ctx.shadowBlur = 15;
-      ctx.strokeStyle = 'rgba(59, 130, 246, 0.4)';
+      ctx.strokeStyle = 'rgba(104, 113, 147, 0.4)';
       ctx.lineWidth = 1;
       ctx.strokeRect(screenX, screenY, screenWidth, screenHeight);
       ctx.shadowBlur = 0;
@@ -326,10 +326,10 @@ export function GazeHeatmap({ normalData, suspiciousData, className }: GazeHeatm
         gradient.addColorStop(0.7, `rgba(239, 68, 68, ${0.08 * intensity})`);
         gradient.addColorStop(1, 'rgba(239, 68, 68, 0)');
       } else {
-        gradient.addColorStop(0, `rgba(59, 130, 246, ${0.35 * intensity})`);
-        gradient.addColorStop(0.4, `rgba(96, 165, 250, ${0.18 * intensity})`);
-        gradient.addColorStop(0.7, `rgba(59, 130, 246, ${0.06 * intensity})`);
-        gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+        gradient.addColorStop(0, `rgba(104, 113, 147, ${0.35 * intensity})`);
+        gradient.addColorStop(0.4, `rgba(144, 153, 187, ${0.18 * intensity})`);
+        gradient.addColorStop(0.7, `rgba(104, 113, 147, ${0.06 * intensity})`);
+        gradient.addColorStop(1, 'rgba(104, 113, 147, 0)');
       }
 
       // Use additive blending for heat accumulation

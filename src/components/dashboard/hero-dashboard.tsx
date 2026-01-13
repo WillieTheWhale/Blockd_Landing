@@ -57,7 +57,7 @@ export function HeroDashboard({ className }: HeroDashboardProps) {
       className={cn(
         'glass-panel--foreground',
         'p-6 rounded-2xl',
-        'shadow-[0_20px_60px_rgba(0,0,0,0.4)]',
+        'shadow-[0_20px_60px_rgba(0,0,0,0.15)]',
         'glow-pulse',
         className
       )}

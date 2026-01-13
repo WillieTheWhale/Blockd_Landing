@@ -25,20 +25,20 @@ interface ButtonProps {
 
 const variantStyles = {
   primary: cn(
-    'bg-gradient-to-br from-blockd-accent to-blue-600 text-blockd-light',
-    'shadow-[0_4px_14px_rgba(59,130,246,0.4)]',
-    'hover:shadow-[0_6px_20px_rgba(59,130,246,0.5)]',
-    'active:shadow-[0_2px_8px_rgba(59,130,246,0.3)]',
+    'bg-gradient-to-br from-blockd-accent to-blockd-light text-blockd-void',
+    'shadow-[0_4px_14px_rgba(1,16,27,0.3)]',
+    'hover:shadow-[0_6px_20px_rgba(1,16,27,0.4)]',
+    'active:shadow-[0_2px_8px_rgba(1,16,27,0.2)]',
     'relative overflow-hidden'
   ),
   secondary: cn(
-    'bg-transparent text-blockd-muted',
-    'border border-blockd-muted/30',
-    'hover:border-blockd-accent hover:text-blockd-light hover:bg-blockd-accent/10',
+    'bg-transparent text-blockd-accent',
+    'border border-blockd-accent/30',
+    'hover:border-blockd-light hover:text-blockd-light hover:bg-blockd-light/5',
     'relative overflow-hidden'
   ),
   text: cn(
-    'bg-transparent text-blockd-muted',
+    'bg-transparent text-blockd-accent',
     'hover:text-blockd-light hover:underline underline-offset-4'
   ),
 };

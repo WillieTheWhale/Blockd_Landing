@@ -202,7 +202,7 @@ function ScanAnimation({ children, delay = 0 }: { children: string; delay?: numb
       {/* Scan line */}
       <motion.span
         className="absolute top-0 bottom-0 w-[2px] bg-blockd-accent"
-        style={{ boxShadow: '0 0 20px rgba(59, 130, 246, 0.8)' }}
+        style={{ boxShadow: '0 0 20px rgba(104, 113, 147, 0.8)' }}
         initial={{ left: 0, opacity: 0 }}
         animate={{ left: '100%', opacity: [0, 1, 1, 0] }}
         transition={{ duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] }}

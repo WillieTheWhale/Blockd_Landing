@@ -81,7 +81,7 @@ export function Spotlight({ className, size = 600 }: SpotlightProps) {
           height: size,
           left: position.x - size / 2,
           top: position.y - size / 2,
-          background: `radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%)`,
+          background: `radial-gradient(circle at center, rgba(104, 113, 147, 0.12) 0%, transparent 70%)`,
         }}
         animate={{
           opacity: isVisible ? 1 : 0,
@@ -112,7 +112,7 @@ const positionStylesMap = {
 
 export const StaticSpotlight = memo(function StaticSpotlight({
   position = 'center',
-  color = 'rgba(59, 130, 246, 0.1)',
+  color = 'rgba(104, 113, 147, 0.1)',
   size = 800,
   className,
 }: StaticSpotlightProps) {

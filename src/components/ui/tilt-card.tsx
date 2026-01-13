@@ -23,7 +23,7 @@ export function TiltCard({
   className,
   glareEnabled = true,
   tiltAmount = 10,
-  glowColor = 'rgba(59, 130, 246, 0.3)',
+  glowColor = 'rgba(104, 113, 147, 0.3)',
 }: TiltCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();

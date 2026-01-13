@@ -15,7 +15,7 @@ interface ScanLineProps {
 
 export function ScanLine({
   className,
-  color = '#3B82F6',
+  color = '#687193',
   duration = 10,
 }: ScanLineProps) {
   const prefersReducedMotion = useReducedMotion();

@@ -10,27 +10,15 @@ import { NAV_LINKS } from '@/lib/constants';
 import { Container } from './container';
 import { Button } from '@/components/ui/button';
 import { useWaitlist } from '@/contexts/waitlist-context';
+import { LogoLink } from '@/components/branding';
 
 // ═══════════════════════════════════════════════════════════════════════════
-// LOGO COMPONENT
+// LOGO COMPONENT - Now using centralized branding component
 // ═══════════════════════════════════════════════════════════════════════════
 
 function Logo() {
   return (
-    <a href="/" className="flex items-center gap-2 group">
-      {/* Logo mark - stylized B */}
-      <div className="relative w-9 h-9 flex items-center justify-center">
-        <div className="absolute inset-0 bg-blockd-accent rounded-lg opacity-20 group-hover:opacity-30 transition-opacity" />
-        <div className="absolute inset-0 bg-gradient-to-br from-blockd-accent to-blue-600 rounded-lg opacity-80" />
-        <span className="relative font-display font-bold text-xl text-white">B</span>
-        {/* Glow effect */}
-        <div className="absolute inset-0 rounded-lg glow-pulse opacity-50" />
-      </div>
-      {/* Wordmark */}
-      <span className="font-display font-bold text-xl text-blockd-light tracking-tight">
-        Blockd
-      </span>
-    </a>
+    <LogoLink href="/" height={50} />
   );
 }
 
@@ -54,7 +42,7 @@ function MobileMenu({ isOpen, onClose, onOpenWaitlist }: MobileMenuProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 z-40"
+            className="fixed inset-0 bg-blockd-light/60 z-40"
             onClick={onClose}
           />
 

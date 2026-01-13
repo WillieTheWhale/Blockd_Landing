@@ -17,10 +17,10 @@ interface RiskGaugeProps {
 }
 
 function getRiskLevel(value: number): { label: string; color: string; glowColor: string } {
-  if (value < 0.5) return { label: 'MINIMAL', color: '#3B82F6', glowColor: 'rgba(59, 130, 246, 0.5)' };
-  if (value < 0.7) return { label: 'LOW', color: '#22C55E', glowColor: 'rgba(34, 197, 94, 0.5)' };
+  if (value < 0.5) return { label: 'MINIMAL', color: '#687193', glowColor: 'rgba(104, 113, 147, 0.5)' };
+  if (value < 0.7) return { label: 'LOW', color: '#4ADE80', glowColor: 'rgba(74, 222, 128, 0.5)' };
   if (value < 0.85) return { label: 'MEDIUM', color: '#FBBF24', glowColor: 'rgba(251, 191, 36, 0.5)' };
-  return { label: 'HIGH', color: '#EF4444', glowColor: 'rgba(239, 68, 68, 0.5)' };
+  return { label: 'HIGH', color: '#F87171', glowColor: 'rgba(248, 113, 113, 0.5)' };
 }
 
 export function RiskGauge({ value, size = 200, className }: RiskGaugeProps) {
@@ -84,10 +84,10 @@ export function RiskGauge({ value, size = 200, className }: RiskGaugeProps) {
         {/* Definitions for gradients and filters */}
         <defs>
           <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#3B82F6" />
-            <stop offset="40%" stopColor="#22C55E" />
+            <stop offset="0%" stopColor="#687193" />
+            <stop offset="40%" stopColor="#4ADE80" />
             <stop offset="70%" stopColor="#FBBF24" />
-            <stop offset="100%" stopColor="#EF4444" />
+            <stop offset="100%" stopColor="#F87171" />
           </linearGradient>
 
           <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">

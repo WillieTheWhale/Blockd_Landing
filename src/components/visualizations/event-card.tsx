@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   MonitorPlay,
   Clipboard,
@@ -15,21 +15,20 @@ import { cn } from '@/lib/cn';
 import { SecurityEvent, EventSeverity, EventType } from '@/types';
 import { formatFullTimestamp } from '@/data/security-events';
 import { cardVariants } from '@/lib/animations';
+import { highlightedEventVariants, getHighlightGlow } from '@/lib/timeline-animations';
+import { SEVERITY_COLORS } from '@/lib/severity-colors';
 
 // ═══════════════════════════════════════════════════════════════════════════
 // SECURITY EVENT CARD COMPONENT
+// Displays a single security event with optional highlight state
 // ═══════════════════════════════════════════════════════════════════════════
 
 interface SecurityEventCardProps {
   event: SecurityEvent;
+  isHighlighted?: boolean;
+  onSeek?: (timestamp: number) => void;
   className?: string;
 }
-
-const severityColors: Record<EventSeverity, string> = {
-  info: '#3B82F6',
-  warning: '#FBBF24',
-  critical: '#EF4444',
-};
 
 const severityIcons: Record<EventSeverity, typeof Info> = {
   info: Info,
@@ -45,30 +44,46 @@ const typeIcons: Record<EventType, typeof AppWindow> = {
   vm_detected: Cpu,
 };
 
-export function SecurityEventCard({ event, className }: SecurityEventCardProps) {
-  const color = severityColors[event.severity];
+export function SecurityEventCard({ event, isHighlighted = false, onSeek, className }: SecurityEventCardProps) {
+  const color = SEVERITY_COLORS[event.severity];
   const SeverityIcon = severityIcons[event.severity];
   const TypeIcon = typeIcons[event.type] || AppWindow;
 
+  const handleClick = () => {
+    onSeek?.(event.timestamp);
+  };
+
   return (
     <motion.div
-      variants={cardVariants}
+      data-event-id={event.id}
+      variants={highlightedEventVariants}
+      initial="initial"
+      animate={isHighlighted ? 'highlighted' : 'visible'}
+      onClick={handleClick}
+      whileHover={{ scale: 1.01 }}
+      whileTap={{ scale: 0.99 }}
       className={cn(
-        'relative p-4 rounded-lg',
+        'relative p-4 rounded-lg cursor-pointer',
         'bg-blockd-surface/40',
         'border-l-[3px]',
+        'transition-all duration-300',
+        isHighlighted && 'bg-blockd-accent/20 ring-2 ring-blockd-accent shadow-lg shadow-blockd-accent/30',
         className
       )}
       style={{ borderLeftColor: color }}
     >
       <div className="flex items-start gap-3">
         {/* Icon */}
-        <div
+        <motion.div
           className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
           style={{ backgroundColor: `${color}20` }}
+          animate={{
+            scale: isHighlighted ? 1.1 : 1,
+          }}
+          transition={{ duration: 0.3 }}
         >
           <TypeIcon className="w-5 h-5" style={{ color }} />
-        </div>
+        </motion.div>
 
         {/* Content */}
         <div className="flex-1 min-w-0">
@@ -82,27 +97,38 @@ export function SecurityEventCard({ event, className }: SecurityEventCardProps) 
         </div>
       </div>
 
-      {/* Subtle glow effect on left border */}
-      <div
-        className="absolute left-0 top-0 bottom-0 w-px"
-        style={{
-          boxShadow: `0 0 8px ${color}`,
+      {/* Glow effect on left border - pulses when highlighted */}
+      <motion.div
+        className="absolute left-0 top-0 bottom-0 w-px pointer-events-none"
+        animate={{
+          boxShadow: getHighlightGlow(color, isHighlighted),
+          opacity: isHighlighted ? [0.6, 1, 0.6] : 1,
+        }}
+        transition={{
+          boxShadow: { duration: 0.3 },
+          opacity: isHighlighted
+            ? { duration: 1.5, repeat: Infinity, ease: 'easeInOut' }
+            : { duration: 0.3 },
         }}
       />
+
     </motion.div>
   );
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
 // EVENT LIST COMPONENT
+// Renders a list of security events with optional highlighting
 // ═══════════════════════════════════════════════════════════════════════════
 
 interface EventListProps {
   events: SecurityEvent[];
+  highlightedEventId?: string | null;
+  onSeek?: (timestamp: number) => void;
   className?: string;
 }
 
-export function EventList({ events, className }: EventListProps) {
+export function EventList({ events, highlightedEventId, onSeek, className }: EventListProps) {
   return (
     <motion.div
       initial="hidden"
@@ -117,7 +143,11 @@ export function EventList({ events, className }: EventListProps) {
           custom={index}
           transition={{ delay: index * 0.05 }}
         >
-          <SecurityEventCard event={event} />
+          <SecurityEventCard
+            event={event}
+            isHighlighted={event.id === highlightedEventId}
+            onSeek={onSeek}
+          />
         </motion.div>
       ))}
     </motion.div>

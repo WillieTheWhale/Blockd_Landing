@@ -6,9 +6,10 @@ import { cn } from '@/lib/cn';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
 import { FOOTER_LINKS, SITE_CONFIG } from '@/lib/constants';
 import { Container } from './container';
+import { Logo } from '@/components/branding';
 
 // ═══════════════════════════════════════════════════════════════════════════
-// FOOTER COMPONENT
+// FOOTER COMPONENT - Using centralized branding component
 // ═══════════════════════════════════════════════════════════════════════════
 
 const socialIcons = {
@@ -19,15 +20,7 @@ const socialIcons = {
 
 function FooterLogo() {
   return (
-    <div className="flex items-center gap-2">
-      <div className="relative w-8 h-8 flex items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-blockd-accent to-blue-600 rounded-lg opacity-80" />
-        <span className="relative font-display font-bold text-lg text-white">B</span>
-      </div>
-      <span className="font-display font-bold text-xl tracking-tight" style={{ color: '#F8FAFC' }}>
-        Blockd
-      </span>
-    </div>
+    <Logo height={45} />
   );
 }
 
@@ -61,7 +54,7 @@ function FooterLinkGroup({ title, links }: FooterLinkGroupProps) {
 function FooterLinkGroupStatic({ title, links }: FooterLinkGroupProps) {
   return (
     <div>
-      <h3 className="font-display font-semibold mb-4" style={{ color: '#F8FAFC' }}>
+      <h3 className="font-display font-semibold mb-4 text-blockd-light">
         {title}
       </h3>
       <ul className="space-y-3">
@@ -69,8 +62,7 @@ function FooterLinkGroupStatic({ title, links }: FooterLinkGroupProps) {
           <li key={link.label}>
             <a
               href={link.href}
-              className="hover:text-blockd-light transition-colors duration-200 text-sm"
-              style={{ color: '#CBD5E1' }}
+              className="text-blockd-muted hover:text-blockd-light transition-colors duration-200 text-sm"
             >
               {link.label}
             </a>
@@ -90,25 +82,24 @@ export function Footer() {
             {/* Brand Column */}
             <div className="lg:col-span-2">
               <FooterLogo />
-              <p className="mt-4 text-sm max-w-xs" style={{ color: '#CBD5E1' }}>
+              <p className="mt-4 text-sm max-w-xs text-blockd-muted">
                 {SITE_CONFIG.tagline}
               </p>
 
               {/* Social Links */}
               <div className="flex items-center gap-4 mt-6">
                 {[
-                  { icon: 'twitter', href: '#' },
-                  { icon: 'linkedin', href: '#' },
-                  { icon: 'github', href: '#' },
+                  { icon: 'twitter', href: '#', label: 'Follow us on Twitter' },
+                  { icon: 'linkedin', href: '#', label: 'Connect on LinkedIn' },
+                  { icon: 'github', href: '#', label: 'View our GitHub' },
                 ].map((social) => {
                   const Icon = socialIcons[social.icon as keyof typeof socialIcons];
                   return (
                     <a
                       key={social.icon}
                       href={social.href}
-                      className="p-2 hover:text-blockd-accent transition-colors duration-200"
-                      style={{ color: '#CBD5E1' }}
-                      aria-label={social.icon}
+                      className="p-2 text-blockd-muted hover:text-blockd-accent transition-colors duration-200"
+                      aria-label={social.label}
                     >
                       <Icon className="w-5 h-5" />
                     </a>
@@ -125,7 +116,7 @@ export function Footer() {
 
           {/* Bottom Bar */}
           <div className="mt-16 pt-8 border-t border-blockd-muted/10 text-center md:text-left">
-            <p className="text-sm" style={{ color: '#CBD5E1' }}>
+            <p className="text-sm text-blockd-muted">
               &copy; {new Date().getFullYear()} Blockd. All rights reserved.
             </p>
           </div>

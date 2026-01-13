@@ -1,21 +1,10 @@
 // ═══════════════════════════════════════════════════════════════════════════
 // BLOCKD CONSTANTS
+// Re-exports from theme system for backward compatibility
 // ═══════════════════════════════════════════════════════════════════════════
 
-export const COLORS = {
-  void: '#0F172A',
-  surface: '#334155',
-  muted: '#CBD5E1',
-  accent: '#3B82F6',
-  light: '#F8FAFC',
-  risk: {
-    minimal: '#3B82F6',
-    low: '#22C55E',
-    medium: '#FBBF24',
-    high: '#F97316',
-    critical: '#EF4444',
-  },
-} as const;
+// Import from centralized theme system
+export { COLORS } from '@/theme/colors';
 
 export const ANIMATION = {
   duration: {

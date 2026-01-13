@@ -18,7 +18,7 @@ export function CTASection() {
   return (
     <Section id="cta" padding="large" className="relative overflow-hidden">
       {/* Background effects */}
-      <StaticSpotlight position="center" size={1200} color="rgba(59, 130, 246, 0.1)" />
+      <StaticSpotlight position="center" size={1200} color="rgba(104, 113, 147, 0.1)" />
 
       <motion.div
         variants={staggerContainer}
