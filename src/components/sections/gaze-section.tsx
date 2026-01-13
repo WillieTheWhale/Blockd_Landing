@@ -32,7 +32,7 @@ const features = [
 
 export function GazeSection() {
   return (
-    <Section id="gaze-intelligence">
+    <Section id="gaze">
       <SectionHeader
         title="Eyes Don't Lie"
         subtitle="MediaPipe's 468-point facial landmark detection tracks gaze patterns at 30 FPS. Off-screen glances, reading patterns, and attention drift are captured in real-time."
@@ -64,7 +64,7 @@ export function GazeSection() {
           <motion.div
             key={feature.title}
             variants={cardVariants}
-            className="glass-panel glass-hover p-6 text-center"
+            className="bg-blockd-surface border-2 border-white/20 hover:border-white p-6 text-center"
           >
             <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-blockd-accent/10 flex items-center justify-center">
               <feature.icon className="w-6 h-6 text-blockd-accent" />

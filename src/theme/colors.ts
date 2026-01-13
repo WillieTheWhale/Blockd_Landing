@@ -8,12 +8,12 @@
  * Based on the Blockd brand guidelines
  */
 export const colors = {
-  // Core brand colors - LIGHT MODE
-  void: '#F3F6FB',      // Primary background - egg white
-  surface: '#E8ECF4',   // Cards, panels - slightly darker
+  // Core brand colors - DARK MODE
+  void: '#01101B',      // Primary background - black blue
+  surface: '#0a1929',   // Cards, panels - slightly lighter
   muted: '#687193',     // Secondary text - slate blue
-  accent: '#36454F',    // Primary accent - dark slate
-  light: '#01101B',     // Primary text - black blue
+  accent: '#687193',    // Primary accent - slate blue (more visible)
+  light: '#F3F6FB',     // Primary text - egg white
 } as const;
 
 /**

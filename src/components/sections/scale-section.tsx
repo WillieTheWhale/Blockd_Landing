@@ -50,7 +50,7 @@ function MetricCard({
     <motion.div
       ref={ref}
       variants={cardVariants}
-      className="glass-panel p-6 text-center"
+      className="bg-blockd-surface border-2 border-white/20 p-6 text-center"
     >
       <p className="text-4xl md:text-5xl font-mono font-bold text-blockd-light tabular-nums">
         {prefix}
@@ -78,7 +78,7 @@ const session = await blockd.sessions.create({
   return (
     <motion.div
       variants={fadeInUp}
-      className="glass-panel--background rounded-lg overflow-hidden"
+      className="bg-blockd-void/50 border-2 border-white/10 overflow-hidden"
     >
       {/* Header */}
       <div className="px-4 py-3 border-b border-blockd-muted/10 flex items-center gap-2">
@@ -152,7 +152,7 @@ export function ScaleSection() {
                 key={integration.name}
                 variants={cardVariants}
                 whileHover={{ scale: 1.05 }}
-                className="glass-panel glass-hover px-6 py-4 flex items-center gap-3"
+                className="bg-blockd-surface border-2 border-white/20 hover:border-white px-6 py-4 flex items-center gap-3"
               >
                 <div className="w-8 h-8 rounded bg-blockd-accent/20 flex items-center justify-center text-blockd-accent font-display font-bold text-sm">
                   {integration.logo}

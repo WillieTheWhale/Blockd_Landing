@@ -75,7 +75,7 @@ function FooterLinkGroupStatic({ title, links }: FooterLinkGroupProps) {
 
 export function Footer() {
   return (
-    <footer className="relative z-10 border-t border-blockd-muted/10">
+    <footer className="relative z-10">
       <Container>
         <div className="py-16 md:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">

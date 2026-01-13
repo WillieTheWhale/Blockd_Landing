@@ -97,7 +97,7 @@ export function HeroSection() {
   const { openWaitlist } = useWaitlist();
 
   return (
-    <section className="relative min-h-screen flex items-center pt-[72px] overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center pt-[72px] overflow-hidden">
       {/* Background effects */}
       <GridPattern className="opacity-50" />
       <StaticSpotlight position="top-right" size={1000} color="rgba(104, 113, 147, 0.08)" />

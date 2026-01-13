@@ -241,11 +241,11 @@ export function GazeHeatmap({ normalData, suspiciousData, className }: GazeHeatm
     const drawBackground = () => {
       ctx.clearRect(0, 0, rect.width, rect.height);
 
-      // Background gradient
+      // Background gradient - Dark mode
       const bgGradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
-      bgGradient.addColorStop(0, '#000810');
-      bgGradient.addColorStop(0.5, '#01101B');
-      bgGradient.addColorStop(1, '#000810');
+      bgGradient.addColorStop(0, '#01101B');
+      bgGradient.addColorStop(0.5, '#0a1929');
+      bgGradient.addColorStop(1, '#01101B');
       ctx.fillStyle = bgGradient;
       ctx.fillRect(0, 0, rect.width, rect.height);
 
@@ -254,8 +254,8 @@ export function GazeHeatmap({ normalData, suspiciousData, className }: GazeHeatm
       const gridSize = 30;
 
       for (let x = 0; x < rect.width; x += gridSize) {
-        const opacity = 0.02 + Math.sin(x * 0.01 + time) * 0.01;
-        ctx.strokeStyle = `rgba(203, 213, 225, ${opacity})`;
+        const opacity = 0.08 + Math.sin(x * 0.01 + time) * 0.03;
+        ctx.strokeStyle = `rgba(104, 113, 147, ${opacity})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(x, 0);
@@ -263,8 +263,8 @@ export function GazeHeatmap({ normalData, suspiciousData, className }: GazeHeatm
         ctx.stroke();
       }
       for (let y = 0; y < rect.height; y += gridSize) {
-        const opacity = 0.02 + Math.cos(y * 0.01 + time) * 0.01;
-        ctx.strokeStyle = `rgba(203, 213, 225, ${opacity})`;
+        const opacity = 0.08 + Math.cos(y * 0.01 + time) * 0.03;
+        ctx.strokeStyle = `rgba(104, 113, 147, ${opacity})`;
         ctx.beginPath();
         ctx.moveTo(0, y);
         ctx.lineTo(rect.width, y);
@@ -280,7 +280,7 @@ export function GazeHeatmap({ normalData, suspiciousData, className }: GazeHeatm
       ctx.shadowBlur = 0;
 
       // Dashed inner boundary
-      ctx.strokeStyle = 'rgba(203, 213, 225, 0.2)';
+      ctx.strokeStyle = 'rgba(54, 69, 79, 0.3)';
       ctx.lineWidth = 2;
       ctx.setLineDash([8, 4]);
       ctx.strokeRect(screenX + 2, screenY + 2, screenWidth - 4, screenHeight - 4);
@@ -321,14 +321,14 @@ export function GazeHeatmap({ normalData, suspiciousData, className }: GazeHeatm
       const gradient = heatCtx.createRadialGradient(x, y, 0, x, y, baseRadius);
 
       if (isOffScreen) {
-        gradient.addColorStop(0, `rgba(239, 68, 68, ${0.4 * intensity})`);
-        gradient.addColorStop(0.4, `rgba(239, 68, 68, ${0.2 * intensity})`);
-        gradient.addColorStop(0.7, `rgba(239, 68, 68, ${0.08 * intensity})`);
+        gradient.addColorStop(0, `rgba(220, 38, 38, ${0.6 * intensity})`);
+        gradient.addColorStop(0.4, `rgba(239, 68, 68, ${0.35 * intensity})`);
+        gradient.addColorStop(0.7, `rgba(239, 68, 68, ${0.15 * intensity})`);
         gradient.addColorStop(1, 'rgba(239, 68, 68, 0)');
       } else {
-        gradient.addColorStop(0, `rgba(104, 113, 147, ${0.35 * intensity})`);
-        gradient.addColorStop(0.4, `rgba(144, 153, 187, ${0.18 * intensity})`);
-        gradient.addColorStop(0.7, `rgba(104, 113, 147, ${0.06 * intensity})`);
+        gradient.addColorStop(0, `rgba(144, 153, 187, ${0.6 * intensity})`);
+        gradient.addColorStop(0.4, `rgba(122, 138, 163, ${0.4 * intensity})`);
+        gradient.addColorStop(0.7, `rgba(104, 113, 147, ${0.2 * intensity})`);
         gradient.addColorStop(1, 'rgba(104, 113, 147, 0)');
       }
 
@@ -387,11 +387,11 @@ export function GazeHeatmap({ normalData, suspiciousData, className }: GazeHeatm
         if (intensity > 0.5) {
           const hotspotGradient = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, 4);
           if (pos.isOffScreen) {
-            hotspotGradient.addColorStop(0, `rgba(255, 180, 180, ${(intensity - 0.5) * 0.6 * pulseIntensity})`);
-            hotspotGradient.addColorStop(1, 'rgba(255, 180, 180, 0)');
+            hotspotGradient.addColorStop(0, `rgba(248, 113, 113, ${(intensity - 0.5) * 0.9 * pulseIntensity})`);
+            hotspotGradient.addColorStop(1, 'rgba(248, 113, 113, 0)');
           } else {
-            hotspotGradient.addColorStop(0, `rgba(180, 210, 255, ${(intensity - 0.5) * 0.5 * pulseIntensity})`);
-            hotspotGradient.addColorStop(1, 'rgba(180, 210, 255, 0)');
+            hotspotGradient.addColorStop(0, `rgba(243, 246, 251, ${(intensity - 0.5) * 0.8 * pulseIntensity})`);
+            hotspotGradient.addColorStop(1, 'rgba(243, 246, 251, 0)');
           }
           ctx.fillStyle = hotspotGradient;
           ctx.beginPath();

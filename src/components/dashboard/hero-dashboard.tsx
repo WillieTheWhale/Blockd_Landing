@@ -55,10 +55,10 @@ export function HeroDashboard({ className }: HeroDashboardProps) {
       initial="hidden"
       animate="visible"
       className={cn(
-        'glass-panel--foreground',
+        'bg-blockd-surface border-2 border-white/30',
         'p-6 rounded-2xl',
         'shadow-[0_20px_60px_rgba(0,0,0,0.15)]',
-        'glow-pulse',
+        '',
         className
       )}
     >
@@ -85,7 +85,7 @@ export function HeroDashboard({ className }: HeroDashboardProps) {
           <div className="text-[10px] font-mono uppercase tracking-wider text-blockd-muted mb-2">
             Risk Score
           </div>
-          <div className="glass-panel--background p-3 rounded-lg">
+          <div className="bg-blockd-void/50 border border-white/10 p-3 rounded-lg">
             <div className="text-2xl font-mono font-medium text-blockd-light tabular-nums mb-1">
               {riskScore.toFixed(2)}
             </div>
@@ -101,7 +101,7 @@ export function HeroDashboard({ className }: HeroDashboardProps) {
           <div className="text-[10px] font-mono uppercase tracking-wider text-blockd-muted mb-2">
             Security Events
           </div>
-          <div className="glass-panel--background p-2 rounded-lg h-[120px] overflow-hidden">
+          <div className="bg-blockd-void/50 border border-white/10 p-2 rounded-lg h-[120px] overflow-hidden">
             <EventFeed />
           </div>
         </div>

@@ -29,7 +29,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             'border border-blockd-muted/20',
             'text-blockd-light placeholder:text-blockd-muted/50',
             'transition-all duration-200',
-            'focus:outline-none focus:border-blockd-accent focus:shadow-[inset_0_0_20px_rgba(59,130,246,0.1)]',
+            'focus:outline-none focus:border-blockd-accent focus:shadow-[inset_0_0_20px_rgba(104,113,147,0.15)]',
             error && 'border-blockd-risk-critical',
             className
           )}
@@ -72,7 +72,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             'text-blockd-light placeholder:text-blockd-muted/50',
             'transition-all duration-200',
             'resize-y',
-            'focus:outline-none focus:border-blockd-accent focus:shadow-[inset_0_0_20px_rgba(59,130,246,0.1)]',
+            'focus:outline-none focus:border-blockd-accent focus:shadow-[inset_0_0_20px_rgba(104,113,147,0.15)]',
             error && 'border-blockd-risk-critical',
             className
           )}

@@ -44,6 +44,14 @@ const CursorGlow = dynamic(
   }
 );
 
+const ScrollBackgroundGradient = dynamic(
+  () => import('@/components/effects/scroll-background-gradient').then((mod) => mod.ScrollBackgroundGradient),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
+
 // ═══════════════════════════════════════════════════════════════════════════
 // MAIN PAGE COMPONENT
 // ═══════════════════════════════════════════════════════════════════════════
@@ -58,6 +66,9 @@ export default function Home() {
         {/* Three.js Background */}
         <ParticleField />
 
+        {/* Scroll-linked Background Color Gradient */}
+        <ScrollBackgroundGradient />
+
         {/* Scroll Progress Indicator */}
         <ScrollProgress />
 
@@ -69,50 +80,15 @@ export default function Home() {
 
         {/* Main Content */}
         <main id="main-content" className="relative z-10">
-          {/* Hero Section */}
-          <section id="hero">
-            <HeroSection />
-          </section>
-
-          {/* Problem / Detection Comparison */}
-          <section id="problem">
-            <ProblemSection />
-          </section>
-
-          {/* Gaze Intelligence */}
-          <section id="gaze">
-            <GazeSection />
-          </section>
-
-          {/* AI Detection */}
-          <section id="ai-detection">
-            <AIDetectionSection />
-          </section>
-
-          {/* Security Monitoring */}
-          <section id="security">
-            <SecuritySection />
-          </section>
-
-          {/* Evidence Reports */}
-          <section id="report">
-            <ReportSection />
-          </section>
-
-          {/* Architecture & Technology Stack */}
-          <section id="architecture">
-            <ArchitectureSection />
-          </section>
-
-          {/* Enterprise Scale & Integration */}
-          <section id="scale">
-            <ScaleSection />
-          </section>
-
-          {/* Final CTA */}
-          <section id="cta">
-            <CTASection />
-          </section>
+          <HeroSection />
+          <ProblemSection />
+          <GazeSection />
+          <AIDetectionSection />
+          <SecuritySection />
+          <ReportSection />
+          <ArchitectureSection />
+          <ScaleSection />
+          <CTASection />
         </main>
 
         {/* Footer */}

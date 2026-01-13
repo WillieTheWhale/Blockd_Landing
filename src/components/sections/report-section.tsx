@@ -40,7 +40,7 @@ function ReportPreview() {
 
         {/* Page 1 (front) - Main report preview */}
         <motion.div
-          className="relative glass-panel--foreground rounded-xl p-6 h-[400px] overflow-hidden"
+          className="relative bg-blockd-surface border-2 border-white/30 p-6 h-[400px] overflow-hidden"
           whileHover={{ y: -5 }}
           transition={{ duration: 0.3 }}
         >
@@ -107,8 +107,6 @@ function ReportPreview() {
             </ul>
           </div>
 
-          {/* Decorative scan line */}
-          <div className="scan-line opacity-30" />
         </motion.div>
       </div>
     </motion.div>
@@ -117,7 +115,7 @@ function ReportPreview() {
 
 export function ReportSection() {
   return (
-    <Section id="report" background="gradient">
+    <Section id="report">
       <SectionHeader
         title="Comprehensive Evidence Reports"
         subtitle="Every interview generates a detailed report with gaze heatmaps, AI analysis, security events, and risk assessment. The human makes the final call—with full evidence to support it."

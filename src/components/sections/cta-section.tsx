@@ -5,7 +5,6 @@ import { Mail } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { Section } from '@/components/layout/section';
 import { Button } from '@/components/ui/button';
-import { StaticSpotlight } from '@/components/effects/spotlight';
 import { useWaitlist } from '@/contexts/waitlist-context';
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -17,9 +16,6 @@ export function CTASection() {
 
   return (
     <Section id="cta" padding="large" className="relative overflow-hidden">
-      {/* Background effects */}
-      <StaticSpotlight position="center" size={1200} color="rgba(104, 113, 147, 0.1)" />
-
       <motion.div
         variants={staggerContainer}
         initial="hidden"

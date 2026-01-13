@@ -59,26 +59,26 @@ export function MiniHeatmap({ className }: MiniHeatmapProps) {
     // Clear
     ctx.clearRect(0, 0, rect.width, rect.height);
 
-    // Draw background
+    // Draw background - Dark mode
     ctx.fillStyle = '#01101B';
     ctx.fillRect(0, 0, rect.width, rect.height);
 
     // Draw screen boundary
     const padding = 8;
-    ctx.strokeStyle = 'rgba(203, 213, 225, 0.2)';
+    ctx.strokeStyle = 'rgba(104, 113, 147, 0.4)';
     ctx.lineWidth = 1;
     ctx.setLineDash([4, 2]);
     ctx.strokeRect(padding, padding, rect.width - padding * 2, rect.height - padding * 2);
     ctx.setLineDash([]);
 
-    // Draw heat points
+    // Draw heat points - lighter for dark background
     points.forEach((point) => {
       const x = padding + point.x * (rect.width - padding * 2);
       const y = padding + point.y * (rect.height - padding * 2);
 
       const gradient = ctx.createRadialGradient(x, y, 0, x, y, point.r);
-      gradient.addColorStop(0, 'rgba(104, 113, 147, 0.7)');
-      gradient.addColorStop(0.5, 'rgba(104, 113, 147, 0.2)');
+      gradient.addColorStop(0, 'rgba(144, 153, 187, 0.9)');
+      gradient.addColorStop(0.5, 'rgba(122, 138, 163, 0.5)');
       gradient.addColorStop(1, 'rgba(104, 113, 147, 0)');
 
       ctx.globalCompositeOperation = 'lighter';

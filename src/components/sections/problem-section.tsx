@@ -60,7 +60,7 @@ function StatCallout() {
 
 export function ProblemSection() {
   return (
-    <Section id="problem" background="gradient">
+    <Section id="problem">
       <SectionWrapper transition="blur" delay={0}>
         <SectionHeader
           title="Cheating Has Evolved. Detection Must Too."

@@ -42,7 +42,7 @@ export const Section = forwardRef<HTMLElement, SectionProps>(
       children,
       container = true,
       containerSize = 'default',
-      background = 'void',
+      background = 'none',
       padding = 'default',
       animate = true,
       className,

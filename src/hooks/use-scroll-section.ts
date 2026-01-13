@@ -23,7 +23,7 @@ export interface ScrollSectionState {
   sections: Map<string, SectionInfo>;
 }
 
-const SECTION_IDS = [
+export const SECTION_IDS = [
   'hero',
   'problem',
   'gaze',
@@ -33,19 +33,20 @@ const SECTION_IDS = [
   'architecture',
   'scale',
   'cta',
-];
+] as const;
 
-// Color palette for section-aware effects - Light mode (darker colors)
+// Color palette for section-aware effects - Very subtle dark variations
+// All colors are within a few shades of the void background (#01101B)
 export const SECTION_COLORS: Record<string, string> = {
-  hero: '#36454F',      // dark slate
-  problem: '#4A5A6A',   // medium slate
-  gaze: '#5A6A7A',      // slate
-  'ai-detection': '#687193', // slate blue
-  security: '#36454F',  // dark slate
-  report: '#4A5A6A',    // medium slate
-  architecture: '#5A6A7A', // slate
-  scale: '#36454F',     // dark slate
-  cta: '#01101B',       // black blue
+  hero: '#02121d',      // base (closest to void)
+  problem: '#03141f',   // very slight blue shift
+  gaze: '#041621',      // slight blue tint
+  'ai-detection': '#031520', // subtle variation
+  security: '#02131e',  // near base
+  report: '#041722',    // slight blue tint
+  architecture: '#031520', // subtle variation
+  scale: '#041621',     // slight blue tint
+  cta: '#02131e',       // near base
 };
 
 // PERFORMANCE: Cache for section elements to avoid repeated DOM queries
@@ -82,12 +83,14 @@ export function useScrollSection() {
   const initializeElements = useCallback(() => {
     if (elementsInitialized.current) return;
 
-    cachedElements.current = SECTION_IDS
-      .map(id => {
-        const element = document.getElementById(id);
-        return element ? { element, id } : null;
-      })
-      .filter((item): item is CachedSection => item !== null);
+    const cached: CachedSection[] = [];
+    for (const id of SECTION_IDS) {
+      const element = document.getElementById(id);
+      if (element) {
+        cached.push({ element, id });
+      }
+    }
+    cachedElements.current = cached;
 
     elementsInitialized.current = true;
   }, []);
@@ -186,5 +189,5 @@ export function useScrollSection() {
 // Hook to get current section color
 export function useSectionColor() {
   const { activeSection } = useScrollSection();
-  return SECTION_COLORS[activeSection] || '#36454F';
+  return SECTION_COLORS[activeSection] || '#687193';
 }

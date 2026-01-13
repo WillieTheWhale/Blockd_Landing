@@ -49,7 +49,7 @@ export const AnimatedGrid = memo(function AnimatedGrid({ className }: GridPatter
             <path
               d="M 40 0 L 0 0 0 40"
               fill="none"
-              stroke="rgba(203, 213, 225, 0.03)"
+              stroke="rgba(104, 113, 147, 0.12)"
               strokeWidth="1"
             />
           </pattern>

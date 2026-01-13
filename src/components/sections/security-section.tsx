@@ -138,7 +138,7 @@ export function SecuritySection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="glass-panel p-6 mb-8"
+        className="bg-blockd-surface border-2 border-white/20 p-6 mb-8"
       >
         <h3 className="font-display font-semibold text-lg text-blockd-light mb-4">
           Session Timeline
@@ -196,7 +196,7 @@ export function SecuritySection() {
             <motion.div
               key={category.title}
               variants={cardVariants}
-              className="glass-panel glass-hover p-5"
+              className="bg-blockd-surface border-2 border-white/20 hover:border-white p-5"
             >
               <div className="w-10 h-10 rounded-lg bg-blockd-accent/10 flex items-center justify-center mb-3">
                 <category.icon className="w-5 h-5 text-blockd-accent" />

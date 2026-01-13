@@ -136,7 +136,7 @@ export function Timeline({
               className={cn(
                 'w-5 h-5 rounded-full bg-blockd-light border-2 border-blockd-accent shadow-lg',
                 'transition-shadow duration-200',
-                isDragging && 'shadow-[0_0_12px_rgba(59,130,246,0.5)]'
+                isDragging && 'shadow-[0_0_12px_rgba(104,113,147,0.5)]'
               )}
             />
           </motion.div>

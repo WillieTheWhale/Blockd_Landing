@@ -107,11 +107,11 @@ export function RiskGauge({ value, size = 200, className }: RiskGaugeProps) {
           </filter>
         </defs>
 
-        {/* Background track with subtle gradient */}
+        {/* Background track with subtle gradient - lighter for dark mode */}
         <path
           d={arcPath}
           fill="none"
-          stroke="rgba(51, 65, 85, 0.3)"
+          stroke="rgba(104, 113, 147, 0.25)"
           strokeWidth={strokeWidth + 4}
           strokeLinecap="round"
         />
@@ -142,7 +142,7 @@ export function RiskGauge({ value, size = 200, className }: RiskGaugeProps) {
               y1={y1}
               x2={x2}
               y2={y2}
-              stroke="rgba(203, 213, 225, 0.3)"
+              stroke="rgba(104, 113, 147, 0.4)"
               strokeWidth={2}
               strokeLinecap="round"
             />

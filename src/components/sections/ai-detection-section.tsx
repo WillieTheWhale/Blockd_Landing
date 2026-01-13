@@ -112,7 +112,7 @@ function InteractiveDemo() {
   return (
     <motion.div
       variants={fadeInUp}
-      className="glass-panel p-6 mt-12"
+      className="bg-blockd-surface border-2 border-white/20 p-6 mt-12"
     >
       <h3 className="font-display font-semibold text-xl text-blockd-light mb-4">
         Try It Yourself
@@ -143,13 +143,13 @@ function InteractiveDemo() {
             animate={{ opacity: 1, y: 0 }}
             className="flex-1 grid sm:grid-cols-2 gap-4"
           >
-            <div className="glass-panel--background p-4">
+            <div className="bg-blockd-surface border-2 border-white/20--background p-4">
               <p className="text-xs font-mono uppercase tracking-wider text-blockd-muted mb-3">
                 Similarity Scores
               </p>
               <SimilarityChart data={results.similarity} />
             </div>
-            <div className="glass-panel--background p-4 flex items-center justify-center">
+            <div className="bg-blockd-surface border-2 border-white/20--background p-4 flex items-center justify-center">
               <RiskGauge value={results.riskScore} size={160} />
             </div>
           </motion.div>
@@ -161,7 +161,7 @@ function InteractiveDemo() {
 
 export function AIDetectionSection() {
   return (
-    <Section id="ai-detection" background="gradient">
+    <Section id="ai-detection">
       <SectionHeader
         title="AI Fighting AI"
         subtitle="The only way to reliably detect AI assistance is to understand how AI responds. We compare answers from all top models, including GPT 5.2, Gemini 3, and more, then classify with XGBoost ensemble ML."
@@ -177,7 +177,7 @@ export function AIDetectionSection() {
           className="space-y-8"
         >
           {/* Similarity Chart */}
-          <motion.div variants={fadeInUp} className="glass-panel p-6">
+          <motion.div variants={fadeInUp} className="bg-blockd-surface border-2 border-white/20 p-6">
             <h3 className="font-display font-semibold text-lg text-blockd-light mb-4">
               AI Similarity Analysis
             </h3>
@@ -188,7 +188,7 @@ export function AIDetectionSection() {
           </motion.div>
 
           {/* Risk Gauge */}
-          <motion.div variants={fadeInUp} className="glass-panel p-6">
+          <motion.div variants={fadeInUp} className="bg-blockd-surface border-2 border-white/20 p-6">
             <h3 className="font-display font-semibold text-lg text-blockd-light mb-4 text-center">
               Overall Risk Score
             </h3>

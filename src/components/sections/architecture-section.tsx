@@ -85,7 +85,7 @@ const dataStack = [
 
 export function ArchitectureSection() {
   return (
-    <Section id="architecture" background="surface">
+    <Section id="architecture">
       <SectionHeader
         title="Enterprise-Grade Architecture"
         subtitle="8 specialized microservices, purpose-built databases, and real-time video infrastructure designed for scale and reliability."
@@ -103,7 +103,7 @@ export function ArchitectureSection() {
           <motion.div
             key={service.name}
             variants={cardVariants}
-            className="glass-panel glass-hover p-5"
+            className="bg-blockd-surface border-2 border-white/20 hover:border-white p-5"
           >
             <div className="w-10 h-10 rounded-lg bg-blockd-accent/10 flex items-center justify-center mb-3">
               <service.icon className="w-5 h-5 text-blockd-accent" />
@@ -127,7 +127,7 @@ export function ArchitectureSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="glass-panel p-8"
+        className="bg-blockd-surface border-2 border-white/20 p-8"
       >
         <h3 className="font-display font-semibold text-xl text-blockd-light mb-6 text-center">
           Purpose-Built Data Infrastructure
