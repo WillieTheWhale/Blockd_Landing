@@ -13,6 +13,7 @@ interface ButtonProps {
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
   href?: string;
+  download?: boolean | string;
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
   className?: string;
@@ -59,6 +60,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size = 'md',
       children,
       href,
+      download,
       icon,
       iconPosition = 'left',
       className,
@@ -99,6 +101,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       return (
         <a
           href={href}
+          download={download}
           className={buttonClasses}
           onClick={onClick}
         >

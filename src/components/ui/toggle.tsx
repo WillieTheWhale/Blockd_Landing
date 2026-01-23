@@ -105,7 +105,7 @@ export const SegmentedControl = forwardRef<HTMLDivElement, SegmentedControlProps
               'text-sm font-medium',
               'transition-colors duration-200',
               'rounded-md',
-              value === option.value ? 'text-blockd-light' : 'text-blockd-muted'
+              value === option.value ? 'text-blockd-void' : 'text-blockd-muted'
             )}
           >
             {option.label}

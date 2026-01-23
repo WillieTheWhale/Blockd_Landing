@@ -180,6 +180,8 @@ export function ReportSection() {
             <Button
               variant="secondary"
               icon={<Download className="w-5 h-5" />}
+              href="/blockd-sample-report.pdf"
+              download="blockd-sample-report.pdf"
             >
               Download Sample Report
             </Button>
