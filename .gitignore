@@ -43,3 +43,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# deploy folder build artifacts
+deploy/.next/
+deploy/node_modules/

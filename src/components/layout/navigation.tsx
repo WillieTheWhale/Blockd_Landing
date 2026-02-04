@@ -6,7 +6,7 @@ import { Menu, X, Mail } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { fadeInDown } from '@/lib/animations';
-import { NAV_LINKS } from '@/lib/constants';
+import { NAV_LINKS, AUTH_URLS } from '@/lib/constants';
 import { Container } from './container';
 import { Button } from '@/components/ui/button';
 import { useWaitlist } from '@/contexts/waitlist-context';
@@ -88,7 +88,13 @@ function MobileMenu({ isOpen, onClose, onOpenWaitlist }: MobileMenuProps) {
 
               {/* CTA buttons */}
               <div className="space-y-4">
-                <Button variant="secondary" className="w-full justify-center">
+                <Button
+                  variant="secondary"
+                  className="w-full justify-center"
+                  onClick={() => {
+                    window.location.href = AUTH_URLS.login;
+                  }}
+                >
                   Log In
                 </Button>
                 <Button
@@ -154,7 +160,13 @@ export function Navigation() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="text" size="sm">
+            <Button
+              variant="text"
+              size="sm"
+              onClick={() => {
+                window.location.href = AUTH_URLS.login;
+              }}
+            >
               Log In
             </Button>
             <Button
